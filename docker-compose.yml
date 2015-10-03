@@ -1,0 +1,13 @@
+web:
+  build: .
+  ports:
+   - "4000:80"
+  volumes:
+   - .:/var/www/html/
+  links:
+   - db
+
+db:
+  image: mysql:latest
+  ports:
+   - "3306:3306"
