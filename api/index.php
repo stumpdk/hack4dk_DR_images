@@ -4,6 +4,7 @@ use Phalcon\Mvc\Micro;
 use Phalcon\DI\FactoryDefault;
 use Phalcon\Http\Response as Response;
 use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
+use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
 require( __DIR__ . '/../vendor/autoload.php');
 
@@ -64,6 +65,16 @@ require( __DIR__ . '/../vendor/autoload.php');
                 }
             }
         }
+        $response->setJsonContent($data);
+    });
+    
+    $app->get('/images/{offset:[0-9]+}/{limit:[0-9]+}', function($offset, $limit) use ($response){
+        $robots = Images::find(['offset' => $offset, 'limit' => $limit]);
+        $data = [];
+        foreach($robots as $robot){
+            $data[] = $robot;
+        }
+        
         $response->setJsonContent($data);
     });
     

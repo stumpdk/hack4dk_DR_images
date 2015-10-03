@@ -1416,3 +1416,58 @@ Stack trace:
 #0 /home/ubuntu/workspace/api/index.php(95): Phalcon\Http\Response->send()
 #1 {main}
   thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 12:27:23 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(95): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 12:27:28 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(95): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 12:34:23 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(108): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 12:35:15 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:112
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(112): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 112
+[03-Oct-2015 12:35:22 UTC] PHP Fatal error:  Uncaught exception 'BadMethodCallException' with message 'Wrong number of parameters' in /home/ubuntu/workspace/api/index.php:80
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(80): Phalcon\Mvc\Model::find('10', 1010)
+#1 [internal function]: {closure}('10', '10')
+#2 /home/ubuntu/workspace/api/index.php(112): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 80
+[03-Oct-2015 12:35:58 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(114): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 12:36:07 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(114): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 12:36:44 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 77 bytes) in /home/ubuntu/workspace/api/index.php on line 83
+[03-Oct-2015 12:36:44 UTC] PHP Stack trace:
+[03-Oct-2015 12:36:44 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[03-Oct-2015 12:36:44 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:113
+[03-Oct-2015 12:36:44 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:71-88}() /home/ubuntu/workspace/api/index.php:113
+[03-Oct-2015 12:36:44 UTC] PHP   4. Phalcon\Mvc\Model\Resultset\Simple->current() /home/ubuntu/workspace/api/index.php:83
+[03-Oct-2015 12:36:44 UTC] PHP   5. Phalcon\Mvc\Model::cloneResultMap() /home/ubuntu/workspace/api/index.php:83
+[03-Oct-2015 12:36:44 UTC] PHP   6. Phalcon\Mvc\Model->__set() /home/ubuntu/workspace/api/index.php:83
+[03-Oct-2015 12:37:18 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(106): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 12:37:55 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(106): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
