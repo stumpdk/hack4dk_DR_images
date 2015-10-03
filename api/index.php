@@ -4,7 +4,9 @@ use Phalcon\Mvc\Micro;
 use Phalcon\DI\FactoryDefault;
 use Phalcon\Http\Response as Response;
 use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
-    
+
+require( __DIR__ . '/../vendor/autoload.php');
+
     // Use Loader() to autoload our model
     $loader = new Loader();
     
@@ -41,9 +43,51 @@ use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
     });
     
     $app->get('/image/{id:[0-9]+}', function($id) use ($app, $response) {
-        $images = Images::findFirstById($id);
+       // $images = Images::findFirstById($id);
+       // $response->setJsonContent($images->imagesTags);
+        //$response->setJsonContent($images);
 
-        $response->setJsonContent($images);
+        
+        //$image = Images::findFirstById($id);
+        //$response->setJsonContent($image->imagesTags);
+        $images = Images::findById($id);//(['limit' => 10]);
+        $data = [];
+        $i = 0;
+        foreach ($images as $image) {
+            foreach($image->getImagesTags() as $tag){
+                foreach($tag->getTags() as $tag2)
+                {
+                    $data[$i]['id'] = $image;
+                    $data[$i]['tag'] = $tag2;
+                    $data[$i]['imageTagId'] = $tag;
+                    $i++;
+                }
+            }
+        }
+        $response->setJsonContent($data);
+    });
+    
+    $app->get('/img_resize/{id:[0-9]+}', function($id) use ($app, $response) {
+        $image = Images::findFirstById($id);
+        if(count($image) > 0){
+            $resized_file = str_replace('http://hack4dk.dr.dk/', '/home/ubuntu/workspace/resized_images/', $image->url);
+            $percent = 0.2;
+            
+            if(!file_exists($resized_file)){
+                //Lets create folder structure if it doesn't exist
+                if(!file_exists(dirname($resized_file))){
+                    mkdir('./' . dirname($resized_file), '0777', true);
+                }
+                $image = new \Eventviva\ImageResize($image->url);
+                $image->resizeToWidth(800);
+                $image->save($resized_file);
+            }
+            //echo 'her' . $resized_file;
+            $response->setHeader('Content-Type', 'image/jpeg');
+            $response->send();
+            readfile($resized_file);
+        }
+        $response->setJsonContent(['could not load image!']);
     });
     
     $app->handle();

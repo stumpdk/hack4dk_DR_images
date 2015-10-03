@@ -9,7 +9,7 @@
     // then click the URL that is emitted to the Output tab of the console
 
     $sum = 0;
-    for($i = 1; $i < 9; $i++){
+    for($i = 1; $i < 1; $i++){
         $str = 'http://hack4dk.dr.dk/Batch0' . $i . '/DR-ubehandlet/';
         $html = file_get_contents($str);
         
@@ -28,7 +28,8 @@
             }https://github.com/stumpdk/hack4dk_DR_images.git
             $branchName = 'batch' . $i;
             $type = 'ubehandlet';
-            $stmt->bind_param("sss", $m[1], $branchName, $type);
+            $url = 'http://hack4dk.dr.dk/' . $m[1];
+            $stmt->bind_param("sss", $url, $branchName, $type);
             if(!$stmt->execute()){
                 die ($my->error() . ' ' . $str);
             }
