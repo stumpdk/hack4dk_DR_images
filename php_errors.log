@@ -2268,3 +2268,8 @@ Stack trace:
 #3 {main}
   thrown in phalcon/mvc/model.zep on line 3178
 [03-Oct-2015 19:22:59 UTC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home/ubuntu/workspace/api/index.php on line 130
+[03-Oct-2015 19:36:30 UTC] PHP Warning:  Attempt to assign property of non-object in /home/ubuntu/workspace/api/index.php on line 165
+[03-Oct-2015 19:36:30 UTC] PHP Stack trace:
+[03-Oct-2015 19:36:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[03-Oct-2015 19:36:30 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:182
+[03-Oct-2015 19:36:30 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:113-180}() /home/ubuntu/workspace/api/index.php:182

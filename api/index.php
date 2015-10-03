@@ -26,7 +26,8 @@ require( __DIR__ . '/../vendor/autoload.php');
                 "host"     => "127.0.0.1",
                 "username" => "stumpdk",
                 "password" => "",
-                "dbname"   => "test"
+                "dbname"   => "test",
+                "charset"  => "utf8"
             )
         );
     });
