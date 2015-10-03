@@ -1471,3 +1471,143 @@ Stack trace:
 #0 /home/ubuntu/workspace/api/index.php(106): Phalcon\Http\Response->send()
 #1 {main}
   thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 12:39:31 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(106): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 12:42:29 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not read file' in /home/ubuntu/workspace/vendor/eventviva/php-image-resize/src/ImageResize.php:68
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(92): Eventviva\ImageResize->__construct('http://hack4dk....')
+#1 [internal function]: {closure}('325435')
+#2 /home/ubuntu/workspace/api/index.php(104): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in /home/ubuntu/workspace/vendor/eventviva/php-image-resize/src/ImageResize.php on line 68
+[03-Oct-2015 12:43:25 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(106): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 12:44:01 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 72 bytes) in /home/ubuntu/workspace/api/index.php on line 74
+[03-Oct-2015 12:44:01 UTC] PHP Stack trace:
+[03-Oct-2015 12:44:01 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[03-Oct-2015 12:44:01 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:104
+[03-Oct-2015 12:44:01 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:71-79}() /home/ubuntu/workspace/api/index.php:104
+[03-Oct-2015 12:44:01 UTC] PHP   4. Phalcon\Mvc\Model\Resultset->next() /home/ubuntu/workspace/api/index.php:74
+[03-Oct-2015 12:44:01 UTC] PHP   5. Phalcon\Mvc\Model\Resultset->seek() /home/ubuntu/workspace/api/index.php:74
+[03-Oct-2015 12:44:01 UTC] PHP   6. Phalcon\Db\Result\Pdo->fetch() /home/ubuntu/workspace/api/index.php:74
+[03-Oct-2015 12:45:17 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(106): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 13:05:41 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(111): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 13:05:46 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(111): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 13:07:50 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(111): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 13:07:56 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(111): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 13:08:11 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Response\Exception' with message 'Response was already sent' in phalcon/http/response.zep:588
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(111): Phalcon\Http\Response->send()
+#1 {main}
+  thrown in phalcon/http/response.zep on line 588
+[03-Oct-2015 14:25:44 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:107
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(107): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 107
+[03-Oct-2015 14:44:26 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:107
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(107): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 107
+[03-Oct-2015 14:44:40 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:107
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(107): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 107
+[03-Oct-2015 14:45:04 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:107
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(107): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 107
+[03-Oct-2015 14:45:23 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:107
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(107): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 107
+[03-Oct-2015 14:46:24 UTC] PHP Catchable fatal error:  Argument 1 passed to Phalcon\Mvc\Model::query() must implement interface Phalcon\DiInterface, string given in /home/ubuntu/workspace/api/index.php on line 43
+[03-Oct-2015 14:46:24 UTC] PHP Stack trace:
+[03-Oct-2015 14:46:24 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[03-Oct-2015 14:46:24 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:108
+[03-Oct-2015 14:46:24 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:40-45}() /home/ubuntu/workspace/api/index.php:108
+[03-Oct-2015 14:46:51 UTC] PHP Fatal error:  Call to undefined function toArray() in /home/ubuntu/workspace/api/index.php on line 44
+[03-Oct-2015 14:46:51 UTC] PHP Stack trace:
+[03-Oct-2015 14:46:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[03-Oct-2015 14:46:51 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:108
+[03-Oct-2015 14:46:51 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:40-45}() /home/ubuntu/workspace/api/index.php:108
+[03-Oct-2015 14:51:17 UTC] PHP Fatal error:  Call to undefined method Phalcon\Db\Result\Pdo::toArray() in /home/ubuntu/workspace/api/index.php on line 44
+[03-Oct-2015 14:51:17 UTC] PHP Stack trace:
+[03-Oct-2015 14:51:17 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[03-Oct-2015 14:51:17 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:108
+[03-Oct-2015 14:51:17 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:40-45}() /home/ubuntu/workspace/api/index.php:108
+[03-Oct-2015 15:00:32 UTC] PHP Fatal error:  Call to undefined method Phalcon\Db\Result\Pdo::toArray() in /home/ubuntu/workspace/api/index.php on line 45
+[03-Oct-2015 15:00:32 UTC] PHP Stack trace:
+[03-Oct-2015 15:00:32 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[03-Oct-2015 15:00:32 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:109
+[03-Oct-2015 15:00:32 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:40-46}() /home/ubuntu/workspace/api/index.php:109
+[03-Oct-2015 15:03:51 UTC] PHP Fatal error:  Call to undefined method Phalcon\Mvc\Model\Resultset\Simple::where() in /home/ubuntu/workspace/api/index.php on line 47
+[03-Oct-2015 15:03:51 UTC] PHP Stack trace:
+[03-Oct-2015 15:03:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[03-Oct-2015 15:03:51 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:113
+[03-Oct-2015 15:03:51 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:40-50}() /home/ubuntu/workspace/api/index.php:113
+[03-Oct-2015 15:04:02 UTC] PHP Fatal error:  Call to undefined method Phalcon\Mvc\Model\Criteria::toArray() in /home/ubuntu/workspace/api/index.php on line 48
+[03-Oct-2015 15:04:02 UTC] PHP Stack trace:
+[03-Oct-2015 15:04:02 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[03-Oct-2015 15:04:02 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:113
+[03-Oct-2015 15:04:02 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:40-50}() /home/ubuntu/workspace/api/index.php:113
+[03-Oct-2015 15:07:30 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Syntax error, unexpected EOF' in /home/ubuntu/workspace/api/index.php:47
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#1 [internal function]: Phalcon\Mvc\Model\Query->execute()
+#2 [internal function]: Phalcon\Mvc\Model::find(Array)
+#3 /home/ubuntu/workspace/api/index.php(47): Phalcon\Mvc\Model\Criteria->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(114): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 47
+[03-Oct-2015 15:13:24 UTC] PHP Fatal error:  Call to undefined method Phalcon\Mvc\Model\Resultset\Simple::fetchAll() in /home/ubuntu/workspace/api/index.php on line 49
+[03-Oct-2015 15:13:24 UTC] PHP Stack trace:
+[03-Oct-2015 15:13:24 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[03-Oct-2015 15:13:24 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:114
+[03-Oct-2015 15:13:24 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:40-51}() /home/ubuntu/workspace/api/index.php:114
+[03-Oct-2015 15:14:52 UTC] PHP Fatal error:  Call to a member function setJsonContent() on a non-object in /home/ubuntu/workspace/api/index.php on line 49
+[03-Oct-2015 15:14:52 UTC] PHP Stack trace:
+[03-Oct-2015 15:14:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[03-Oct-2015 15:14:52 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:114
+[03-Oct-2015 15:14:52 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:40-51}() /home/ubuntu/workspace/api/index.php:114
+[03-Oct-2015 16:09:18 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:114
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(114): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 114
+[03-Oct-2015 16:33:10 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:114
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(114): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 114

@@ -33,6 +33,7 @@
             if(!$stmt->execute()){
                 die ($my->error() . ' ' . $str);
             }
+            $my->query('DELETE FROM images WHERE CHAR_LENGTH( url ) < 30');
             $j++;
         }
         

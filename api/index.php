@@ -37,21 +37,24 @@ require( __DIR__ . '/../vendor/autoload.php');
     // Define the routes here
     
     // Retrieves all robots
-    $app->get('/image/random', function () use ($app) {
-        $robots = Images::find();
-        echo "There are ", count($robots), "\n";
-       // $result = Images::query('select min(id), max(id) FROM images;');
+    $app->get('/images/random', function () use ($app, $response) {
+     //   $robots = Images::find();
+      //      echo "There are ", count($robots), "\n";
+        $result = $app->getDI()->get('db')->query('select min(id) as minimum, max(id) as maximum FROM images;');
+        $result->setFetchMode(Phalcon\Db::FETCH_ASSOC);
+        $data = $result->fetchAll();
+        $number = rand($data[0]['minimum'], $data[0]['maximum']);
+        $result = Images::findFirstById($number);
+        
+        $response->setJsonContent($result);
+        $response->send();
     });
     
     $app->get('/image/{id:[0-9]+}', function($id) use ($app, $response) {
-       // $images = Images::findFirstById($id);
-       // $response->setJsonContent($images->imagesTags);
-        //$response->setJsonContent($images);
-
-        
-        //$image = Images::findFirstById($id);
+        $image = Images::findFirstById($id);
         //$response->setJsonContent($image->imagesTags);
-        $images = Images::findById($id);//(['limit' => 10]);
+         $images = Images::findById($id);//(['limit' => 10]);
+        //echo json_encode($image->toArray(), JSON_NUMERIC_CHECK);
         $data = [];
         $i = 0;
         foreach ($images as $image) {
@@ -65,17 +68,19 @@ require( __DIR__ . '/../vendor/autoload.php');
                 }
             }
         }
+        
         $response->setJsonContent($data);
+        $response->send();
     });
     
     $app->get('/images/{offset:[0-9]+}/{limit:[0-9]+}', function($offset, $limit) use ($response){
-        $robots = Images::find(['offset' => $offset, 'limit' => $limit]);
-        $data = [];
+        //$robots = Images::find(['offset' => $offset, 'limit' => $limit]);
+        /*$data = [];
         foreach($robots as $robot){
             $data[] = $robot;
-        }
-        
-        $response->setJsonContent($data);
+        }*/
+        echo json_encode(Images::find(['offset' => $offset, 'limit' => $limit])->toArray(), JSON_NUMERIC_CHECK);
+       // $response->setJsonContent($robots);
     });
     
     $app->get('/img_resize/{id:[0-9]+}', function($id) use ($app, $response) {
@@ -85,22 +90,25 @@ require( __DIR__ . '/../vendor/autoload.php');
             $percent = 0.2;
             
             if(!file_exists($resized_file)){
-                //Lets create folder structure if it doesn't exist
-                if(!file_exists(dirname($resized_file))){
+                //Folder creation (local caching) temporary disabled
+             /*   if(!file_exists(dirname($resized_file))){
                     mkdir('./' . dirname($resized_file), '0777', true);
-                }
+                }*/
                 $image = new \Eventviva\ImageResize($image->url);
                 $image->resizeToWidth(800);
-                $image->save($resized_file);
+                //$image->save($resized_file);
+                $response->setHeader('Content-Type', 'image/jpeg');
+                $response->send();
+                $image->output();
             }
-            //echo 'her' . $resized_file;
-            $response->setHeader('Content-Type', 'image/jpeg');
-            $response->send();
-            readfile($resized_file);
+            else{
+                //echo 'her' . $resized_file;
+                $response->setHeader('Content-Type', 'image/jpeg');
+                $response->send();
+                readfile($resized_file);
+            }
         }
         $response->setJsonContent(['could not load image!']);
     });
     
     $app->handle();
-    
-    $response->send();

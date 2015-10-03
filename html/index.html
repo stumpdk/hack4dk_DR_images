@@ -15,6 +15,7 @@
 	      </style>
 	      <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	      <script src="js/jquery.taggd.js"></script>
+	      <script src="js/tagging.js"></script>
 	      
 	      
     </head>
@@ -24,34 +25,53 @@
       <div class="starter-template">
         <h1>Crowdsourcing DR Images</h1>
         <p class="lead">This is a demo, showing how DR images can be tagged - by the crowd, for the crowd</p>
-        <p><img src="https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/390000" class="taggd"></img></p>
+        <p><img src="https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/390000" class="taggd" id="tagging_image"></img></p>
       </div>
     </div>
-    <p style="text-align:center">se javascript object: data</p>
+    <p style="text-align:center"><input type="button" class="btn" id="saveData" value="Gem"></btn></p>
     </body>
     
     <script>
 	var options = {
+		
 		align: {
 			y: 'top'
 		},
+		
 		offset: {
 			top: 15
 		},
+		
 		handlers: {
-      mouseenter: 'show',
-      mouseleave: 'hide'
-    },
-    edit: true,
-	  
+	      mouseenter: 'show',
+	      mouseleave: 'hide',
+	    },
+    	
+    	edit: true
 	};
 	
 	var data = [
-		{ x: 0.62, y: 0.7, text: 'Rope'             },
-		{ x: 0.51, y: 0.5, text: 'Bird'             },
-		{ x: 0.40, y: 0.3, text: 'Water, obviously' }
+	// 	{ x: 0.62, y: 0.7, text: 'Rope'             },
+	// 	{ x: 0.51, y: 0.5, text: 'Bird'             },
+	// 	{ x: 0.40, y: 0.3, text: 'Water, obviously' }
 	];
 	
 	var taggd = $('.taggd').taggd( options, data );
+	taggd.on('change', function(e){
+		console.log(taggd.data);
+	});
+	
+	var saveBtn = $('#saveData');
+	saveBtn.click(function(e){
+		tagCtrl.saveData(taggd.data);
+	});
+	
+	$(function(){
+		receiver.getImage().success(function(data){
+			$('#tagging_image').attr('src', data.url);
+		});	
+	});
+	
+	
 </script>
 </html>
