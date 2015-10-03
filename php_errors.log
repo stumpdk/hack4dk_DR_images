@@ -1,0 +1,154 @@
+[02-Oct-2015 20:49:20 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:39
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(39): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 39
+[02-Oct-2015 20:54:14 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/api/index.php on line 37
+[02-Oct-2015 20:54:14 UTC] PHP Stack trace:
+[02-Oct-2015 20:54:14 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[02-Oct-2015 20:54:14 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:40
+[02-Oct-2015 20:54:14 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:35-38}() /home/ubuntu/workspace/api/index.php:40
+[02-Oct-2015 20:54:32 UTC] PHP Fatal error:  Call to a member function find() on a non-object in /home/ubuntu/workspace/api/index.php on line 37
+[02-Oct-2015 20:54:32 UTC] PHP Stack trace:
+[02-Oct-2015 20:54:32 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[02-Oct-2015 20:54:32 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:40
+[02-Oct-2015 20:54:32 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:35-38}() /home/ubuntu/workspace/api/index.php:40
+[02-Oct-2015 20:55:00 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Table 'images' doesn't exist in database when dumping meta-data for Images' in /home/ubuntu/workspace/api/index.php:36
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\MetaData\Strategy\Introspection->getMetaData(Object(Images), Object(Phalcon\Di\FactoryDefault))
+#1 [internal function]: Phalcon\Mvc\Model\MetaData->_initialize(Object(Images), 'images-images', 'images', '')
+#2 [internal function]: Phalcon\Mvc\Model\MetaData->readMetaDataIndex(Object(Images), 0)
+#3 [internal function]: Phalcon\Mvc\Model\MetaData->getAttributes(Object(Images))
+#4 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#5 [internal function]: Phalcon\Mvc\Model\Query->execute()
+#6 /home/ubuntu/workspace/api/index.php(36): Phalcon\Mvc\Model::find()
+#7 [internal function]: {closure}()
+#8 /home/ubuntu/workspace/api/index.php(41): Phalcon\Mvc\Micro->handle()
+#9 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 36
+[02-Oct-2015 20:56:09 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Table 'images' doesn't exist in database when dumping meta-data for Images' in /home/ubuntu/workspace/api/index.php:36
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\MetaData\Strategy\Introspection->getMetaData(Object(Images), Object(Phalcon\Di\FactoryDefault))
+#1 [internal function]: Phalcon\Mvc\Model\MetaData->_initialize(Object(Images), 'images-images', 'images', '')
+#2 [internal function]: Phalcon\Mvc\Model\MetaData->readMetaDataIndex(Object(Images), 0)
+#3 [internal function]: Phalcon\Mvc\Model\MetaData->getAttributes(Object(Images))
+#4 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#5 [internal function]: Phalcon\Mvc\Model\Query->execute()
+#6 /home/ubuntu/workspace/api/index.php(36): Phalcon\Mvc\Model::find()
+#7 [internal function]: {closure}()
+#8 /home/ubuntu/workspace/api/index.php(41): Phalcon\Mvc\Micro->handle()
+#9 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 36
+[02-Oct-2015 21:00:06 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Table 'images' doesn't exist in database when dumping meta-data for Images' in /home/ubuntu/workspace/api/index.php:36
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\MetaData\Strategy\Introspection->getMetaData(Object(Images), Object(Phalcon\Di\FactoryDefault))
+#1 [internal function]: Phalcon\Mvc\Model\MetaData->_initialize(Object(Images), 'images-images', 'images', '')
+#2 [internal function]: Phalcon\Mvc\Model\MetaData->readMetaDataIndex(Object(Images), 0)
+#3 [internal function]: Phalcon\Mvc\Model\MetaData->getAttributes(Object(Images))
+#4 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#5 [internal function]: Phalcon\Mvc\Model\Query->execute()
+#6 /home/ubuntu/workspace/api/index.php(36): Phalcon\Mvc\Model::find()
+#7 [internal function]: {closure}()
+#8 /home/ubuntu/workspace/api/index.php(41): Phalcon\Mvc\Micro->handle()
+#9 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 36
+[02-Oct-2015 21:00:09 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Table 'images' doesn't exist in database when dumping meta-data for Images' in /home/ubuntu/workspace/api/index.php:36
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\MetaData\Strategy\Introspection->getMetaData(Object(Images), Object(Phalcon\Di\FactoryDefault))
+#1 [internal function]: Phalcon\Mvc\Model\MetaData->_initialize(Object(Images), 'images-images', 'images', '')
+#2 [internal function]: Phalcon\Mvc\Model\MetaData->readMetaDataIndex(Object(Images), 0)
+#3 [internal function]: Phalcon\Mvc\Model\MetaData->getAttributes(Object(Images))
+#4 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#5 [internal function]: Phalcon\Mvc\Model\Query->execute()
+#6 /home/ubuntu/workspace/api/index.php(36): Phalcon\Mvc\Model::find()
+#7 [internal function]: {closure}()
+#8 /home/ubuntu/workspace/api/index.php(41): Phalcon\Mvc\Micro->handle()
+#9 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 36
+[02-Oct-2015 21:00:56 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Column 'batch' doesn't belong to any of the selected models (1), when preparing: SELECT [Images].* FROM [Images] WHERE batch = 'batch01' LIMIT :APL0:' in /home/ubuntu/workspace/api/index.php:36
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->_getQualified(Array)
+#1 [internal function]: Phalcon\Mvc\Model\Query->_getExpression(Array, true)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_getExpression(Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_prepareSelect()
+#4 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#5 [internal function]: Phalcon\Mvc\Model\Query->execute()
+#6 /home/ubuntu/workspace/api/index.php(36): Phalcon\Mvc\Model::findFirst('batch = 'batch0...')
+#7 [internal function]: {closure}()
+#8 /home/ubuntu/workspace/api/index.php(41): Phalcon\Mvc\Micro->handle()
+#9 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 36
+[02-Oct-2015 21:13:14 UTC] PHP Fatal error:  Using $this when not in object context in /home/ubuntu/workspace/api/index.php on line 38
+[02-Oct-2015 21:13:14 UTC] PHP Stack trace:
+[02-Oct-2015 21:13:14 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[02-Oct-2015 21:13:14 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:13:14 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:35-41}() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:13:22 UTC] PHP Fatal error:  Call to a member function getDI() on a non-object in /home/ubuntu/workspace/api/index.php on line 38
+[02-Oct-2015 21:13:22 UTC] PHP Stack trace:
+[02-Oct-2015 21:13:22 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[02-Oct-2015 21:13:22 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:13:22 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:35-41}() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:13:29 UTC] PHP Catchable fatal error:  Object of class Phalcon\Db\Result\Pdo could not be converted to string in /home/ubuntu/workspace/api/index.php on line 40
+[02-Oct-2015 21:13:29 UTC] PHP Stack trace:
+[02-Oct-2015 21:13:29 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[02-Oct-2015 21:13:29 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:13:29 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:35-41}() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:15:04 UTC] PHP Fatal error:  Call to undefined method Phalcon\Db\Result\Pdo::toArray() in /home/ubuntu/workspace/api/index.php on line 40
+[02-Oct-2015 21:15:04 UTC] PHP Stack trace:
+[02-Oct-2015 21:15:04 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[02-Oct-2015 21:15:04 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:15:04 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:35-41}() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:15:20 UTC] PHP Fatal error:  Call to undefined method Phalcon\Db\Result\Pdo::toArray() in /home/ubuntu/workspace/api/index.php on line 40
+[02-Oct-2015 21:15:20 UTC] PHP Stack trace:
+[02-Oct-2015 21:15:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[02-Oct-2015 21:15:20 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:15:20 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:35-41}() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:16:21 UTC] PHP Fatal error:  Call to undefined method Phalcon\Db\Result\Pdo::count() in /home/ubuntu/workspace/api/index.php on line 40
+[02-Oct-2015 21:16:21 UTC] PHP Stack trace:
+[02-Oct-2015 21:16:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[02-Oct-2015 21:16:21 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:16:21 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:35-41}() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:16:24 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/ubuntu/workspace/api/index.php on line 40
+[02-Oct-2015 21:16:24 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/ubuntu/workspace/api/index.php on line 40
+[02-Oct-2015 21:20:09 UTC] PHP Catchable fatal error:  Argument 1 passed to Phalcon\Mvc\Model::query() must implement interface Phalcon\DiInterface, string given in /home/ubuntu/workspace/api/index.php on line 38
+[02-Oct-2015 21:20:09 UTC] PHP Stack trace:
+[02-Oct-2015 21:20:09 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[02-Oct-2015 21:20:09 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:20:09 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:35-41}() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:20:43 UTC] PHP Catchable fatal error:  Argument 1 passed to Phalcon\Mvc\Model::query() must implement interface Phalcon\DiInterface, string given in /home/ubuntu/workspace/api/index.php on line 38
+[02-Oct-2015 21:20:43 UTC] PHP Stack trace:
+[02-Oct-2015 21:20:43 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[02-Oct-2015 21:20:43 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:20:43 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:35-41}() /home/ubuntu/workspace/api/index.php:43
+[02-Oct-2015 21:22:30 UTC] PHP Catchable fatal error:  Argument 1 passed to Phalcon\Mvc\Model::query() must implement interface Phalcon\DiInterface, string given in /home/ubuntu/workspace/api/index.php on line 38
+[02-Oct-2015 21:22:30 UTC] PHP Stack trace:
+[02-Oct-2015 21:22:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[02-Oct-2015 21:22:30 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:41
+[02-Oct-2015 21:22:30 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:35-39}() /home/ubuntu/workspace/api/index.php:41
+[02-Oct-2015 21:22:49 UTC] PHP Catchable fatal error:  Argument 1 passed to Phalcon\Mvc\Model::query() must implement interface Phalcon\DiInterface, string given in /home/ubuntu/workspace/api/index.php on line 38
+[02-Oct-2015 21:22:49 UTC] PHP Stack trace:
+[02-Oct-2015 21:22:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[02-Oct-2015 21:22:49 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:41
+[02-Oct-2015 21:22:49 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:35-39}() /home/ubuntu/workspace/api/index.php:41
+[02-Oct-2015 21:24:09 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:46
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(46): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 46
+[02-Oct-2015 21:24:47 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/ubuntu/workspace/api/index.php on line 41
+[02-Oct-2015 21:24:53 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:46
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(46): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 46
+[02-Oct-2015 21:27:09 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:46
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(46): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 46
+[02-Oct-2015 21:27:13 UTC] PHP Catchable fatal error:  Argument 1 passed to Phalcon\Mvc\Model::query() must implement interface Phalcon\DiInterface, string given in /home/ubuntu/workspace/api/index.php on line 38
+[02-Oct-2015 21:27:13 UTC] PHP Stack trace:
+[02-Oct-2015 21:27:13 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[02-Oct-2015 21:27:13 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:46
+[02-Oct-2015 21:27:13 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:35-39}() /home/ubuntu/workspace/api/index.php:46
+[02-Oct-2015 21:31:46 UTC] PHP Parse error:  syntax error, unexpected 'as' (T_AS) in /home/ubuntu/workspace/api/index.php on line 5
