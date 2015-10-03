@@ -25,10 +25,10 @@
       <div class="starter-template">
         <h1>Crowdsourcing DR Images</h1>
         <p class="lead">This is a demo, showing how DR images can be tagged - by the crowd, for the crowd</p>
-        <p><img src="https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/390000" class="taggd" id="tagging_image"></img></p>
+        <p style="text-align:center"><input type="button" class="btn" id="saveData" value="Gem" /><input type="button" class="btn" id="get_new_image" value="Hent nyt" /></p>
+        <div id="image_container"><img src="" class="taggd" id="tagging_image"></img></div>
       </div>
     </div>
-    <p style="text-align:center"><input type="button" class="btn" id="saveData" value="Gem"></btn></p>
     </body>
     
     <script>
@@ -56,20 +56,35 @@
 	// 	{ x: 0.40, y: 0.3, text: 'Water, obviously' }
 	];
 	
-	var taggd = $('.taggd').taggd( options, data );
+	/*var taggd = $('.taggd').taggd( options, data );
 	taggd.on('change', function(e){
 		console.log(taggd.data);
-	});
-	
-	var saveBtn = $('#saveData');
-	saveBtn.click(function(e){
+	});*/
+	var taggd = '';
+
+	$('#saveData').click(function(e){
 		tagCtrl.saveData(taggd.data);
 	});
+	$("#get_new_image").click(function(e){
+		updateImage();
+	});
+	
+	var updateImage = function(){
+		if(taggd !== ''){
+			taggd.dispose();
+		}
+	
+		$("#tagging_image").remove();
+		$("#image_container").html('<img src="" class="taggd" id="tagging_image" />');
+		receiver.getImage().success(function(newData){
+			$('#tagging_image').attr('src', newData.resizedUrl);
+			taggd = $('.taggd').taggd( options, data );
+		});
+	};
+	
 	
 	$(function(){
-		receiver.getImage().success(function(data){
-			$('#tagging_image').attr('src', data.url);
-		});	
+		updateImage();
 	});
 	
 	

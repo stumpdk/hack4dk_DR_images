@@ -17,7 +17,11 @@ var receiver = (function(){
         var convertedData = {};
         convertedData.id = pub.id;
         convertedData.tags = data.data;
-        return $.ajax(dataUrl + 'image/metadata', {method: 'PUT', data: convertedData}).
+        for(var i = 0; i < data.data.length; i++){
+            data.data[i].name = data.data[i].text;
+            data.data[i].category_id = 1;
+        }
+        return $.ajax(dataUrl + 'image/metadata/' + pub.id, {method: 'post', dataType: 'json', data: convertedData}).
         success(function(data){
             console.log('saved data:', convertedData);
         });        

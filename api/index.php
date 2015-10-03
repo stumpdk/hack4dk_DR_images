@@ -87,7 +87,7 @@ require( __DIR__ . '/../vendor/autoload.php');
         $image = Images::findFirstById($id);
         if(count($image) > 0){
             $resized_file = str_replace('http://hack4dk.dr.dk/', '/home/ubuntu/workspace/resized_images/', $image->url);
-            $percent = 0.2;
+            //$percent = 0.2;
             
             if(!file_exists($resized_file)){
                 //Folder creation (local caching) temporary disabled
@@ -95,7 +95,7 @@ require( __DIR__ . '/../vendor/autoload.php');
                     mkdir('./' . dirname($resized_file), '0777', true);
                 }*/
                 $image = new \Eventviva\ImageResize($image->url);
-                $image->resizeToWidth(800);
+                $image->resizeToHeight(800);
                 //$image->save($resized_file);
                 $response->setHeader('Content-Type', 'image/jpeg');
                 $response->send();
@@ -108,7 +108,49 @@ require( __DIR__ . '/../vendor/autoload.php');
                 readfile($resized_file);
             }
         }
-        $response->setJsonContent(['could not load image!']);
+    });
+    
+    $app->post('/image/metadata/{id:[0-9]+}', function($id){
+        $request = new Phalcon\Http\Request();
+       // var_dump($_POST);
+        $data = $request->getPost('tags', null, false);
+//        $image = Images::findById($id);
+        
+        $image = Images::findFirst("id = '" . $id . "'");   
+            
+        $tags = [];   
+        foreach($data as $tagRow){
+            $tag = Tags::findFirst("name = '" . $tagRow['name'] . "' AND category_id = '" . $tagRow['category_id']  . "'");
+            
+            if(!$tag)
+                $tag = new Tags();
+
+            $tag->name = $tagRow['name'];
+            $tag->category_id = $tagRow['category_id'];
+            $tag->save();
+            $tag->refresh();
+            
+            $imagesTags = new ImagesTags();
+            $imagesTags->tag_id = $tag->id;
+            $imagesTags->image_id = $image->id;
+            $imagesTags->x = $tagRow['x'];
+            $imagesTags->y = $tagRow['y'];
+            $imagesTags->user_id = 1;
+            
+            //$imagesTags->save();
+            if(!$imagesTags->save()){
+                var_dump($imagesTags->getMessages());
+            }
+            
+            $tags[] = $tag;
+        }
+        
+        $image->imagesTags->tags = $tags;
+        
+        if(!$image->save()){
+            var_dump($image->getMessages());
+        }
+        
     });
     
     $app->handle();
