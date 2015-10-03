@@ -2,6 +2,21 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        
+        
+        <link rel="stylesheet" href="css/normalize.css" />
+	      <link rel="stylesheet" href="css/taggd.css" />
+	      
+	      <style>
+		    img {
+			    display: block;
+			    width: 100%;
+		    }
+	      </style>
+	      <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	      <script src="js/jquery.taggd.js"></script>
+	      
+	      
     </head>
     <body>
     <div class="container">
@@ -9,8 +24,34 @@
       <div class="starter-template">
         <h1>Crowdsourcing DR Images</h1>
         <p class="lead">This is a demo, showing how DR images can be tagged - by the crowd, for the crowd</p>
-        <p><img src="https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/390000"></img></p>
+        <p><img src="https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/390000" class="taggd"></img></p>
       </div>
     </div>
+    <p style="text-align:center">se javascript object: data</p>
     </body>
+    
+    <script>
+	var options = {
+		align: {
+			y: 'top'
+		},
+		offset: {
+			top: 15
+		},
+		handlers: {
+      mouseenter: 'show',
+      mouseleave: 'hide'
+    },
+    edit: true,
+	  
+	};
+	
+	var data = [
+		{ x: 0.62, y: 0.7, text: 'Rope'             },
+		{ x: 0.51, y: 0.5, text: 'Bird'             },
+		{ x: 0.40, y: 0.3, text: 'Water, obviously' }
+	];
+	
+	var taggd = $('.taggd').taggd( options, data );
+</script>
 </html>
