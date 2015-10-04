@@ -35,9 +35,9 @@ require( __DIR__ . '/../vendor/autoload.php');
     $app = new Micro($di);
     $response = new Response();
     
-    // Define the routes here
-    
-    // Retrieves all robots
+    /**
+     * Get random image
+     */ 
     $app->get('/images/random', function () use ($app, $response) {
      //   $robots = Images::find();
       //      echo "There are ", count($robots), "\n";
@@ -51,13 +51,16 @@ require( __DIR__ . '/../vendor/autoload.php');
         $response->send();
     });
     
+    /**
+     * Get specific image
+     */ 
     $app->get('/image/{id:[0-9]+}', function($id) use ($app, $response) {
         $image = Images::findFirstById($id);
         //$response->setJsonContent($image->imagesTags);
-         $images = Images::findById($id);//(['limit' => 10]);
+    //     $images = Images::findById($id);//(['limit' => 10]);
         //echo json_encode($image->toArray(), JSON_NUMERIC_CHECK);
-        $data = [];
-        $i = 0;
+  ///      $data = [];
+    /*    $i = 0;
         foreach ($images as $image) {
             foreach($image->getImagesTags() as $tag){
                 foreach($tag->getTags() as $tag2)
@@ -68,55 +71,91 @@ require( __DIR__ . '/../vendor/autoload.php');
                     $i++;
                 }
             }
-        }
+        }*/
         
-        $response->setJsonContent($data);
+        //var_dump($image->getTags()->toArray());
+    //    $tags = $image->getTags()->toArray();
+       // $image->test_arr = $tags;
+    //   $image->tagsene = $image->tags->toArray();
+        $tags = $image->getTags()->toArray();
+        $imageTags = $image->getImagesTags()->toArray();
+        $result = [];
+        $result['image'] = $image;
+        
+        $i = 0;
+        foreach($imageTags as $it){
+            $tag = Tags::findFirst("id = '" . $it->tag_id . "\'");
+            $imageTags[$i] = $tag;
+            $i++;
+        };
+        $result['tags'] = $imageTags;
+        echo json_encode($result);
+    //    $response->setJsonContent($image);
+        //$response->setJsonContent($data);
         $response->send();
     });
     
+    /**
+     * Present image list by offset and limit
+     */ 
     $app->get('/images/{offset:[0-9]+}/{limit:[0-9]+}', function($offset, $limit) use ($response){
-        //$robots = Images::find(['offset' => $offset, 'limit' => $limit]);
-        /*$data = [];
-        foreach($robots as $robot){
-            $data[] = $robot;
-        }*/
         echo json_encode(Images::find(['offset' => $offset, 'limit' => $limit])->toArray(), JSON_NUMERIC_CHECK);
-       // $response->setJsonContent($robots);
     });
     
-    $app->get('/img_resize/{id:[0-9]+}', function($id) use ($app, $response) {
+    /**
+     * resizing images.
+     * TODO: Get caching to work.
+     */ 
+    $app->get('/img_resize/{id:[0-9]+}/{size}', function($id, $size) use ($app, $response) {
         $image = Images::findFirstById($id);
-        if(count($image) > 0){
-            $resized_file = str_replace('http://hack4dk.dr.dk/', '/home/ubuntu/workspace/resized_images/', $image->url);
-            //$percent = 0.2;
-            
-            if(!file_exists($resized_file)){
-                //Folder creation (local caching) temporary disabled
-             /*   if(!file_exists(dirname($resized_file))){
-                    mkdir('./' . dirname($resized_file), '0777', true);
-                }*/
-                $image = new \Eventviva\ImageResize($image->url);
-                $image->resizeToHeight(800);
-                //$image->save($resized_file);
-                $response->setHeader('Content-Type', 'image/jpeg');
-                $response->send();
-                $image->output();
-            }
-            else{
-                //echo 'her' . $resized_file;
-                $response->setHeader('Content-Type', 'image/jpeg');
-                $response->send();
-                readfile($resized_file);
-            }
+        
+        if($size == 'preview'){
+            $size = Images::$SIZE_PREVIEW;
+        }
+        else{
+            $size = Images::$SIZE_THUMB;
+        }
+        
+        if(!$image){
+            $response->setJsonContent(['status' => 'image not found!']);
+            $response->send();
+        }
+        else{
+            $response->setHeader('Content-Type', 'image/jpeg');
+            $response->send();
+            readfile($image->resize($image, $size));
         }
     });
+
+    /**
+     * Searching images for tags
+     */ 
+    $app->get('/images/search', function() use ($app, $response){
+        $request = new Phalcon\Http\Request();
+        $terms = explode(',',$request->getQuery('term', null, false));
+
+        $termNew = "";
+        foreach($terms as $term){
+            $termNew = $termNew . 'name LIKE \'%' . $term . '%\' OR ';
+        }
+        
+        $termNew = substr($termNew, 0, strlen($termNew)-4);
+        $sql = 'select distinct(images.id), url from images left join images_tags ON images.id = images_tags.image_id LEFT JOIN tags on images_tags.tag_id = tags.id WHERE ' . $termNew;
+
+        $resultSet = $app->getDI()->get('db')->query($sql);
+
+        $resultSet->setFetchMode(Phalcon\Db::FETCH_ASSOC);
+        echo json_encode($resultSet->fetchAll());
+    });
     
+    /**
+     * Set image tags
+     */ 
     $app->post('/image/metadata/{id:[0-9]+}', function($id){
         $request = new Phalcon\Http\Request();
-       // var_dump($_POST);
+
         $data = $request->getPost('tags', null, false);
-//        $image = Images::findById($id);
-        
+
         $image = Images::findFirst("id = '" . $id . "'");   
             
         $tags = [];   
@@ -138,7 +177,6 @@ require( __DIR__ . '/../vendor/autoload.php');
             $imagesTags->y = $tagRow['y'];
             $imagesTags->user_id = 1;
             
-            //$imagesTags->save();
             if(!$imagesTags->save()){
                 var_dump($imagesTags->getMessages());
             }
@@ -152,6 +190,15 @@ require( __DIR__ . '/../vendor/autoload.php');
             var_dump($image->getMessages());
         }
         
+    });
+    
+    $app->get('/tags', function(){
+        $request = new Phalcon\Http\Request();
+
+        $term = $request->getQuery('term', null, false);
+        $resultSet = Tags::find('name LIKE \'%' . $term . '%\'');
+        
+        echo json_encode($resultSet->toArray());
     });
     
     $app->handle();
