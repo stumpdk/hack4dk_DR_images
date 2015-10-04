@@ -33,10 +33,10 @@
             if(!$stmt->execute()){
                 die ($my->error() . ' ' . $str);
             }
-            $my->query('DELETE FROM images WHERE CHAR_LENGTH( url ) < 30');
+
             $j++;
         }
-        
+        $my->query('DELETE FROM images WHERE CHAR_LENGTH( url ) < 30');        
         echo 'Done getting batch. Count: ' . $j . '<br>';
         $sum = $sum + $j;
     }

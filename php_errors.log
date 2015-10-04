@@ -3670,3 +3670,28 @@ Stack trace:
 #0 /home/ubuntu/workspace/api/index.php(204): Phalcon\Mvc\Micro->handle()
 #1 {main}
   thrown in /home/ubuntu/workspace/api/index.php on line 204
+[04-Oct-2015 09:38:25 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:204
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(204): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 204
+[04-Oct-2015 09:38:28 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:204
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(204): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 204
+[04-Oct-2015 09:40:28 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:204
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(204): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 204
+[04-Oct-2015 09:40:32 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:204
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(204): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 204
+[04-Oct-2015 09:43:00 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:204
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(204): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 204

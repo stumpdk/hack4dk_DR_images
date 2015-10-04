@@ -33,7 +33,8 @@ class Images extends Model
     public function afterFetch()
     {
         // Convert the string to an array
-        $this->resizedUrl = 'https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/' . $this->id;
+        $this->resizedUrl = 'https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/' . $this->id . '/preview';
+        $this->thumbUrl = 'https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/' . $this->id . '/thumb';;
     }
     
     public function validation()
