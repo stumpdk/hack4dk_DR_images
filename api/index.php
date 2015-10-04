@@ -56,6 +56,14 @@ require( __DIR__ . '/../vendor/autoload.php');
      */ 
     $app->get('/image/{id:[0-9]+}', function($id) use ($app, $response) {
         $image = Images::findFirstById($id);
+        
+        $sql = 'select x, y, value, name as text FROM images_tags left join tags on images_tags.tag_id = tags.id WHERE images_tags.image_id = ' . $id;
+        
+        $resultSet = $app->getDI()->get('db')->query($sql);
+
+        $resultSet->setFetchMode(Phalcon\Db::FETCH_ASSOC);
+    //    echo json_encode();
+        
         //$response->setJsonContent($image->imagesTags);
     //     $images = Images::findById($id);//(['limit' => 10]);
         //echo json_encode($image->toArray(), JSON_NUMERIC_CHECK);
@@ -81,18 +89,19 @@ require( __DIR__ . '/../vendor/autoload.php');
         $imageTags = $image->getImagesTags()->toArray();
         $result = [];
         $result['image'] = $image;
-        
-        $i = 0;
+      //  $result['imagesTags'] = $imageTags;
+        $i = 0;/*
         foreach($imageTags as $it){
             $tag = Tags::findFirst("id = '" . $it->tag_id . "\'");
             $imageTags[$i] = $tag;
             $i++;
-        };
-        $result['tags'] = $imageTags;
+        };*/
+        //$result['tags'] = $imageTags;
+        $result['tags'] = $resultSet->fetchAll();
         echo json_encode($result);
     //    $response->setJsonContent($image);
         //$response->setJsonContent($data);
-        $response->send();
+//        $response->send();
     });
     
     /**
@@ -132,15 +141,19 @@ require( __DIR__ . '/../vendor/autoload.php');
      */ 
     $app->get('/images/search', function() use ($app, $response){
         $request = new Phalcon\Http\Request();
-        $terms = explode(',',$request->getQuery('term', null, false));
+        $terms = explode(' ',$request->getQuery('term', null, false));
+        if(count($terms) == 0){
+            die("no term!");
+        }
+
 
         $termNew = "";
         foreach($terms as $term){
-            $termNew = $termNew . 'name LIKE \'%' . $term . '%\' OR ';
+            $termNew = $termNew . 'tags.name LIKE \'%' . $term . '%\' OR ';
         }
         
         $termNew = substr($termNew, 0, strlen($termNew)-4);
-        $sql = 'select distinct(images.id), url from images left join images_tags ON images.id = images_tags.image_id LEFT JOIN tags on images_tags.tag_id = tags.id WHERE ' . $termNew;
+        $sql = 'select distinct(images.id), CONCAT("https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/",images.id,"/thumb") as url from images left join images_tags ON images.id = images_tags.image_id LEFT JOIN tags on images_tags.tag_id = tags.id WHERE ' . $termNew . ' LIMIT 20';
 
         $resultSet = $app->getDI()->get('db')->query($sql);
 

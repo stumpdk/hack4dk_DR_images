@@ -3695,3 +3695,179 @@ Stack trace:
 #0 /home/ubuntu/workspace/api/index.php(204): Phalcon\Mvc\Micro->handle()
 #1 {main}
   thrown in /home/ubuntu/workspace/api/index.php on line 204
+[04-Oct-2015 11:26:37 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 20' at line 1' in /home/ubuntu/workspace/api/index.php:147
+Stack trace:
+#0 [internal function]: PDO->query('select distinct...')
+#1 /home/ubuntu/workspace/api/index.php(147): Phalcon\Db\Adapter\Pdo->query('select distinct...')
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(206): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 147
+[04-Oct-2015 11:26:59 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 20' at line 1' in /home/ubuntu/workspace/api/index.php:148
+Stack trace:
+#0 [internal function]: PDO->query('select distinct...')
+#1 /home/ubuntu/workspace/api/index.php(148): Phalcon\Db\Adapter\Pdo->query('select distinct...')
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(207): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 148
+[04-Oct-2015 11:31:50 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:208
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 208
+[04-Oct-2015 11:45:00 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:208
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 208
+[04-Oct-2015 11:45:42 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:208
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 208
+[04-Oct-2015 11:49:29 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:208
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 208
+[04-Oct-2015 11:51:18 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:208
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 208
+[04-Oct-2015 11:51:36 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:208
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 208
+[04-Oct-2015 11:52:22 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:208
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 208
+[04-Oct-2015 12:29:19 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:208
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 208
+[04-Oct-2015 12:29:43 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:208
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 208
+[04-Oct-2015 12:30:29 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:208
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 208
+[04-Oct-2015 12:31:27 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:208
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 208
+[04-Oct-2015 12:32:10 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Scanning error before '\' LIMIT :APL0:' when parsing: SELECT [Tags].* FROM [Tags] WHERE id = '\' LIMIT :APL0: (55)' in /home/ubuntu/workspace/api/index.php:87
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#1 [internal function]: Phalcon\Mvc\Model\Query->execute()
+#2 /home/ubuntu/workspace/api/index.php(87): Phalcon\Mvc\Model::findFirst('id = '\'')
+#3 [internal function]: {closure}('325445')
+#4 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#5 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 87
+[04-Oct-2015 12:32:17 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Scanning error before '\' LIMIT :APL0:' when parsing: SELECT [Tags].* FROM [Tags] WHERE id = '\' LIMIT :APL0: (55)' in /home/ubuntu/workspace/api/index.php:87
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#1 [internal function]: Phalcon\Mvc\Model\Query->execute()
+#2 /home/ubuntu/workspace/api/index.php(87): Phalcon\Mvc\Model::findFirst('id = '\'')
+#3 [internal function]: {closure}('325445')
+#4 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#5 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 87
+[04-Oct-2015 13:01:54 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:208
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(208): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 208
+[04-Oct-2015 13:13:27 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'text' in 'field list'' in /home/ubuntu/workspace/api/index.php:62
+Stack trace:
+#0 [internal function]: PDO->query('select x, y, va...')
+#1 /home/ubuntu/workspace/api/index.php(62): Phalcon\Db\Adapter\Pdo->query('select x, y, va...')
+#2 [internal function]: {closure}('325445')
+#3 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 62
+[04-Oct-2015 13:19:01 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:217
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 217
+[04-Oct-2015 13:19:11 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:217
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 217
+[04-Oct-2015 13:20:35 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:217
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 217
+[04-Oct-2015 13:21:31 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:217
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 217
+[04-Oct-2015 13:21:52 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:217
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 217
+[04-Oct-2015 13:22:03 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/api/index.php on line 175
+[04-Oct-2015 13:22:03 UTC] PHP Stack trace:
+[04-Oct-2015 13:22:03 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[04-Oct-2015 13:22:03 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:217
+[04-Oct-2015 13:22:03 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:167-206}() /home/ubuntu/workspace/api/index.php:217
+[04-Oct-2015 13:22:57 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:217
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 217
+[04-Oct-2015 13:30:34 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:217
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 217
+[04-Oct-2015 13:31:12 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:217
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 217
+[04-Oct-2015 13:33:39 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Scanning error before '' when parsing: SELECT [Tags].* FROM [Tags] WHERE name LIKE '%person_identified'%' (66)' in /home/ubuntu/workspace/api/index.php:212
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#1 [internal function]: Phalcon\Mvc\Model\Query->execute()
+#2 /home/ubuntu/workspace/api/index.php(212): Phalcon\Mvc\Model::find('name LIKE '%per...')
+#3 [internal function]: {closure}()
+#4 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#5 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 212
+[04-Oct-2015 13:59:02 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:217
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 217
+[04-Oct-2015 14:00:51 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/api/index.php on line 175
+[04-Oct-2015 14:00:51 UTC] PHP Stack trace:
+[04-Oct-2015 14:00:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[04-Oct-2015 14:00:51 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:217
+[04-Oct-2015 14:00:51 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:167-206}() /home/ubuntu/workspace/api/index.php:217
+[04-Oct-2015 14:10:08 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:217
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 217
+[04-Oct-2015 14:10:18 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:217
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 217

@@ -6,8 +6,8 @@
     if(!$stmt = $my->prepare('insert into images_tags (tag_id, image_id, x, y, value, confidence) values (?, ?, ?, ?, ?, ?)')){
         die ('could not prepare statement:' . $my->error);
     }
-
-    for($j = 0; $j < 100/*count($data)*/; $j++){
+    $count = 0;
+    for($j = 0; $j < count($data); $j++){
         $row = $data[$j];
         if($row['value']['data'] == NULL)
             continue;
@@ -32,5 +32,7 @@
             }   
         }
         
-        
+        $count = $j;
     }
+    
+    echo 'inserted: ' . $count;

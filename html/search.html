@@ -41,8 +41,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="challenge.php">Challenge</a></li>
-            <li class="active"><a href="about.html">About</a></li>
+            <li class="active"><a href="search.html">Search</a></li>
+            <li><a href="about.html">About</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -52,7 +52,7 @@
       <h1>&nbsp;</h1>
       <div id="remote">
         <span class="twitter-typeahead" style="position: relative; display: inline-block;">
-          <input class="typeahead" type="text" placeholder="Type search terms here...">
+          <input class="typeahead" id="search_term" type="text" placeholder="Type search terms here...">
         </span>
       </div>
       <div class="container" id="search_results"></div>
@@ -86,16 +86,18 @@
       });
       
       $('#remote').on('typeahead:change', function(e){
-        console.log($('.typeahead').val());
-        //Perform search
-        searchModule.search('test');
+        term = $('#search_term').val();
+        if(term.trim().length > 0){
+          //Perform search
+          searchModule.search(term);
+        }
       });
       
       var searchModule = (function(){
         var pub = {};
-        var that = this;
-        pub.search = function(terms){
-          $.ajax('/api/images/search?' + terms, {'dataType' : 'json', 'method': 'get'})
+
+        pub.search = function(term){
+          $.ajax('/api/images/search?term=' + term, {'dataType' : 'json', 'method': 'get'})
           .success(function(data){
             pub.results = data;
             pub.addResultsToDOM('#search_results');
@@ -107,7 +109,7 @@
           var html = '<div>Found ' + pub.results.length + ' results</div>';
           for(var i = 0; i < pub.results.length; i++)
           {
-            html = html + '<div class="col-md-4"><img src="' + pub.results[i].url + '"></div>';
+            html = html + '<div class="col-md-4"><a href="index.php?image_id=' + pub.results[i].id + '"><img src="' + pub.results[i].url + '"/></a></div>';
           }
           $(element).html(html);
         };

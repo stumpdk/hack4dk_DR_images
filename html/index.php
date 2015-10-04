@@ -34,9 +34,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="challenge.php">Challenge</a></li>
-            <li><a href="about.html">About</a></li>
             <li><a href="search.html">Search</a></li>
+            <li><a href="about.html">About</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -45,7 +44,8 @@
 
       <div class="starter-template">
         <h1>&nbsp;</h1>
-        <p style="text-align:center"><input type="button" class="btn" id="saveData" value="Gem" /><input type="button" class="btn" id="get_new_image" value="Hent nyt" /><input type="button" class="btn" id="challenge_button" value="Challenge" /></p>
+        <p style="text-align:center"><input type="button" class="btn" id="saveData" value="Save tags" /><input type="button" class="btn" id="get_new_image" value="Get new" /></p>
+        <p class="text-center" id="status"></p>
         <div id="image_container"><img src="" class="taggd" id="tagging_image"></img></div>
       </div>
     </div>
@@ -54,13 +54,13 @@
     <script>
 	var options = {
 		
-		align: {
-			y: 'top'
-		},
-		
-		offset: {
-			top: 15
-		},
+	  align: {
+	    y: 'bottom'
+	  },
+	
+	  offset: {
+	    top: -35
+	  },
 		
 		handlers: {
 	      mouseenter: 'show',
@@ -85,28 +85,56 @@
 	$('#saveData').click(function(e){
 		tagCtrl.saveData(taggd.data);
 	});
+	
 	$("#get_new_image").click(function(e){
 		updateImage();
 	});
 	
-	var updateImage = function(){
+	var updateStatus = function(status){
+		if(status == "")
+			status = "&nbsp;";
+			
+		$("#status").html(status);
+	};
+	
+	var updateImage = function(image_id){
+		updateStatus("loading image...");
 		if(taggd !== ''){
 			taggd.dispose();
 		}
 	
 		$("#tagging_image").remove();
 		$("#image_container").html('<img src="" class="taggd" id="tagging_image" />');
-		receiver.getImage().success(function(newData){
+		receiver.getImage(image_id).success(function(newData){
+			var img = new Image();
+			img.onload = function () {
+			   updateStatus("click on the picture to start tagging");
+			};
+			img.src = newData.resizedUrl;
 			$('#tagging_image').attr('src', newData.resizedUrl);
-			taggd = $('.taggd').taggd( options, data );
+			taggd = $('.taggd').taggd( options, [] );
+			taggd.clear();
+			if(newData.tags){
+			/*	for(i = 0; i < newData.tag.length; i++){
+					
+				}*/
+				taggd.addData(newData.newTags);
+			}
+			
+			taggd.toggle();
 		});
 	};
 	
 	
 	$(function(){
-		updateImage();
+		console.log(gup('image_id'));
+		updateImage(gup('image_id'));
 	});
-	
+
+
+	var gup = function(name) {
+	  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+	};
 	
 </script>
 </html>
