@@ -1,1 +1,3 @@
 resized_images/*
+php_errors.log
+composer.lock
