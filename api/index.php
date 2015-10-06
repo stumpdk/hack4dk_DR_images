@@ -31,24 +31,29 @@ require( __DIR__ . '/../vendor/autoload.php');
             )
         );
     });
+    $di->set("request", "Phalcon\Http\Request", true);
     
-    $app = new Micro($di);
+    $app = new Micro();
+    $app->setDI($di);
     $response = new Response();
     
     /**
      * Get random image
      */ 
     $app->get('/images/random', function () use ($app, $response) {
-     //   $robots = Images::find();
-      //      echo "There are ", count($robots), "\n";
-        $result = $app->getDI()->get('db')->query('select min(id) as minimum, max(id) as maximum FROM images;');
-        $result->setFetchMode(Phalcon\Db::FETCH_ASSOC);
-        $data = $result->fetchAll();
-        $number = rand($data[0]['minimum'], $data[0]['maximum']);
+        
+        $manager = $app->getDI()->get('modelsManager');
+        $minMax = $manager->createBuilder()
+        ->from('Images')
+        ->columns('min(id) as minimum, max(id) as maximum')
+        ->getQuery()
+        ->getSingleResult();
+        
+        $number = rand($minMax->minimum, $minMax->maximum);
         $result = Images::findFirstById($number);
         
         $response->setJsonContent($result);
-        $response->send();
+        $response->send();        
     });
     
     /**
@@ -62,46 +67,64 @@ require( __DIR__ . '/../vendor/autoload.php');
         $resultSet = $app->getDI()->get('db')->query($sql);
 
         $resultSet->setFetchMode(Phalcon\Db::FETCH_ASSOC);
-    //    echo json_encode();
-        
-        //$response->setJsonContent($image->imagesTags);
-    //     $images = Images::findById($id);//(['limit' => 10]);
-        //echo json_encode($image->toArray(), JSON_NUMERIC_CHECK);
-  ///      $data = [];
-    /*    $i = 0;
-        foreach ($images as $image) {
-            foreach($image->getImagesTags() as $tag){
-                foreach($tag->getTags() as $tag2)
-                {
-                    $data[$i]['id'] = $image;
-                    $data[$i]['tag'] = $tag2;
-                    $data[$i]['imageTagId'] = $tag;
-                    $i++;
-                }
-            }
-        }*/
-        
-        //var_dump($image->getTags()->toArray());
-    //    $tags = $image->getTags()->toArray();
-       // $image->test_arr = $tags;
-    //   $image->tagsene = $image->tags->toArray();
+
         $tags = $image->getTags()->toArray();
         $imageTags = $image->getImagesTags()->toArray();
         $result = [];
         $result['image'] = $image;
-      //  $result['imagesTags'] = $imageTags;
-        $i = 0;/*
-        foreach($imageTags as $it){
-            $tag = Tags::findFirst("id = '" . $it->tag_id . "\'");
-            $imageTags[$i] = $tag;
-            $i++;
-        };*/
-        //$result['tags'] = $imageTags;
+        
+        $i = 0;
         $result['tags'] = $resultSet->fetchAll();
         echo json_encode($result);
-    //    $response->setJsonContent($image);
-        //$response->setJsonContent($data);
-//        $response->send();
+       
+     /*   $manager = $app->getDI()->get('modelsManager');
+        $tags = $manager->createBuilder()
+        ->from('Images')
+        ->columns('*')
+        ->leftjoin('Tags')
+        ->where('ImagesTags.id = :name', ['id' => $id])
+        ->limit(100)
+        ->getQuery()
+        ->getSingleResult();        
+        
+        $response->setJsonContent($tags->toArray());
+        $response->send();
+       */ 
+    });
+
+    $app->get('/tags/latest', function() use ($app, $response){
+        $request = $app->getDI()->get('request');
+        $name = $request->getQuery('term', null, false);
+
+        $manager = $app->getDI()->get('modelsManager');
+        $tags = $manager->createBuilder()
+        ->from('Tags')
+        ->columns('*')
+        ->orderBy('time_added DESC')
+        ->limit(5)
+        ->getQuery()
+        ->execute();
+
+        $response->setJsonContent($tags->toArray());
+        $response->send();
+    });
+    
+    $app->get('/test', function() use ($app, $response){
+        $request = $app->getDI()->get('request');
+        $name = $request->getQuery('term', null, false);
+
+        $manager = $app->getDI()->get('modelsManager');
+        $tags = $manager->createBuilder()
+        ->from('Images')
+        ->columns('*')
+        ->leftjoin('Tags')
+        ->where('Tags.name LIKE :name:', ['name' => '%'.$name.'%'])
+        ->limit(100)
+        ->getQuery()
+        ->execute();
+        
+        $response->setJsonContent($tags->toArray());
+        $response->send();
     });
     
     /**
@@ -213,5 +236,6 @@ require( __DIR__ . '/../vendor/autoload.php');
         
         echo json_encode($resultSet->toArray());
     });
-    
+
+
     $app->handle();

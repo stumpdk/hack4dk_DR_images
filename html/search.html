@@ -18,6 +18,7 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="js/tagging.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -37,12 +38,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">Crowdsourcing DR history</a>
+          <a class="navbar-brand" href="/">Crowdsourcing DR history</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="search.html">Search</a></li>
-            <li><a href="about.html">About</a></li>
+            <li class="active"><a href="search">Search</a></li>
+            <li><a href="about">About</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -82,7 +83,8 @@
       $('#remote .typeahead').typeahead(null, {
         name: 'best-pictures',
         display: 'name',
-        source: tagSuggestions
+        source: tagSuggestions,
+        minLength: 0
       });
       
       $('#remote').on('typeahead:change', function(e){
@@ -93,29 +95,14 @@
         }
       });
       
-      var searchModule = (function(){
-        var pub = {};
-
-        pub.search = function(term){
-          $.ajax('/api/images/search?term=' + term, {'dataType' : 'json', 'method': 'get'})
-          .success(function(data){
-            pub.results = data;
-            pub.addResultsToDOM('#search_results');
-          });
-        };
-        
-        pub.addResultsToDOM = function(element){
-          $(element).html();
-          var html = '<div>Found ' + pub.results.length + ' results</div>';
-          for(var i = 0; i < pub.results.length; i++)
-          {
-            html = html + '<div class="col-md-4"><a href="index.php?image_id=' + pub.results[i].id + '"><img src="' + pub.results[i].url + '"/></a></div>';
-          }
-          $(element).html(html);
-        };
-        
-        return pub;
-      })();
+      $(function(){
+        term = searchModule.gup('term');
+        if(term){
+          $('#search_term').val(term);
+          searchModule.search(term);
+        }
+      });
+      
     </script>
   </body>
 </html>

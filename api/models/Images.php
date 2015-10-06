@@ -48,7 +48,7 @@ class Images extends Model
     public function resize($image, $width){
         //$image = Images::findFirstById($id);
         if(count($image) > 0){
-            $newExt = '_' . $width . '.php';
+            $newExt = '_' . $width . '.jpg';
             $resized_file = str_replace('http://hack4dk.dr.dk/', '/home/ubuntu/workspace/resized_images/', $image->url);
             $resized_file = str_replace('.jpg',  $newExt, $resized_file);
             

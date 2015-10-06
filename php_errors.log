@@ -3871,3 +3871,839 @@ Stack trace:
 #0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
 #1 {main}
   thrown in /home/ubuntu/workspace/api/index.php on line 217
+[04-Oct-2015 20:31:37 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'The record cannot be refreshed because it does not exist or is deleted' in phalcon/mvc/model.zep:3178
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(184): Phalcon\Mvc\Model->refresh()
+#1 [internal function]: {closure}('331207')
+#2 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in phalcon/mvc/model.zep on line 3178
+[05-Oct-2015 07:56:07 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'The record cannot be refreshed because it does not exist or is deleted' in phalcon/mvc/model.zep:3178
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(184): Phalcon\Mvc\Model->refresh()
+#1 [internal function]: {closure}('390819')
+#2 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in phalcon/mvc/model.zep on line 3178
+[05-Oct-2015 12:58:21 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:217
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 217
+[05-Oct-2015 13:52:22 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:217
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(217): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 217
+[05-Oct-2015 13:55:28 UTC] PHP Fatal error:  Call to a member function createBuilder() on a non-object in /home/ubuntu/workspace/api/index.php on line 109
+[05-Oct-2015 13:55:28 UTC] PHP Stack trace:
+[05-Oct-2015 13:55:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 13:55:28 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:229
+[05-Oct-2015 13:55:28 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:107-117}() /home/ubuntu/workspace/api/index.php:229
+[05-Oct-2015 13:55:43 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'A dependency injection object is required to access ORM services' in phalcon/mvc/model/manager.zep:1697
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(109): Phalcon\Mvc\Model\Manager->createBuilder()
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(229): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in phalcon/mvc/model/manager.zep on line 1697
+[05-Oct-2015 13:56:17 UTC] PHP Fatal error:  Class 'DI' not found in /home/ubuntu/workspace/api/index.php on line 108
+[05-Oct-2015 13:56:17 UTC] PHP Stack trace:
+[05-Oct-2015 13:56:17 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 13:56:17 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:230
+[05-Oct-2015 13:56:17 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:107-118}() /home/ubuntu/workspace/api/index.php:230
+[05-Oct-2015 13:57:03 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'A dependency injection object is required to access ORM services' in phalcon/mvc/model/manager.zep:1697
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(110): Phalcon\Mvc\Model\Manager->createBuilder()
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(230): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in phalcon/mvc/model/manager.zep on line 1697
+[05-Oct-2015 13:58:32 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'A dependency injection object is required to access ORM services' in phalcon/mvc/model/manager.zep:1697
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(111): Phalcon\Mvc\Model\Manager->createBuilder()
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(231): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in phalcon/mvc/model/manager.zep on line 1697
+[05-Oct-2015 13:58:59 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'A dependency injection object is required to access ORM services' in phalcon/mvc/model/manager.zep:1697
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(111): Phalcon\Mvc\Model\Manager->createBuilder()
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(231): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in phalcon/mvc/model/manager.zep on line 1697
+[05-Oct-2015 13:59:20 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:229
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(229): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 229
+[05-Oct-2015 13:59:57 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:229
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(229): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 229
+[05-Oct-2015 14:01:37 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:235
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(235): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 235
+[05-Oct-2015 14:01:50 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'A dependency injection object is required to access ORM services' in phalcon/mvc/model/manager.zep:1697
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(109): Phalcon\Mvc\Model\Manager->createBuilder()
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(235): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in phalcon/mvc/model/manager.zep on line 1697
+[05-Oct-2015 14:02:00 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:235
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(235): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 235
+[05-Oct-2015 14:02:39 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:235
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(235): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 235
+[05-Oct-2015 14:03:16 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:235
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(235): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 235
+[05-Oct-2015 14:03:37 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:235
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(235): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 235
+[05-Oct-2015 14:03:40 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:235
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(235): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 235
+[05-Oct-2015 14:03:41 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:235
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(235): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 235
+[05-Oct-2015 14:03:46 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:235
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(235): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 235
+[05-Oct-2015 14:03:51 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:235
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(235): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 235
+[05-Oct-2015 14:04:05 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:229
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(229): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 229
+[05-Oct-2015 14:04:06 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:229
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(229): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 229
+[05-Oct-2015 14:04:26 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:229
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(229): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 229
+[05-Oct-2015 14:04:51 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:235
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(235): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 235
+[05-Oct-2015 14:05:00 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:231
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(231): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 231
+[05-Oct-2015 14:05:01 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Matched route doesn't have an associated handler' in /home/ubuntu/workspace/api/index.php:231
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(231): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 231
+[05-Oct-2015 14:05:59 UTC] PHP Catchable fatal error:  Argument 1 passed to Phalcon\Mvc\Micro::setDI() must implement interface Phalcon\DiInterface, null given in /home/ubuntu/workspace/api/index.php on line 36
+[05-Oct-2015 14:05:59 UTC] PHP Stack trace:
+[05-Oct-2015 14:05:59 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 14:06:27 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:231
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(231): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 231
+[05-Oct-2015 14:06:30 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:231
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(231): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 231
+[05-Oct-2015 14:06:34 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'A dependency injection object is required to access ORM services' in phalcon/mvc/model/manager.zep:1697
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(110): Phalcon\Mvc\Model\Manager->createBuilder()
+#1 [internal function]: {closure}('343')
+#2 /home/ubuntu/workspace/api/index.php(231): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in phalcon/mvc/model/manager.zep on line 1697
+[05-Oct-2015 14:07:14 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:231
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(231): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 231
+[05-Oct-2015 14:07:19 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'A dependency injection object is required to access ORM services' in phalcon/mvc/model/manager.zep:1697
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(110): Phalcon\Mvc\Model\Manager->createBuilder()
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(231): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in phalcon/mvc/model/manager.zep on line 1697
+[05-Oct-2015 14:07:21 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'A dependency injection object is required to access ORM services' in phalcon/mvc/model/manager.zep:1697
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(110): Phalcon\Mvc\Model\Manager->createBuilder()
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(231): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in phalcon/mvc/model/manager.zep on line 1697
+[05-Oct-2015 14:10:11 UTC] PHP Fatal error:  Call to a member function getDI() on a non-object in /home/ubuntu/workspace/api/index.php on line 109
+[05-Oct-2015 14:10:11 UTC] PHP Stack trace:
+[05-Oct-2015 14:10:11 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 14:10:11 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:231
+[05-Oct-2015 14:10:11 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:108-118}() /home/ubuntu/workspace/api/index.php:231
+[05-Oct-2015 14:10:21 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Di\Exception' with message 'Service 'manager' wasn't found in the dependency injection container' in /home/ubuntu/workspace/api/index.php:109
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(109): Phalcon\Di->get('manager')
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(231): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 109
+[05-Oct-2015 14:11:09 UTC] PHP Fatal error:  Call to undefined method Phalcon\Http\Response::set() in /home/ubuntu/workspace/api/index.php on line 118
+[05-Oct-2015 14:11:09 UTC] PHP Stack trace:
+[05-Oct-2015 14:11:09 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 14:11:09 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:232
+[05-Oct-2015 14:11:09 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:108-119}() /home/ubuntu/workspace/api/index.php:232
+[05-Oct-2015 14:11:29 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 14:11:36 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'images_tags'' in /home/ubuntu/workspace/api/index.php:116
+Stack trace:
+#0 [internal function]: PDO->query('SELECT `tags`.`...')
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `tags`.`...', NULL, NULL)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#3 /home/ubuntu/workspace/api/index.php(116): Phalcon\Mvc\Model\Query->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(232): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 14:12:21 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'images_tags'' in /home/ubuntu/workspace/api/index.php:116
+Stack trace:
+#0 [internal function]: PDO->query('SELECT `tags`.`...')
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `tags`.`...', NULL, NULL)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#3 /home/ubuntu/workspace/api/index.php(116): Phalcon\Mvc\Model\Query->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(232): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 14:12:22 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'images_tags'' in /home/ubuntu/workspace/api/index.php:116
+Stack trace:
+#0 [internal function]: PDO->query('SELECT `tags`.`...')
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `tags`.`...', NULL, NULL)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#3 /home/ubuntu/workspace/api/index.php(116): Phalcon\Mvc\Model\Query->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(232): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 14:12:32 UTC] PHP Parse error:  syntax error, unexpected '/' in /home/ubuntu/workspace/api/models/Images.php on line 22
+[05-Oct-2015 14:12:32 UTC] PHP Stack trace:
+[05-Oct-2015 14:12:32 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 14:12:32 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:232
+[05-Oct-2015 14:12:32 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:108-119}() /home/ubuntu/workspace/api/index.php:232
+[05-Oct-2015 14:12:32 UTC] PHP   4. Phalcon\Mvc\Model\Query->execute() /home/ubuntu/workspace/api/index.php:116
+[05-Oct-2015 14:12:32 UTC] PHP   5. Phalcon\Mvc\Model\Query->parse() /home/ubuntu/workspace/api/index.php:116
+[05-Oct-2015 14:12:32 UTC] PHP   6. Phalcon\Mvc\Model\Query->_prepareSelect() /home/ubuntu/workspace/api/index.php:116
+[05-Oct-2015 14:12:32 UTC] PHP   7. Phalcon\Mvc\Model\Query->_getJoins() /home/ubuntu/workspace/api/index.php:116
+[05-Oct-2015 14:12:32 UTC] PHP   8. Phalcon\Mvc\Model\Query->_getJoin() /home/ubuntu/workspace/api/index.php:116
+[05-Oct-2015 14:12:32 UTC] PHP   9. Phalcon\Mvc\Model\Manager->load() /home/ubuntu/workspace/api/index.php:116
+[05-Oct-2015 14:12:32 UTC] PHP  10. spl_autoload_call() /home/ubuntu/workspace/api/index.php:116
+[05-Oct-2015 14:12:32 UTC] PHP  11. Phalcon\Loader->autoLoad() /home/ubuntu/workspace/api/index.php:116
+[05-Oct-2015 14:12:43 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'images_tags'' in /home/ubuntu/workspace/api/index.php:116
+Stack trace:
+#0 [internal function]: PDO->query('SELECT `tags`.`...')
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `tags`.`...', NULL, NULL)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#3 /home/ubuntu/workspace/api/index.php(116): Phalcon\Mvc\Model\Query->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(232): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 14:12:57 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'images_tags'' in /home/ubuntu/workspace/api/index.php:116
+Stack trace:
+#0 [internal function]: PDO->query('SELECT `tags`.`...')
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `tags`.`...', NULL, NULL)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#3 /home/ubuntu/workspace/api/index.php(116): Phalcon\Mvc\Model\Query->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(232): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 14:13:04 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'images_tags'' in /home/ubuntu/workspace/api/index.php:116
+Stack trace:
+#0 [internal function]: PDO->query('SELECT `tags`.`...')
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `tags`.`...', NULL, NULL)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#3 /home/ubuntu/workspace/api/index.php(116): Phalcon\Mvc\Model\Query->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(232): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 14:14:21 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'images_tags'' in /home/ubuntu/workspace/api/index.php:116
+Stack trace:
+#0 [internal function]: PDO->query('SELECT `tags`.`...')
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `tags`.`...', NULL, NULL)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#3 /home/ubuntu/workspace/api/index.php(116): Phalcon\Mvc\Model\Query->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(232): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 14:14:57 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'images_tags'' in /home/ubuntu/workspace/api/index.php:116
+Stack trace:
+#0 [internal function]: PDO->query('SELECT `tags`.`...')
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `tags`.`...', NULL, NULL)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#3 /home/ubuntu/workspace/api/index.php(116): Phalcon\Mvc\Model\Query->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(232): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 14:14:58 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'images_tags'' in /home/ubuntu/workspace/api/index.php:116
+Stack trace:
+#0 [internal function]: PDO->query('SELECT `tags`.`...')
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `tags`.`...', NULL, NULL)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#3 /home/ubuntu/workspace/api/index.php(116): Phalcon\Mvc\Model\Query->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(232): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 14:15:04 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'images_tags'' in /home/ubuntu/workspace/api/index.php:116
+Stack trace:
+#0 [internal function]: PDO->query('SELECT `tags`.`...')
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `tags`.`...', NULL, NULL)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#3 /home/ubuntu/workspace/api/index.php(116): Phalcon\Mvc\Model\Query->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(232): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 14:19:49 UTC] PHP Fatal error:  Uncaught exception 'BadMethodCallException' with message 'Wrong number of parameters' in /home/ubuntu/workspace/api/index.php:117
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(117): Phalcon\Mvc\Model\Manager->getRelations()
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(233): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 117
+[05-Oct-2015 14:20:38 UTC] PHP Catchable fatal error:  Argument 1 passed to Phalcon\Mvc\Model\Manager::getHasManyToMany() must implement interface Phalcon\Mvc\ModelInterface, string given in /home/ubuntu/workspace/api/index.php on line 117
+[05-Oct-2015 14:20:38 UTC] PHP Stack trace:
+[05-Oct-2015 14:20:38 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 14:20:38 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:233
+[05-Oct-2015 14:20:38 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:108-120}() /home/ubuntu/workspace/api/index.php:233
+[05-Oct-2015 14:30:39 UTC] PHP Fatal error:  Uncaught exception 'BadMethodCallException' with message 'Wrong number of parameters' in /home/ubuntu/workspace/api/index.php:117
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(117): Phalcon\Http\Response->setJsonContent()
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(233): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 117
+[05-Oct-2015 20:32:23 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:233
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(233): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 233
+[05-Oct-2015 20:32:26 UTC] PHP Fatal error:  Uncaught exception 'BadMethodCallException' with message 'Wrong number of parameters' in /home/ubuntu/workspace/api/index.php:117
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(117): Phalcon\Http\Response->setJsonContent()
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(233): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 117
+[05-Oct-2015 20:32:37 UTC] PHP Fatal error:  Uncaught exception 'BadMethodCallException' with message 'Wrong number of parameters' in /home/ubuntu/workspace/api/index.php:117
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(117): Phalcon\Http\Response->setJsonContent()
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(233): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 117
+[05-Oct-2015 21:11:18 UTC] PHP Fatal error:  Uncaught exception 'BadMethodCallException' with message 'Wrong number of parameters' in /home/ubuntu/workspace/api/index.php:117
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(117): Phalcon\Http\Response->setJsonContent()
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(233): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 117
+[05-Oct-2015 21:11:50 UTC] PHP Fatal error:  Uncaught exception 'BadMethodCallException' with message 'Wrong number of parameters' in /home/ubuntu/workspace/api/index.php:117
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(117): Phalcon\Http\Response->setJsonContent()
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(233): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 117
+[05-Oct-2015 21:13:10 UTC] PHP Fatal error:  Call to undefined function toArray() in /home/ubuntu/workspace/api/index.php on line 117
+[05-Oct-2015 21:13:10 UTC] PHP Stack trace:
+[05-Oct-2015 21:13:10 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 21:13:10 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:234
+[05-Oct-2015 21:13:10 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:108-121}() /home/ubuntu/workspace/api/index.php:234
+[05-Oct-2015 21:15:35 UTC] PHP Fatal error:  Call to undefined method Phalcon\Mvc\Model\Query\Builder::execute() in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 21:15:35 UTC] PHP Stack trace:
+[05-Oct-2015 21:15:35 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 21:15:35 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:234
+[05-Oct-2015 21:15:35 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:108-121}() /home/ubuntu/workspace/api/index.php:234
+[05-Oct-2015 21:16:14 UTC] PHP Fatal error:  Call to undefined method Phalcon\Mvc\Model\Query\Builder::createQuery() in /home/ubuntu/workspace/api/index.php on line 115
+[05-Oct-2015 21:16:14 UTC] PHP Stack trace:
+[05-Oct-2015 21:16:14 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 21:16:14 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:234
+[05-Oct-2015 21:16:14 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:108-121}() /home/ubuntu/workspace/api/index.php:234
+[05-Oct-2015 21:19:50 UTC] PHP Fatal error:  Call to undefined method Phalcon\Mvc\Model\Query\Builder::execute() in /home/ubuntu/workspace/api/index.php on line 110
+[05-Oct-2015 21:19:50 UTC] PHP Stack trace:
+[05-Oct-2015 21:19:50 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 21:19:50 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:234
+[05-Oct-2015 21:19:50 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:108-121}() /home/ubuntu/workspace/api/index.php:234
+[05-Oct-2015 21:22:09 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/ubuntu/workspace/api/index.php on line 110
+[05-Oct-2015 21:22:34 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'The column 'id' is ambiguous, when preparing: SELECT [Images].* FROM [Images] JOIN [ImagesTags] WHERE id = 325438' in /home/ubuntu/workspace/api/index.php:110
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->_getQualified(Array)
+#1 [internal function]: Phalcon\Mvc\Model\Query->_getExpression(Array, true)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_getExpression(Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_prepareSelect()
+#4 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#5 /home/ubuntu/workspace/api/index.php(110): Phalcon\Mvc\Model\Query->execute()
+#6 [internal function]: {closure}()
+#7 /home/ubuntu/workspace/api/index.php(234): Phalcon\Mvc\Micro->handle()
+#8 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 110
+[05-Oct-2015 21:24:40 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'images_tags'' in /home/ubuntu/workspace/api/index.php:110
+Stack trace:
+#0 [internal function]: PDO->query('SELECT `images`...')
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `images`...', NULL, NULL)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, NULL, NULL)
+#3 /home/ubuntu/workspace/api/index.php(110): Phalcon\Mvc\Model\Query->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(234): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 110
+[05-Oct-2015 21:25:03 UTC] PHP Fatal error:  Call to a member function getTags() on a non-object in /home/ubuntu/workspace/api/index.php on line 89
+[05-Oct-2015 21:25:03 UTC] PHP Stack trace:
+[05-Oct-2015 21:25:03 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 21:25:03 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:234
+[05-Oct-2015 21:25:03 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:58-106}() /home/ubuntu/workspace/api/index.php:234
+[05-Oct-2015 21:27:57 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Unknown model or alias 'Image' (2), when preparing: SELECT Image.*,Tags.* FROM [Images] JOIN [Tags] WHERE Images.id = 325438' in /home/ubuntu/workspace/api/index.php:110
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->_getSelectColumn(Array)
+#1 [internal function]: Phalcon\Mvc\Model\Query->_prepareSelect()
+#2 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#3 /home/ubuntu/workspace/api/index.php(110): Phalcon\Mvc\Model\Query->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(234): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 110
+[05-Oct-2015 21:30:37 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Syntax error, unexpected token EQUALS, near to '"%mand%"', when parsing: SELECT * FROM [Images] JOIN [Tags] WHERE Tags.name LIKE ="%mand%" (65)' in /home/ubuntu/workspace/api/index.php:110
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#1 /home/ubuntu/workspace/api/index.php(110): Phalcon\Mvc\Model\Query->execute()
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(234): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 110
+[05-Oct-2015 21:31:31 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Unknown model or alias 'Tags' (11), when preparing: SELECT * FROM [Images] WHERE Tags.name LIKE "%mand%"' in /home/ubuntu/workspace/api/index.php:110
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->_getQualified(Array)
+#1 [internal function]: Phalcon\Mvc\Model\Query->_getExpression(Array, true)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_getExpression(Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_prepareSelect()
+#4 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#5 /home/ubuntu/workspace/api/index.php(110): Phalcon\Mvc\Model\Query->execute()
+#6 [internal function]: {closure}()
+#7 /home/ubuntu/workspace/api/index.php(234): Phalcon\Mvc\Micro->handle()
+#8 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 110
+[05-Oct-2015 21:33:16 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Unknown model or alias 'images' (2), when preparing: SELECT images.* FROM [Images] JOIN [Tags] WHERE Tags.name LIKE "%mand%"' in /home/ubuntu/workspace/api/index.php:110
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->_getSelectColumn(Array)
+#1 [internal function]: Phalcon\Mvc\Model\Query->_prepareSelect()
+#2 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#3 /home/ubuntu/workspace/api/index.php(110): Phalcon\Mvc\Model\Query->execute()
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(234): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 110
+[05-Oct-2015 21:34:34 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Column 'thumbUrl' doesn't belong to any of the selected models (1), when preparing: SELECT thumbUrl FROM [Images] JOIN [Tags] WHERE Tags.name LIKE "%mand%"' in /home/ubuntu/workspace/api/index.php:110
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->_getQualified(Array)
+#1 [internal function]: Phalcon\Mvc\Model\Query->_getExpression(Array)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_getSelectColumn(Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_prepareSelect()
+#4 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#5 /home/ubuntu/workspace/api/index.php(110): Phalcon\Mvc\Model\Query->execute()
+#6 [internal function]: {closure}()
+#7 /home/ubuntu/workspace/api/index.php(234): Phalcon\Mvc\Micro->handle()
+#8 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 110
+[05-Oct-2015 21:35:51 UTC] PHP Fatal error:  Call to a member function getQuery() on a non-object in /home/ubuntu/workspace/api/index.php on line 114
+[05-Oct-2015 21:35:51 UTC] PHP Stack trace:
+[05-Oct-2015 21:35:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 21:35:51 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:241
+[05-Oct-2015 21:35:51 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:108-128}() /home/ubuntu/workspace/api/index.php:241
+[05-Oct-2015 21:36:42 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Request\Exception' with message 'A dependency injection object is required to access the 'filter' service' in phalcon/http/request.zep:175
+Stack trace:
+#0 [internal function]: Phalcon\Http\Request->getHelper(Array, 'tag', false, false, false, false)
+#1 /home/ubuntu/workspace/api/index.php(115): Phalcon\Http\Request->getQuery('tag', false, false)
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(242): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in phalcon/http/request.zep on line 175
+[05-Oct-2015 21:37:39 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Request\Exception' with message 'A dependency injection object is required to access the 'filter' service' in phalcon/http/request.zep:175
+Stack trace:
+#0 [internal function]: Phalcon\Http\Request->getHelper(Array, 'tag', false, false, false, false)
+#1 /home/ubuntu/workspace/api/index.php(115): Phalcon\Http\Request->getQuery('tag', false, false)
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(242): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in phalcon/http/request.zep on line 175
+[05-Oct-2015 21:38:42 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Request\Exception' with message 'A dependency injection object is required to access the 'filter' service' in phalcon/http/request.zep:175
+Stack trace:
+#0 [internal function]: Phalcon\Http\Request->getHelper(Array, 'tag', false, false, false, false)
+#1 /home/ubuntu/workspace/api/index.php(116): Phalcon\Http\Request->getQuery('tag', false, false)
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(243): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in phalcon/http/request.zep on line 175
+[05-Oct-2015 21:39:11 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Request\Exception' with message 'A dependency injection object is required to access the 'filter' service' in phalcon/http/request.zep:175
+Stack trace:
+#0 [internal function]: Phalcon\Http\Request->getHelper(Array, 'term', false, false, false, false)
+#1 /home/ubuntu/workspace/api/index.php(116): Phalcon\Http\Request->getQuery('term', false, false)
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(243): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in phalcon/http/request.zep on line 175
+[05-Oct-2015 21:40:49 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Request\Exception' with message 'A dependency injection object is required to access the 'filter' service' in phalcon/http/request.zep:175
+Stack trace:
+#0 [internal function]: Phalcon\Http\Request->getHelper(Array, 'term', false, false, false, false)
+#1 /home/ubuntu/workspace/api/index.php(115): Phalcon\Http\Request->getQuery('term', false, false)
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(242): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in phalcon/http/request.zep on line 175
+[05-Oct-2015 21:41:04 UTC] PHP Fatal error:  Call to a member function toArray() on a non-object in /home/ubuntu/workspace/api/index.php on line 126
+[05-Oct-2015 21:41:04 UTC] PHP Stack trace:
+[05-Oct-2015 21:41:04 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 21:41:04 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:242
+[05-Oct-2015 21:41:04 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:108-129}() /home/ubuntu/workspace/api/index.php:242
+[05-Oct-2015 21:41:28 UTC] PHP Fatal error:  Uncaught exception 'BadMethodCallException' with message 'Wrong number of parameters' in /home/ubuntu/workspace/api/index.php:110
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(110): Phalcon\Mvc\Micro->get('modelsManager')
+#1 [internal function]: {closure}()
+#2 /home/ubuntu/workspace/api/index.php(242): Phalcon\Mvc\Micro->handle()
+#3 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 110
+[05-Oct-2015 21:42:05 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Di\Exception' with message 'Call to undefined method or service 'createBuilder'' in /home/ubuntu/workspace/api/index.php:111
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(111): Phalcon\Di->__call('createBuilder', Array)
+#1 /home/ubuntu/workspace/api/index.php(111): Phalcon\Di\FactoryDefault->createBuilder()
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(242): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 111
+[05-Oct-2015 21:42:24 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Request\Exception' with message 'A dependency injection object is required to access the 'filter' service' in phalcon/http/request.zep:175
+Stack trace:
+#0 [internal function]: Phalcon\Http\Request->getHelper(Array, 'term', false, false, false, false)
+#1 /home/ubuntu/workspace/api/index.php(115): Phalcon\Http\Request->getQuery('term', false, false)
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(242): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in phalcon/http/request.zep on line 175
+[05-Oct-2015 21:43:08 UTC] PHP Fatal error:  Call to a member function get() on a non-object in /home/ubuntu/workspace/api/index.php on line 110
+[05-Oct-2015 21:43:08 UTC] PHP Stack trace:
+[05-Oct-2015 21:43:08 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 21:43:08 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:243
+[05-Oct-2015 21:43:08 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:108-130}() /home/ubuntu/workspace/api/index.php:243
+[05-Oct-2015 21:43:37 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Request\Exception' with message 'A dependency injection object is required to access the 'filter' service' in phalcon/http/request.zep:175
+Stack trace:
+#0 [internal function]: Phalcon\Http\Request->getHelper(Array, 'term', false, false, false, false)
+#1 /home/ubuntu/workspace/api/index.php(116): Phalcon\Http\Request->getQuery('term', false, false)
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(243): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in phalcon/http/request.zep on line 175
+[05-Oct-2015 21:43:53 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Request\Exception' with message 'A dependency injection object is required to access the 'filter' service' in phalcon/http/request.zep:175
+Stack trace:
+#0 [internal function]: Phalcon\Http\Request->getHelper(Array, 'term', false, false, false, false)
+#1 /home/ubuntu/workspace/api/index.php(116): Phalcon\Http\Request->getQuery('term', false, false)
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(243): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in phalcon/http/request.zep on line 175
+[05-Oct-2015 21:44:36 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Request\Exception' with message 'A dependency injection object is required to access the 'filter' service' in phalcon/http/request.zep:175
+Stack trace:
+#0 [internal function]: Phalcon\Http\Request->getHelper(Array, 'term', false, false, false, false)
+#1 /home/ubuntu/workspace/api/index.php(115): Phalcon\Http\Request->getQuery('term', false, false)
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(242): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in phalcon/http/request.zep on line 175
+[05-Oct-2015 21:45:13 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Http\Request\Exception' with message 'A dependency injection object is required to access the 'filter' service' in phalcon/http/request.zep:175
+Stack trace:
+#0 [internal function]: Phalcon\Http\Request->getHelper(Array, 'term', false, false, false, false)
+#1 /home/ubuntu/workspace/api/index.php(116): Phalcon\Http\Request->getQuery('term', false, false)
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(243): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in phalcon/http/request.zep on line 175
+[05-Oct-2015 21:45:43 UTC] PHP Fatal error:  Call to a member function getQuery() on a non-object in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 21:45:43 UTC] PHP Stack trace:
+[05-Oct-2015 21:45:43 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 21:45:43 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:243
+[05-Oct-2015 21:45:43 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:108-130}() /home/ubuntu/workspace/api/index.php:243
+[05-Oct-2015 21:46:38 UTC] PHP Fatal error:  Call to a member function getQuery() on a non-object in /home/ubuntu/workspace/api/index.php on line 117
+[05-Oct-2015 21:46:38 UTC] PHP Stack trace:
+[05-Oct-2015 21:46:38 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 21:46:38 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:244
+[05-Oct-2015 21:46:38 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:109-131}() /home/ubuntu/workspace/api/index.php:244
+[05-Oct-2015 21:46:48 UTC] PHP Fatal error:  Uncaught exception 'InvalidArgumentException' with message 'Parameter 'filter' must be a string' in /home/ubuntu/workspace/api/index.php:117
+Stack trace:
+#0 [internal function]: Phalcon\Filter->_sanitize('mand', false)
+#1 [internal function]: Phalcon\Filter->sanitize('mand', false, false)
+#2 [internal function]: Phalcon\Http\Request->getHelper(Array, 'term', false, false, false, false)
+#3 /home/ubuntu/workspace/api/index.php(117): Phalcon\Http\Request->getQuery('term', false, false)
+#4 [internal function]: {closure}()
+#5 /home/ubuntu/workspace/api/index.php(244): Phalcon\Mvc\Micro->handle()
+#6 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 117
+[05-Oct-2015 21:47:51 UTC] PHP Fatal error:  Call to a member function getQuery() on a non-object in /home/ubuntu/workspace/api/index.php on line 117
+[05-Oct-2015 21:47:51 UTC] PHP Stack trace:
+[05-Oct-2015 21:47:51 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 21:47:51 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:236
+[05-Oct-2015 21:47:51 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:109-123}() /home/ubuntu/workspace/api/index.php:236
+[05-Oct-2015 21:49:49 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Syntax error, unexpected token %%, near to ':name:%', when parsing: SELECT * FROM [Images] JOIN [Tags] WHERE Tags.name LIKE %:name:% (64)' in /home/ubuntu/workspace/api/index.php:120
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#1 /home/ubuntu/workspace/api/index.php(120): Phalcon\Mvc\Model\Query->execute()
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(237): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 120
+[05-Oct-2015 21:50:20 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 5781733 bytes) in /home/ubuntu/workspace/api/index.php on line 122
+[05-Oct-2015 21:50:20 UTC] PHP Stack trace:
+[05-Oct-2015 21:50:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 21:50:20 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:237
+[05-Oct-2015 21:50:20 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:109-124}() /home/ubuntu/workspace/api/index.php:237
+[05-Oct-2015 21:50:20 UTC] PHP   4. Phalcon\Http\Response->setJsonContent() /home/ubuntu/workspace/api/index.php:122
+[05-Oct-2015 21:50:20 UTC] PHP   5. json_encode() /home/ubuntu/workspace/api/index.php:122
+[05-Oct-2015 21:58:16 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:238
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(238): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 238
+[05-Oct-2015 21:59:53 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1305 FUNCTION test.dinstict does not exist' in /home/ubuntu/workspace/api/index.php:121
+Stack trace:
+#0 [internal function]: PDOStatement->execute()
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->executePrepared(Object(PDOStatement), Array, Array)
+#2 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT dinstict...', Array, Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, Array, Array)
+#4 /home/ubuntu/workspace/api/index.php(121): Phalcon\Mvc\Model\Query->execute()
+#5 [internal function]: {closure}()
+#6 /home/ubuntu/workspace/api/index.php(238): Phalcon\Mvc\Micro->handle()
+#7 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 121
+[05-Oct-2015 22:00:28 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Syntax error, unexpected token *, near to ') FROM [Images] LEFT JOIN [Tags] WHERE Tags.name LIKE :name: LIMIT :APL0:', when parsing: SELECT distinct(Images.*) FROM [Images] LEFT JOIN [Tags] WHERE Tags.name LIKE :name: LIMIT :APL0: (97)' in /home/ubuntu/workspace/api/index.php:121
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#1 /home/ubuntu/workspace/api/index.php(121): Phalcon\Mvc\Model\Query->execute()
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(238): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 121
+[05-Oct-2015 22:00:36 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Column 'Images' doesn't belong to any of the selected models (1), when preparing: SELECT distinct(Images) FROM [Images] LEFT JOIN [Tags] WHERE Tags.name LIKE :name: LIMIT :APL0:' in /home/ubuntu/workspace/api/index.php:121
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->_getQualified(Array)
+#1 [internal function]: Phalcon\Mvc\Model\Query->_getExpression(Array, true)
+#2 [internal function]: Phalcon\Mvc\Model\Query->_getExpression(Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_getSelectColumn(Array)
+#4 [internal function]: Phalcon\Mvc\Model\Query->_prepareSelect()
+#5 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#6 /home/ubuntu/workspace/api/index.php(121): Phalcon\Mvc\Model\Query->execute()
+#7 [internal function]: {closure}()
+#8 /home/ubuntu/workspace/api/index.php(238): Phalcon\Mvc\Micro->handle()
+#9 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 121
+[05-Oct-2015 22:00:48 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Syntax error, unexpected token *, near to ') FROM [Images] LEFT JOIN [Tags] WHERE Tags.name LIKE :name: LIMIT :APL0:', when parsing: SELECT distinct(*) FROM [Images] LEFT JOIN [Tags] WHERE Tags.name LIKE :name: LIMIT :APL0: (90)' in /home/ubuntu/workspace/api/index.php:121
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#1 /home/ubuntu/workspace/api/index.php(121): Phalcon\Mvc\Model\Query->execute()
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(238): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 121
+[05-Oct-2015 22:01:13 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Syntax error, unexpected token FROM, near to ' [Images] LEFT JOIN [Tags] WHERE Tags.name LIKE :name: LIMIT :APL0:', when parsing: SELECT distinct FROM [Images] LEFT JOIN [Tags] WHERE Tags.name LIKE :name: LIMIT :APL0: (87)' in /home/ubuntu/workspace/api/index.php:121
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#1 /home/ubuntu/workspace/api/index.php(121): Phalcon\Mvc\Model\Query->execute()
+#2 [internal function]: {closure}()
+#3 /home/ubuntu/workspace/api/index.php(238): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 121
+[05-Oct-2015 22:01:29 UTC] PHP Parse error:  syntax error, unexpected '*' in /home/ubuntu/workspace/api/index.php on line 116
+[05-Oct-2015 22:17:42 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined' in /home/ubuntu/workspace/api/index.php:85
+Stack trace:
+#0 [internal function]: PDOStatement->execute()
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->executePrepared(Object(PDOStatement), Array, Array)
+#2 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `images`...', Array, Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, Array, Array)
+#4 /home/ubuntu/workspace/api/index.php(85): Phalcon\Mvc\Model\Query->execute()
+#5 [internal function]: {closure}('334814')
+#6 /home/ubuntu/workspace/api/index.php(219): Phalcon\Mvc\Micro->handle()
+#7 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 85
+[05-Oct-2015 22:18:28 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined' in /home/ubuntu/workspace/api/index.php:85
+Stack trace:
+#0 [internal function]: PDOStatement->execute()
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->executePrepared(Object(PDOStatement), Array, Array)
+#2 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `images`...', Array, Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, Array, Array)
+#4 /home/ubuntu/workspace/api/index.php(85): Phalcon\Mvc\Model\Query->execute()
+#5 [internal function]: {closure}('340081')
+#6 /home/ubuntu/workspace/api/index.php(219): Phalcon\Mvc\Micro->handle()
+#7 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 85
+[05-Oct-2015 22:22:48 UTC] PHP Fatal error:  Call to undefined method Phalcon\Mvc\Model\Row::execute() in /home/ubuntu/workspace/api/index.php on line 61
+[05-Oct-2015 22:22:48 UTC] PHP Stack trace:
+[05-Oct-2015 22:22:48 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[05-Oct-2015 22:22:48 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:229
+[05-Oct-2015 22:22:48 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:43-64}() /home/ubuntu/workspace/api/index.php:229
+[05-Oct-2015 22:26:58 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined' in /home/ubuntu/workspace/api/index.php:71
+Stack trace:
+#0 [internal function]: PDOStatement->execute()
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->executePrepared(Object(PDOStatement), Array, Array)
+#2 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `images`...', Array, Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, Array, Array)
+#4 /home/ubuntu/workspace/api/index.php(71): Phalcon\Mvc\Model\Query->execute()
+#5 [internal function]: {closure}('394829')
+#6 /home/ubuntu/workspace/api/index.php(205): Phalcon\Mvc\Micro->handle()
+#7 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 71
+[05-Oct-2015 22:27:00 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined' in /home/ubuntu/workspace/api/index.php:71
+Stack trace:
+#0 [internal function]: PDOStatement->execute()
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->executePrepared(Object(PDOStatement), Array, Array)
+#2 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `images`...', Array, Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, Array, Array)
+#4 /home/ubuntu/workspace/api/index.php(71): Phalcon\Mvc\Model\Query->execute()
+#5 [internal function]: {closure}('394829')
+#6 /home/ubuntu/workspace/api/index.php(205): Phalcon\Mvc\Micro->handle()
+#7 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 71
+[05-Oct-2015 22:27:06 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined' in /home/ubuntu/workspace/api/index.php:71
+Stack trace:
+#0 [internal function]: PDOStatement->execute()
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->executePrepared(Object(PDOStatement), Array, Array)
+#2 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `images`...', Array, Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, Array, Array)
+#4 /home/ubuntu/workspace/api/index.php(71): Phalcon\Mvc\Model\Query->execute()
+#5 [internal function]: {closure}('394829')
+#6 /home/ubuntu/workspace/api/index.php(205): Phalcon\Mvc\Micro->handle()
+#7 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 71
+[05-Oct-2015 22:27:49 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined' in /home/ubuntu/workspace/api/index.php:71
+Stack trace:
+#0 [internal function]: PDOStatement->execute()
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->executePrepared(Object(PDOStatement), Array, Array)
+#2 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `images`...', Array, Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, Array, Array)
+#4 /home/ubuntu/workspace/api/index.php(71): Phalcon\Mvc\Model\Query->execute()
+#5 [internal function]: {closure}('394830')
+#6 /home/ubuntu/workspace/api/index.php(205): Phalcon\Mvc\Micro->handle()
+#7 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 71
+[05-Oct-2015 22:28:17 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined' in /home/ubuntu/workspace/api/index.php:71
+Stack trace:
+#0 [internal function]: PDOStatement->execute()
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->executePrepared(Object(PDOStatement), Array, Array)
+#2 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `images`...', Array, Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, Array, Array)
+#4 /home/ubuntu/workspace/api/index.php(71): Phalcon\Mvc\Model\Query->execute()
+#5 [internal function]: {closure}('394830')
+#6 /home/ubuntu/workspace/api/index.php(205): Phalcon\Mvc\Micro->handle()
+#7 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 71
+[05-Oct-2015 22:28:31 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined' in /home/ubuntu/workspace/api/index.php:88
+Stack trace:
+#0 [internal function]: PDOStatement->execute()
+#1 [internal function]: Phalcon\Db\Adapter\Pdo->executePrepared(Object(PDOStatement), Array, Array)
+#2 [internal function]: Phalcon\Db\Adapter\Pdo->query('SELECT `images`...', Array, Array)
+#3 [internal function]: Phalcon\Mvc\Model\Query->_executeSelect(Array, Array, Array)
+#4 /home/ubuntu/workspace/api/index.php(88): Phalcon\Mvc\Model\Query->execute()
+#5 [internal function]: {closure}('394830')
+#6 /home/ubuntu/workspace/api/index.php(222): Phalcon\Mvc\Micro->handle()
+#7 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 88
+[05-Oct-2015 22:29:22 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Scanner: Unknown opcode 58' in /home/ubuntu/workspace/api/index.php:88
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#1 /home/ubuntu/workspace/api/index.php(88): Phalcon\Mvc\Model\Query->execute()
+#2 [internal function]: {closure}('394829')
+#3 /home/ubuntu/workspace/api/index.php(222): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 88
+[05-Oct-2015 22:29:24 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Scanner: Unknown opcode 58' in /home/ubuntu/workspace/api/index.php:88
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#1 /home/ubuntu/workspace/api/index.php(88): Phalcon\Mvc\Model\Query->execute()
+#2 [internal function]: {closure}('394829')
+#3 /home/ubuntu/workspace/api/index.php(222): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 88
+[05-Oct-2015 22:29:48 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Scanner: Unknown opcode 58' in /home/ubuntu/workspace/api/index.php:88
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#1 /home/ubuntu/workspace/api/index.php(88): Phalcon\Mvc\Model\Query->execute()
+#2 [internal function]: {closure}('394829')
+#3 /home/ubuntu/workspace/api/index.php(224): Phalcon\Mvc\Micro->handle()
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 88
+[05-Oct-2015 22:30:11 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Model\Exception' with message 'Scanner: Unknown opcode 58' in /home/ubuntu/workspace/api/index.php:88
+Stack trace:
+#0 [internal function]: Phalcon\Mvc\Model\Query->parse()
+#1 [internal function]: Phalcon\Mvc\Model\Query->execute(NULL, NULL)
+#2 /home/ubuntu/workspace/api/index.php(88): Phalcon\Mvc\Model\Query->getSingleResult()
+#3 [internal function]: {closure}('394829')
+#4 /home/ubuntu/workspace/api/index.php(224): Phalcon\Mvc\Micro->handle()
+#5 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 88
+[06-Oct-2015 08:40:21 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:224
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(224): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 224
+[06-Oct-2015 12:39:08 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/api/index.php on line 181
+[06-Oct-2015 12:39:08 UTC] PHP Stack trace:
+[06-Oct-2015 12:39:08 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[06-Oct-2015 12:39:08 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:224
+[06-Oct-2015 12:39:08 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:173-212}() /home/ubuntu/workspace/api/index.php:224
+[06-Oct-2015 12:47:12 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/api/index.php on line 181
+[06-Oct-2015 12:47:12 UTC] PHP Stack trace:
+[06-Oct-2015 12:47:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[06-Oct-2015 12:47:12 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:224
+[06-Oct-2015 12:47:12 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:173-212}() /home/ubuntu/workspace/api/index.php:224
+[06-Oct-2015 12:55:42 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/api/index.php on line 181
+[06-Oct-2015 12:55:42 UTC] PHP Stack trace:
+[06-Oct-2015 12:55:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[06-Oct-2015 12:55:42 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:224
+[06-Oct-2015 12:55:42 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:173-212}() /home/ubuntu/workspace/api/index.php:224
+[06-Oct-2015 13:47:08 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:241
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(241): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 241
+[06-Oct-2015 13:47:21 UTC] PHP Fatal error:  Uncaught exception 'Phalcon\Mvc\Micro\Exception' with message 'Not-Found handler is not callable or is not defined' in /home/ubuntu/workspace/api/index.php:241
+Stack trace:
+#0 /home/ubuntu/workspace/api/index.php(241): Phalcon\Mvc\Micro->handle()
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/index.php on line 241

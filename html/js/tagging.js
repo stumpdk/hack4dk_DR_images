@@ -60,7 +60,7 @@ var receiver = (function(){
         else{
             return $.ajax(dataUrl + 'images/random', {method: 'GET', dataType: 'json'}).
             success(function(data){
-                console.log('fetched random image:', data.resizedUrl);
+          //      console.log('fetched random image:', data.resizedUrl);
                 pub.id = data.id;
                 pub.url = data.resizedUrl;
                 return data;
@@ -88,6 +88,10 @@ var receiver = (function(){
         });        
     };
     
+    pub.getLatestTags = function(){
+      return $.ajax(dataUrl + 'tags/latest', {method: 'GET', dataType: 'json'});
+    };
+    
     return pub;
 })();
 
@@ -95,7 +99,7 @@ var tagCtrl = (function(){
     var pub = {};
     pub.saveData = function(data){
         //convert data here!
-        receiver.saveImageMetadata({data});
+        receiver.saveImageMetadata({data: data});
     };
     
     pub.loadRandomImage = function(){
@@ -107,3 +111,31 @@ var tagCtrl = (function(){
     
     return pub;
 })();
+
+      var searchModule = (function(){
+        var pub = {};
+
+        pub.search = function(term){
+          $.ajax('/api/images/search?term=' + term, {'dataType' : 'json', 'method': 'get'})
+          .success(function(data){
+            pub.results = data;
+            pub.addResultsToDOM('#search_results');
+          });
+        };
+        
+        pub.addResultsToDOM = function(element){
+          $(element).html();
+          var html = '<div>found ' + pub.results.length + ' results</div>';
+          for(var i = 0; i < pub.results.length; i++)
+          {
+            html = html + '<div class="col-md-4"><a href="/?image_id=' + pub.results[i].id + '"><img src="' + pub.results[i].url + '"/></a></div>';
+          }
+          $(element).html(html);
+        };
+        
+        pub.gup = function(name) {
+      	  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+      	};
+        
+        return pub;
+      })();
