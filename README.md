@@ -1,9 +1,7 @@
-A small backend used to tag CC SA images from DR
+Crowdsourcing historic images of DR.
 
-API example:
-https://hack4dk-2015-stumpdk-1.c9.io/api/images/0/10
+Check it out: https://hack4dk-2015-stumpdk-1.c9.io/
 
+Read more about the API:
 
-0 = offset
-
-10 = limit
+https://hack4dk-2015-stumpdk-1.c9.io/html/about
