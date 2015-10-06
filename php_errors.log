@@ -4707,3 +4707,8 @@ Stack trace:
 #0 /home/ubuntu/workspace/api/index.php(241): Phalcon\Mvc\Micro->handle()
 #1 {main}
   thrown in /home/ubuntu/workspace/api/index.php on line 241
+[06-Oct-2015 14:08:25 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/api/index.php on line 198
+[06-Oct-2015 14:08:25 UTC] PHP Stack trace:
+[06-Oct-2015 14:08:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/index.php:0
+[06-Oct-2015 14:08:25 UTC] PHP   2. Phalcon\Mvc\Micro->handle() /home/ubuntu/workspace/api/index.php:241
+[06-Oct-2015 14:08:25 UTC] PHP   3. {closure:/home/ubuntu/workspace/api/index.php:190-229}() /home/ubuntu/workspace/api/index.php:241

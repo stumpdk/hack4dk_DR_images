@@ -96,7 +96,7 @@
       });
       
       $(function(){
-        term = searchModule.gup('term');
+        term = Helper.gup('term');
         if(term){
           $('#search_term').val(term);
           searchModule.search(term);

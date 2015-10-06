@@ -94,15 +94,8 @@
 		$('#get_new_image').blur();
 	});
 	
-	var updateStatus = function(status){
-		if(status == "")
-			status = "&nbsp;";
-			
-		$("#status").html(status);
-	};
-	
 	var updateImage = function(image_id){
-		updateStatus("loading image...");
+		Helper.updateStatus("loading image...");
 		if(taggd !== ''){
 			taggd.dispose();
 		}
@@ -112,7 +105,7 @@
 		receiver.getImage(image_id).success(function(newData){
 			var img = new Image();
 			img.onload = function () {
-			   updateStatus("click on the picture to start tagging");
+			   Helper.updateStatus("click on the picture to start tagging");
 			};
 			img.src = newData.resizedUrl;
 			$('#tagging_image').attr('src', newData.resizedUrl);
@@ -138,18 +131,13 @@
 			$('#latest-tags').html(html);
 			
 		});
-	}
+	};
 	
 	
 	$(function(){
 	//	console.log(gup('image_id'));
-		updateImage(gup('image_id'));
+		updateImage(Helper.gup('image_id'));
 	});
-
-
-	var gup = function(name) {
-	  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
-	};
 	
 </script>
 </html>
