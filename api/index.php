@@ -5,6 +5,7 @@ use Phalcon\DI\FactoryDefault;
 use Phalcon\Http\Response as Response;
 use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
+use Phalcon\Session\Adapter\Files as Session;
 
 require( __DIR__ . '/../vendor/autoload.php');
 
@@ -18,7 +19,21 @@ require( __DIR__ . '/../vendor/autoload.php');
     )->register();
     
     $di = new FactoryDefault();
-
+    
+    // Start the session the first time when some component request the session service
+    $di->setShared('session', function () {
+        $session = new Session();
+        $session->start();
+        return $session;
+    });    
+    $di->setShared('facebook', function() {
+        return new Facebook\Facebook([
+          'app_id' => '976309079106997',
+          'app_secret' => '3d08707832a17ab10369f4f0643618aa',
+          'default_graph_version' => 'v2.4',
+        ]);
+    });
+    
     // Set up the database service
     $di->set('db', function () {
         return new PdoMysql(
@@ -110,7 +125,7 @@ require( __DIR__ . '/../vendor/autoload.php');
     });
     
     $app->get('/test', function() use ($app, $response){
-        $request = $app->getDI()->get('request');
+/*        $request = $app->getDI()->get('request');
         $name = $request->getQuery('term', null, false);
 
         $manager = $app->getDI()->get('modelsManager');
@@ -124,7 +139,10 @@ require( __DIR__ . '/../vendor/autoload.php');
         ->execute();
         
         $response->setJsonContent($tags->toArray());
-        $response->send();
+        $response->send();*/
+        $user = new Users();
+//$user->logout();
+        var_dump( $user->test());
     });
     
     /**
@@ -236,6 +254,5 @@ require( __DIR__ . '/../vendor/autoload.php');
         
         echo json_encode($resultSet->toArray());
     });
-
 
     $app->handle();
