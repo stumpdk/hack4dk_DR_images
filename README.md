@@ -1,4 +1,4 @@
-#Crowdsourcing historic images of DR.
+#Crowdsourcing historic images of DR
 
 Check it out: https://hack4dk-2015-stumpdk-1.c9.io/
 
