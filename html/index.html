@@ -22,6 +22,18 @@
 	      
     </head>
     <body>
+        <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/da_DK/all.js#xfbml=1&version=v2.4&appId=976309079106997";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+	//FacebookModule();
+</script>    	
+    	
+    	
     	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -38,17 +50,18 @@
             <li><a href="search">Search</a></li>
             <li><a href="about">About</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
     <div class="container">
 
       <div class="starter-template">
         <h1>&nbsp;</h1>
-        <p style="text-align:center"><input type="button" class="btn btn-default" id="saveData" value="Save tags" /><input type="button" class="btn btn-default" id="get_new_image" value="Get new" /></p>
+        <p style="text-align:center"><input type="button" class="btn btn-default" id="saveData" value="Save tags" /><input type="button" class="btn btn-default" id="get_new_image" value="Get new" /><span id="stats"></span></p>
         <p class="text-center" id="status"></p>
         <div id="image_container"><img src="" class="taggd" id="tagging_image"></div>
         <div id='latest-tags'></div>
+        <span><span id="userStats">Log on to save your tagging points:&nbsp;</span><div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div></span>
       </div>
     </div>
     </body>
@@ -117,6 +130,7 @@
 		});
 		
 		getLatestTags();
+		getStats();
 	};
 	
 	var getLatestTags = function()
@@ -132,6 +146,16 @@
 			
 		});
 	};
+	
+	var getStats = function()
+	{
+		receiver.getStats().success(function(data){
+			$('#stats').html('&nbsp;Tagged images: ' + data.imagesWithTags);
+			if(data.userTags > 0){
+				$('#userStats').html('Your points: ' + data.userTags + '&nbsp;');
+			}
+		});
+	}
 	
 	
 	$(function(){

@@ -23,25 +23,11 @@ class Users extends Model
     }
     
     public function getFbId(){
-        return $this->getDI()->get('session')->get("fb_user_id");
-    }
-    
-    public function test()
-    {
+        $session = $this->getDI()->get('session');
         
-        $fb = $this->getDI()->get('facebook');
-        $helper = $fb->getJavaScriptHelper();
-try {
-  $accessToken = $helper->getAccessToken();
-} catch(Facebook\Exceptions\FacebookResponseException $e) {
-  // When Graph returns an error
-  echo 'Graph returned an error: ' . $e->getMessage();
-  exit;
-} catch(Facebook\Exceptions\FacebookSDKException $e) {
-  // When validation fails or other local issues
-  echo 'Facebook SDK returned an error: ' . $e->getMessage();
-  exit;
-}
-        $fb->get('/me', $accessToken);
+        if($session->has('fb_user_id'))
+            return $session->get("fb_user_id");
+        
+        return null;
     }
 }

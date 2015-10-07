@@ -92,6 +92,10 @@
           return $.ajax(dataUrl + 'tags/latest', {method: 'GET', dataType: 'json'});
         };
         
+        pub.getStats = function(){
+          return $.ajax(dataUrl + 'stats', {method: 'GET', dataType: 'json'});  
+        };
+        
         return pub;
     })();
     
@@ -156,4 +160,45 @@
     return pub;
     })();    
     
+    
+    var FacebookModule = (function(){
+  window.fbAsyncInit = function() {
+    // init the FB JS SDK
+    FB.init({
+      appId      : '976309079106997',                        // App ID from the app dashboard
+  //    channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel file for x-domain comms
+      status     : true,                                 // Check Facebook Login status
+      xfbml      : true,                                  // Look for social plugins on the page
+      cookie     : true,
+      version    : '2.4'
+    });
+
+    // Additional initialization code such as adding Event Listeners goes here
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        console.log('Logged in.');
+      }
+      else {
+        console.log('Not logged in.');
+      }
+    });
+    
+    FB.Event.subscribe('auth.login', function(response){
+      if(response.status != 'connected')
+        return;
+        
+      console.log(response);
+      var oldLocation = encodeURI(window.location.href);
+      console.log('logged in. redirecting...');
+      document.location.href = '../login.php?redirect=' + oldLocation;
+    });
+    
+    FB.Event.subscribe('auth.logout', function(response){
+      console.log(response);
+      var oldLocation = encodeURI(window.location.href);
+      console.log('logged out. redirecting...');
+      document.location.href = '../logout.php?redirect=' + oldLocation;
+    });
+  };
+    })();
     

@@ -142,7 +142,24 @@ require( __DIR__ . '/../vendor/autoload.php');
         $response->send();*/
         $user = new Users();
 //$user->logout();
-        var_dump( $user->test());
+        var_dump( $user->checkLogin());
+    });
+    
+    $app->get('/stats', function() use ($response){
+    //    $it = new ImagesTags();
+        $user = new Users();
+        $user_id = $user->getFbId();
+        $userTags = 0;
+        if(isset($user_id)){
+            $userTags = ImagesTags::count(['conditions' => 'user_id = '. $user_id]);
+        }
+        $rowcount = ImagesTags::count(['distinct' => 'image_id', 'conditions' => 'confidence is null']);
+        $imagesCount = Images::count();
+        $tags = ImagesTags::count(['distinct' => 'tag_id', 'conditions' => 'confidence is null']);
+        
+       // $latestTag = ImagesTags::findFirst(['orderBy' => 'created DESC', 'conditions' => 'confidence is null', 'limit' => 1])->getTags();
+        $response->setJsonContent(['imagesWithTags' => $rowcount, 'images' => $imagesCount, 'tags' => $tags, 'userTags' =>$userTags, 'latestTag' => 0]);
+        $response->send();
     });
     
     /**
@@ -207,7 +224,7 @@ require( __DIR__ . '/../vendor/autoload.php');
      */ 
     $app->post('/image/metadata/{id:[0-9]+}', function($id){
         $request = new Phalcon\Http\Request();
-
+        $user = new Users();
         $data = $request->getPost('tags', null, false);
 
         $image = Images::findFirst("id = '" . $id . "'");   
@@ -229,7 +246,7 @@ require( __DIR__ . '/../vendor/autoload.php');
             $imagesTags->image_id = $image->id;
             $imagesTags->x = $tagRow['x'];
             $imagesTags->y = $tagRow['y'];
-            $imagesTags->user_id = 1;
+            $imagesTags->user_id = $user->getFbId();
             
             if(!$imagesTags->save()){
                 var_dump($imagesTags->getMessages());
