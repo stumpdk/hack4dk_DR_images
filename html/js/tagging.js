@@ -33,7 +33,7 @@
         
         pub.getImage = function(image_id){
             if(image_id !== undefined && image_id !== null){
-                return $.ajax(dataUrl + 'image/' + image_id, {method: 'GET', dataType: 'json'}).
+                return $.ajax(dataUrl + 'image/' + image_id, {method: 'GET', dataType: 'json', cache: false}).
                 success(function(data){
                     console.log('fetched image:', data.resizedUrl);
                     pub.id = data.image.id;
@@ -58,7 +58,7 @@
                 });
             }
             else{
-                return $.ajax(dataUrl + 'images/random', {method: 'GET', dataType: 'json'}).
+                return $.ajax(dataUrl + 'images/random', {method: 'GET', dataType: 'json', cache: false}).
                 success(function(data){
               //      console.log('fetched random image:', data.resizedUrl);
                     pub.id = data.id;
@@ -82,18 +82,18 @@
                 data.data[i].name = data.data[i].text;
                 data.data[i].category_id = 1;
             }
-            return $.ajax(dataUrl + 'image/metadata/' + pub.id, {method: 'post', dataType: 'json', data: convertedData}).
+            return $.ajax(dataUrl + 'image/metadata/' + pub.id, {method: 'post', dataType: 'json', cache: false, data: convertedData}).
             complete(function(data){
                 Helper.updateStatus("data saved...");
             });        
         };
         
         pub.getLatestTags = function(){
-          return $.ajax(dataUrl + 'tags/latest', {method: 'GET', dataType: 'json'});
+          return $.ajax(dataUrl + 'tags/latest', {method: 'GET', dataType: 'json', cache: false});
         };
         
         pub.getStats = function(){
-          return $.ajax(dataUrl + 'stats', {method: 'GET', dataType: 'json'});  
+          return $.ajax(dataUrl + 'stats', {method: 'GET', dataType: 'json', cache: false});  
         };
         
         return pub;

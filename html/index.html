@@ -14,6 +14,9 @@
 			    display: block;
 			    width: 100%;
 		    }
+		    text-pad {
+			    padding: 3px;
+			}
 	      </style>
 	      <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	      <script src="js/jquery.taggd.js"></script>
@@ -57,11 +60,17 @@
 
       <div class="starter-template">
         <h1>&nbsp;</h1>
-        <p style="text-align:center"><input type="button" class="btn btn-default" id="saveData" value="Save tags" /><input type="button" class="btn btn-default" id="get_new_image" value="Get new" /><span id="stats"></span></p>
+        <p style="text-align:center"><input type="button" class="btn btn-default" id="saveData" value="Save tags" /><input type="button" class="btn btn-default" id="get_new_image" value="Get new" /></p>
+        <p class="text-center">
+        	<span id="stats" class="text-pad"></span>
+        	<span>
+        		<span id="userStats" class="text-pad">Log on to save your tagging points:&nbsp;</span>
+        		<span class="fb-login-button text-pad" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></span>
+    		</span>
+		</p>
+        <div id='latest-tags' class="text-center"></div>
         <p class="text-center" id="status"></p>
         <div id="image_container"><img src="" class="taggd" id="tagging_image"></div>
-        <div id='latest-tags'></div>
-        <span><span id="userStats">Log on to save your tagging points:&nbsp;</span><div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div></span>
       </div>
     </div>
     </body>
@@ -109,6 +118,7 @@
 	
 	var updateImage = function(image_id){
 		Helper.updateStatus("loading image...");
+		
 		if(taggd !== ''){
 			taggd.dispose();
 		}
@@ -127,6 +137,8 @@
 			if(newData.tags){
 				taggd.addData(newData.newTags);
 			}
+			if(newData.id)
+				window.history.pushState("", null, "?image_id=" + newData.id);
 		});
 		
 		getLatestTags();
@@ -136,7 +148,7 @@
 	var getLatestTags = function()
 	{
 		receiver.getLatestTags().success(function(data){
-			var html = '<div><p class="lead">Latest tags: ';
+			var html = '<div><p>Latest tags: ';
 			data.map(function(value){
 				html = html + '<a href="search?term=' + value.name + '">' + value.name + '</a>&nbsp;';
 			});
@@ -150,9 +162,9 @@
 	var getStats = function()
 	{
 		receiver.getStats().success(function(data){
-			$('#stats').html('&nbsp;Tagged images: ' + data.imagesWithTags);
+			$('#stats').html('Tagged images: <b>' + data.imagesWithTags + '</b>');
 			if(data.userTags > 0){
-				$('#userStats').html('Your points: ' + data.userTags + '&nbsp;');
+				$('#userStats').html('Your points: <b>' + data.userTags + '</b>');
 			}
 		});
 	}

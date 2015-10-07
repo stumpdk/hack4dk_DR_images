@@ -87,13 +87,20 @@
         minLength: 0
       });
       
-      $('#remote').on('typeahead:change', function(e){
+      $('#remote').on('typeahead:select', function(e){
         term = $('#search_term').val();
         if(term.trim().length > 0){
           //Perform search
           searchModule.search(term);
         }
       });
+      
+      
+    $('#remote').on('keyup', function(e) {
+        if(e.which == 13) {
+            $(".tt-suggestion:first-child", this).trigger('click');
+        }
+    });      
       
       $(function(){
         term = Helper.gup('term');
