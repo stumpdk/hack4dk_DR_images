@@ -1,4 +1,4 @@
 resized_images/*
-vendor/*
 php_errors.log
-composer.lock
+composer.phar
+vendor/
