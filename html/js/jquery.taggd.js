@@ -378,8 +378,9 @@
 			
 			var left = $el.attr('data-x') * _this.element.width();
 			var top = $el.attr('data-y') * _this.element.height();
-			
+
 			if($el.hasClass('taggd-item')) {
+							
 				$el.css({
 					left: left - $el.outerWidth(true) / 2,
 					top: top - $el.outerHeight(true) / 2
@@ -399,10 +400,44 @@
 				
 				$el.attr('data-align', $el.outerWidth(true));
 				
+				/**
+				 * StumpDK: Handling situations where input boxes go out of the image.
+				 */ 
+				 
+				 /**
+				  * One way to do it:
+				  */ 
+				 left = 20;
+				 top = $el.outerHeight() + 26;
+				 
+				 /**
+				  * Another way:
+				  */ 
+				//Right alignment if out of image
+			/*	if( $el.outerWidth(true) + $el.attr('data-x') * _this.element.width() > _this.element.width()){
+					left = _this.element.width() - $el.outerWidth(true) -10;
+				}
+				
+				//Left alignment if out of image
+				if(left < 0){
+					left = 10;
+				}
+				
+				//Top alignment if out of image
+				if(top < 50){
+					top = $el.outerHeight(true) + 20;
+				}
+				
+				if(top > _this.element.height()){
+					top = _this.element.height()-100;
+				}
+			*/	
 				$el.css({
 					left: left + _this.options.offset.left,
 					top: top + _this.options.offset.top
 				});
+				
+
 			}
 		});
 	};

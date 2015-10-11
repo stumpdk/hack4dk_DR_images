@@ -77,7 +77,7 @@ require( __DIR__ . '/../vendor/autoload.php');
     $app->get('/image/{id:[0-9]+}', function($id) use ($app, $response) {
         $image = Images::findFirstById($id);
         
-        $sql = 'select x, y, value, name as text FROM images_tags left join tags on images_tags.tag_id = tags.id WHERE images_tags.image_id = ' . $id;
+        $sql = 'select x, y, value, name as text FROM images_tags left join tags on images_tags.tag_id = tags.id WHERE confidence is null AND images_tags.image_id = ' . $id;
         
         $resultSet = $app->getDI()->get('db')->query($sql);
 
@@ -204,13 +204,13 @@ require( __DIR__ . '/../vendor/autoload.php');
             die("no term!");
         }
 
-
         $termNew = "";
         foreach($terms as $term){
-            $termNew = $termNew . 'tags.name LIKE \'%' . $term . '%\' OR ';
+            $termNew = $termNew . 'tags.name LIKE \'%' . $term . '%\' AND ';
         }
         
         $termNew = substr($termNew, 0, strlen($termNew)-4);
+                //$termNew = '\'' . $request->getQuery('term', null, false) . '\'';
         $sql = 'select distinct(images.id), CONCAT("https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/",images.id,"/thumb") as url from images left join images_tags ON images.id = images_tags.image_id LEFT JOIN tags on images_tags.tag_id = tags.id WHERE ' . $termNew . ' LIMIT 20';
 
         $resultSet = $app->getDI()->get('db')->query($sql);
@@ -260,6 +260,8 @@ require( __DIR__ . '/../vendor/autoload.php');
         if(!$image->save()){
             var_dump($image->getMessages());
         }
+        
+        $image->resize($image, Images::$SIZE_THUMB);
         
     });
     

@@ -1,27 +1,57 @@
 <!DOCTYPE html>
 <html>
     <head>
-    	<meta charset="UTF-8">
-    		<title>Crowdsourcing images of DR</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        
-        
-        <link rel="stylesheet" href="css/normalize.css" />
-	      <link rel="stylesheet" href="css/taggd.css" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>DR crowdsourcing - tag</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
+    <script src="js/jquery.taggd.js"></script>
+    <script src="js/tagging.js"></script>
+    <script src="js/typeahead.bundle.js"></script>
+    <link rel="stylesheet" href="css/typeahead.css">  
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/taggd.css" />
 	      
-	      <style>
-		    img {
-			    display: block;
-			    width: 100%;
-		    }
-		    text-pad {
-			    padding: 3px;
-			}
-	      </style>
-	      <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	      <script src="js/jquery.taggd.js"></script>
-	      <script src="js/tagging.js"></script>
-	      
+  <style>
+    img {
+	    display: block;
+	    width: 100%;
+    }
+    
+    text-pad {
+	    padding: 3px;
+	}
+	.btn-margin {
+		margin-left:5px;
+		margin-right:5px;
+	}
+	
+	info {
+		font-family: serif; 
+		font-size: 0.8em; 
+		position:absolute;
+		top:4em;
+		padding:10px;
+	}	
+	.login {
+		position:relative;
+		top:10px;
+	    width: 100%;
+	}
+	#status {
+		margin: 10px 10px 10px;
+	}
+  </style>
 	      
     </head>
     <body>
@@ -37,8 +67,7 @@
 </script>    	
     	
     	
-    	<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+    	<nav class="navbar navbar-default">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -54,27 +83,30 @@
             <li><a href="about">About</a></li>
           </ul>
         </div>
-      </div>
     </nav>
     <div class="container">
 
       <div class="starter-template">
-        <h1>&nbsp;</h1>
-        <p style="text-align:center"><input type="button" class="btn btn-default" id="saveData" value="Save tags" /><input type="button" class="btn btn-default" id="get_new_image" value="Get new" /></p>
+      	<div id="button-container" class="text-center">
+	  		<input type="button" class="btn btn-default btn-margin" id="saveData" value="Save tags" />
+	  		<input type="button" class="btn btn-default btn-margin" id="get_new_image" value="Get new" />
+      	</div>
+        <p class="text-center" id="status"></p>
+        <div id="image_container"><img src="" class="taggd" id="tagging_image"></div>
+ 
+      	<div id="text-container" class="login">
         <p class="text-center">
         	<span id="stats" class="text-pad"></span>
         	<span>
-        		<span id="userStats" class="text-pad">Log on to save your tagging points:&nbsp;</span>
-        		<span class="fb-login-button text-pad" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></span>
+        		<span id="userStats" class="text-pad">Log on to save tag points:&nbsp;</span>
     		</span>
+    		<span class="fb-login-button text-pad" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></span>
 		</p>
-        <div id='latest-tags' class="text-center"></div>
-        <p class="text-center" id="status"></p>
-        <div id="image_container"><img src="" class="taggd" id="tagging_image"></div>
+        </div>
       </div>
     </div>
     </body>
-    
+
     <script>
 	var options = {
 		
@@ -141,22 +173,8 @@
 				window.history.pushState("", null, "?image_id=" + newData.id);
 		});
 		
-		getLatestTags();
+	//	getLatestTags();
 		getStats();
-	};
-	
-	var getLatestTags = function()
-	{
-		receiver.getLatestTags().success(function(data){
-			var html = '<div><p>Latest tags: ';
-			data.map(function(value){
-				html = html + '<a href="search?term=' + value.name + '">' + value.name + '</a>&nbsp;';
-			});
-			
-			html = html + '</p></div>';
-			$('#latest-tags').html(html);
-			
-		});
 	};
 	
 	var getStats = function()

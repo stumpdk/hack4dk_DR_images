@@ -35,7 +35,7 @@
             if(image_id !== undefined && image_id !== null){
                 return $.ajax(dataUrl + 'image/' + image_id, {method: 'GET', dataType: 'json', cache: false}).
                 success(function(data){
-                    console.log('fetched image:', data.resizedUrl);
+                    //console.log('fetched image:', data.resizedUrl);
                     pub.id = data.image.id;
                     pub.url = data.image.resizedUrl;
                     pub.tags = data.tags;
@@ -109,7 +109,7 @@
         pub.loadRandomImage = function(){
             new receiver();
             receiver.getImage().success(function(){
-                console.log('data saved!');
+           //     console.log('data saved!');
             });
         };
         
@@ -129,11 +129,12 @@
     
     pub.addResultsToDOM = function(element){
       $(element).html();
-      var html = '<div>found ' + pub.results.length + ' results</div>';
+      var html = '<div>found ' + pub.results.length + ' results</div><div class="row">';
       for(var i = 0; i < pub.results.length; i++)
       {
-        html = html + '<div class="col-md-4"><a href="/?image_id=' + pub.results[i].id + '"><img src="' + pub.results[i].url + '"/></a></div>';
+        html = html + '<div class="col-lg-3 col-md-4 col-xs-6 thumb"><a class="thumbnail" href="/?image_id=' + pub.results[i].id + '"><img class="img-responsive" src="' + pub.results[i].url + '"/></a></div>';
       }
+      html = html + '</div>';
       $(element).html(html);
     };
     
