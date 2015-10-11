@@ -1,6 +1,7 @@
 {
     "require": {
         "eventviva/php-image-resize": "1.5.*",
-        "facebook/php-sdk-v4": "~5.0"
+        "facebook/php-sdk-v4": "~5.0",
+        "aws/aws-sdk-php": "3.8.0"
     }
 }

@@ -140,9 +140,12 @@ require( __DIR__ . '/../vendor/autoload.php');
         
         $response->setJsonContent($tags->toArray());
         $response->send();*/
-        $user = new Users();
+        //$user = new Users();
 //$user->logout();
-        var_dump( $user->checkLogin());
+        //var_dump( $user->checkLogin());
+        //To get this to work: Put a credentials file in /home/your_user/.aws/
+        $image = new Images();
+        $image->resize();
     });
     
     $app->get('/stats', function() use ($response){
@@ -177,10 +180,10 @@ require( __DIR__ . '/../vendor/autoload.php');
         $image = Images::findFirstById($id);
         
         if($size == 'preview'){
-            $size = Images::$SIZE_PREVIEW;
+            $size = Images::SIZE_PREVIEW;
         }
         else{
-            $size = Images::$SIZE_THUMB;
+            $size = Images::SIZE_THUMB;
         }
         
         if(!$image){
@@ -188,9 +191,15 @@ require( __DIR__ . '/../vendor/autoload.php');
             $response->send();
         }
         else{
-            $response->setHeader('Content-Type', 'image/jpeg');
-            $response->send();
-            readfile($image->resize($image, $size));
+         //   $response->setHeader('Content-Type', 'image/jpeg');
+            //$response->send();
+          
+         // echo $image->resizeExternalFile($id, $image->url, $size);
+          header("Content-type: image/jpeg");
+            //$data = "/9j/4AAQSkZJRgABAQEAYABgAAD........";
+          echo ($image->resizeExternalFile($id, $image->url, $size));
+           // $response->setContent();
+        //    $response->send();
         }
     });
 
@@ -261,7 +270,7 @@ require( __DIR__ . '/../vendor/autoload.php');
             var_dump($image->getMessages());
         }
         
-        $image->resize($image, Images::$SIZE_THUMB);
+        $image->resizeExternalFile($id, $image->url, Images::SIZE_THUMB);
         
     });
     
