@@ -65,7 +65,15 @@ require( __DIR__ . '/../vendor/autoload.php');
         ->getSingleResult();
         
         $number = rand($minMax->minimum, $minMax->maximum);
-        $result = Images::findFirstById($number);
+      //  $result = Images::findFirstById($number);
+      //var_dump($number);
+        $result = $manager->createBuilder()
+            ->from('Images')
+     //       ->join('Tags')
+            ->columns('*')
+            ->where('Images.id = ' . $number)
+            ->getQuery()
+            ->getSingleResult();
         
         $response->setJsonContent($result);
         $response->send();        

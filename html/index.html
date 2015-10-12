@@ -55,6 +55,20 @@
 	#status {
 		margin: 10px 10px 10px;
 	}
+	div.desc{
+    background-color: #fff;
+    top: -20px;
+    color: #fff;
+    left: 0;
+    opacity: 0.4;
+    position: relative;
+    width: 130px;
+}
+
+.fix{
+    width: 100%;
+    padding: 0px;
+}
   </style>
 	      
     </head>
@@ -96,8 +110,11 @@
 	  		<input type="button" class="btn btn-default btn-margin" id="get_new_image" value="Get new" />
       	</div>
         <p class="text-center" id="status"></p>
-        <div id="image_container"><img src="" class="taggd" id="tagging_image"></div>
- 
+        <div>
+	        <div id="image_container" class="fix">
+	        	<img src="" class="taggd" id="tagging_image">
+	        </div>
+ 		</div>
       	<div id="text-container" class="login">
         <p class="text-center">
         	<span id="stats" class="text-pad"></span>
@@ -160,7 +177,10 @@
 		}
 	
 		$("#tagging_image").remove();
-		$("#image_container").html('<img src="" class="taggd" id="tagging_image" />');
+		$("#image_container").html('<img src="" class="taggd" id="tagging_image" />' +
+		'<div class="desc text-center">' +
+           '<a href="" id="fullsize_url" target="_blank" class="desc_content text-left">download full size</a>' +
+        '</div>');
 		receiver.getImage(image_id).success(function(newData){
 			var img = new Image();
 			img.onload = function () {
@@ -168,6 +188,7 @@
 			};
 			img.src = newData.resizedUrl;
 			$('#tagging_image').attr('src', newData.resizedUrl);
+			$('#fullsize_url').attr('href', newData.originalUrl);
 			taggd = $('.taggd').taggd( options, [] );
 			taggd.clear();
 			if(newData.tags){

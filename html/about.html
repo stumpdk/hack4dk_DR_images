@@ -46,30 +46,57 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>&nbsp;</h1>
-        <p class="lead">This is a demo, showing how DR images can be tagged - by the crowd, for the crowd</p>
-        <p>Hacked together at <a href="http://hack4.dk">#Hack4DK 2015</a>.</p>
+<div id="output" class="content markdown-body">
+  <h1>FAQ (in danish)</h1>
+
+<h2>Hvad går projektet ud på?</h2>
+
+<p>Formålet med denne hjemmeside er at gøre DR's historiske billeder tilgængelige. Lige nu ligger de på DR's hjemmeside i en meget stor størrelse, og uden informationer, som gør det muligt at søge i dem.</p>
+
+<p>Dette projekt forsøger at afhjælpe dette problem, ved, med frivilliges hjælp, at opmærke billederne. Når de bliver opmærket med informationer er det muligt at søge efter disse informationer. Og så bliver det lettere at finde rundt i dem.</p>
+
+<h2>Hvordan kommer jeg i gang?</h2>
+
+<p>Gå til <a href="/html/index.html">forsiden</a>. Du kan opmærke billeder ved at trykke på billedet, og derefter skrive en tekst.</p>
+
+<h2>Hvad skal jeg opmærke?</h2>
+
+<p>Du bestemmer selv hvad du vil opmærke. Det kunne eksempelvis være skuespillere, steder, navnet på filmen/forestillingen, kameratyper, rekvisitter og så videre. Det er dig der bestemmer!</p>
+
+<p>Nogle ting, for eksempel en forestilling, kan være svære at opmærke. For hvor skal man trykke? Her er det vigtig at huske på, at så længe informationen bliver gemt, er billedet til at finde igen. Derfor betyder taggets placering ikke så meget i disse tilfælde.</p>
+
+<h2>Skal jeg logge ind via Facebook?</h2>
+
+<p>Nej, det behøver du ikke. Men hvis du gør, kan du holde overblik over hvor mange tags du har lavet. De vil stå i bunden af billedet.</p>
+
+<h2>Er det DR's projekt?</h2>
+
+<p>Nej, det er det ikke. DR har stillet billederne til rådighed, men DR har ikke noget med dette projekt at gøre.</p>
+
+<p>De data du taster ind bliver stillet frit til rådighed med det samme.</p></div>
+        <h1>Technical information</h1>
+        <p>The project is hacked together at <a href="http://hack4.dk">#Hack4DK 2015</a>.</p>
         <p>Based on <a href="http://hack4dk.dr.dk">open data</a> from the archives of DR.</p>
         <p>Source code at <a href="https://github.com/stumpdk/hack4dk_DR_images">Github</a></p>
         <p>Information at <a href="https://hackdash.org/dashboards/hack4dk">Hackdash</a></p>
         <h3>API info</h3>
         <p>The images and their metadata are represented through a simple API:</p>
         <div>
-          <h4>Images</h4>
-          <p>Search for images with certain tags:</p>
+          <h3>Images</h4>
+          <h4>Search for images with certain tags:</h4>
           <p><a href="https://hack4dk-2015-stumpdk-1.c9.io/api/images/search?term=search_term_goes_here">/api/images/search?term={term}</a></p>
-          <p>Get random image:</p>
+          <h4>Get random image:</h4>
           <p><a href="https://hack4dk-2015-stumpdk-1.c9.io/api/images/random">/api/images/random</a></p>
-          <p>Get list of images</p>
+          <h4>Get list of images</h4>
           <p><a href="https://hack4dk-2015-stumpdk-1.c9.io/api/images/10/100">api/images/{offset}/{limit}</a></p>
-          <p>Get a smaller image:</p>
+          <h4>Get a smaller image:</h4>
           <p><a href="https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/325445/thumb">/api/img_resize/{image_id}/{thumb|preview}</a></p>
         </div>
         <div>
-          <h4>Tags</h4>
-          <p>Get a list of tags:</p>
+          <h3>Tags</h3>
+          <h4>Get a list of tags:</h4>
           <p><a href="https://hack4dk-2015-stumpdk-1.c9.io/api/tags?term=dame">/api/tags?term={search term}</a></p> 
-          <p>Save tags for image:</p>
+          <h4>Save tags for image:</h4>
           <p><a href="https://hack4dk-2015-stumpdk-1.c9.io/api/images/metadata">/api/image/metadata/{image_id}</a></p> 
         </div>
       </div>

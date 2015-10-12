@@ -26,7 +26,8 @@ class Images extends Model
     {
         // Convert the string to an array
         $this->resizedUrl = 'https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/' . $this->id . '/preview';
-        $this->thumbUrl = 'https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/' . $this->id . '/thumb';;
+        $this->thumbUrl = 'https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/' . $this->id . '/thumb';
+        $this->originalUrl = str_replace('https://hack4dk-2015-stumpdk-1.c9.io','http://hack4dk.dr.dk',$this->url);
     }
     
     public function validation()
@@ -39,7 +40,7 @@ class Images extends Model
     
     public function getImageFile($id, $width){
         $s3 = new S3Helper();
-        return $s3->getFileContents($id);
+        return $s3->getFileContents($id . $width);
     }
     
     public function resizeExternalFile($id, $url, $width){
@@ -58,7 +59,7 @@ class Images extends Model
         $s3 = new S3Helper();    
         $result = null;
         
-        $result = $s3->getFileContents($id);
+        $result = $s3->getFileContents($id . $width);
         //We have a match!
         if($result !== false){
             return $result['Body'];
@@ -75,7 +76,7 @@ class Images extends Model
         }
      
         $imageStr = $image->getImageAsString();
-        $s3->put($id, $imageStr);
+        $s3->put($id . $width, $imageStr);
 
         return $imageStr;
     }    
