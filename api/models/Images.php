@@ -1,7 +1,5 @@
 <?php
 
-require('library/S3Helper.php');
-
 use Phalcon\Mvc\Model;
 
 class Images extends Model
@@ -25,9 +23,17 @@ class Images extends Model
     public function afterFetch()
     {
         // Convert the string to an array
-        $this->resizedUrl = 'https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/' . $this->id . '/preview';
-        $this->thumbUrl = 'https://hack4dk-2015-stumpdk-1.c9.io/api/img_resize/' . $this->id . '/thumb';
-        $this->originalUrl = str_replace('https://hack4dk-2015-stumpdk-1.c9.io','http://hack4dk.dr.dk',$this->url);
+        $this->resizedUrl = UrlHelper::getUrl() . '/api/img_resize/' . $this->id . '/preview';
+        $this->thumbUrl = UrlHelper::getUrl() . '/api/img_resize/' . $this->id . '/thumb';
+        $this->originalUrl = str_replace(UrlHelper::getUrl(),'http://hack4dk.dr.dk',$this->url);
+        
+        if($this->s3_thumb == 1)
+        {
+            $this->thumbUrl = 'https://s3-eu-west-1.amazonaws.com/crowdsourcing-dr-images/' . $this->id . Images::SIZE_THUMB;
+        }
+        if($this->s3_preview == 1){
+            $this->resizedUrl = 'https://s3-eu-west-1.amazonaws.com/crowdsourcing-dr-images/' . $this->id . Images::SIZE_PREVIEW;
+        }
     }
     
     public function validation()
@@ -43,28 +49,32 @@ class Images extends Model
         return $s3->getFileContents($id . $width);
     }
     
-    public function resizeExternalFile($id, $url, $width){
-        
+    public function loadFileContent($id, $url){
         //Old file check, for backward compability
         //Already converted files are loaded from the local storage, otherwise from S3
-        $newExt = '_' . $width . '.jpg';
+    /*    $newExt = '_' . $width . '.jpg';
         $resized_file = str_replace('http://hack4dk.dr.dk/', '/home/ubuntu/workspace/resized_images/', $url);
         $resized_file = str_replace('.jpg',  $newExt, $resized_file);
         
         if(file_exists($resized_file)){
             return base64_encode(readfile($resized_file));
         }
-        
+      */  
         //Checking S3 storage for file
         $s3 = new S3Helper();    
-        $result = null;
+        $result = false;
         
-        $result = $s3->getFileContents($id . $width);
-        //We have a match!
+        $result = $s3->getFileContents($id);
+        
         if($result !== false){
+            //We have a match!
             return $result['Body'];
         }
         
+        return false;
+    }
+    
+    public function resizeExternalFile($url, $width){
         //Resizing image and saving it in S3 storage
         $image = new \Eventviva\ImageResize($url);
         if($width == Images::SIZE_THUMB){
@@ -75,9 +85,11 @@ class Images extends Model
             $image->resizeToBestFit(Images::SIZE_PREVIEW, Images::SIZE_PREVIEW);
         }
      
-        $imageStr = $image->getImageAsString();
-        $s3->put($id . $width, $imageStr);
-
-        return $imageStr;
+        return $image->getImageAsString();
     }    
+    
+    public function saveFileContent($id, $fileData){
+        $s3 = new S3Helper();
+        $s3->put($id, $fileData);
+    }
 }

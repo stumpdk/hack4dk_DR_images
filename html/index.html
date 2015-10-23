@@ -9,8 +9,8 @@
     <meta name="author" content="">
     <!-- Open Graph data -->
     <meta property="og:title" content="Crowdsourcing DR Images" />
-    <meta property="og:url" content="https://hack4dk-2015-stumpdk-1.c9.io/html/index.html" />
-    <meta property="og:image" content="https://hack4dk-2015-stumpdk-1.c9.io/frontimage.jpg" />
+    <meta property="og:url" content="https://hack4dk-2015-stumpdk-1.c9users.io/html/index.html" />
+    <meta property="og:image" content="https://hack4dk-2015-stumpdk-1.c9users.io/frontimage.jpg" />
     <meta property="og:description" content="Help us make DR historic photos accessible!" />
 
     <title>DR crowdsourcing - tag</title>
@@ -144,7 +144,7 @@
 	      mouseleave: 'hide',
 	    },
     	
-    	edit: true
+    	edit: false
 	};
 	
 	var data = [
@@ -158,9 +158,10 @@
 		console.log(taggd.data);
 	});*/
 	var taggd = '';
+	var taggd_user = '';
 
 	$('#saveData').click(function(e){
-		tagCtrl.saveData(taggd.data);
+		tagCtrl.saveData(taggd_user.data);
 		$('#saveData').blur();
 	});
 	
@@ -171,20 +172,33 @@
 	
 	var updateImage = function(image_id){
 		Helper.updateStatus("loading image...");
-		
+	
 		if(taggd !== ''){
 			taggd.dispose();
 		}
+		if(taggd_user !== ''){
+			taggd_user.dispose();
+		}
 	
 		$("#tagging_image").remove();
-		$("#image_container").html('<img src="" class="taggd" id="tagging_image" />' +
-		'<div class="desc text-center">' +
-           '<a href="" id="fullsize_url" target="_blank" class="desc_content text-left">download full size</a>' +
-        '</div>');
+		$("#image_container").html(
+		'<div id="taggd_container">' + 
+			'<img src="" class="taggd" id="tagging_image" />' +
+        '<div>');
+        
+        $('.taggd').click(function(event){
+        	event.stopPropagation();
+        	event.preventDefault();
+        	//$(taggd_user).click();
+        	console.log('clicked');
+        });
 		receiver.getImage(image_id).success(function(newData){
 			var img = new Image();
 			img.onload = function () {
 			   Helper.updateStatus("click on the picture to start tagging");
+			   $('#tagged_container').append('<div class="desc text-center">' +
+           		'<a href="" id="fullsize_url" target="_blank" class="desc_content text-left">download full size</a>' +
+        		'</div>');
 			};
 			img.src = newData.resizedUrl;
 			$('#tagging_image').attr('src', newData.resizedUrl);
@@ -194,6 +208,9 @@
 			if(newData.tags){
 				taggd.addData(newData.newTags);
 			}
+			options.edit = true;
+			taggd_user = $('.taggd').taggd( options, [] );
+			
 			if(newData.id)
 				window.history.pushState("", null, "?image_id=" + newData.id);
 		});

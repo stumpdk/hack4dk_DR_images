@@ -1,4 +1,3 @@
-    var dataUrl = 'https://hack4dk-2015-stumpdk-1.c9.io/api/';
 
     Array.prototype.equals = function (array) {
         // if the other array is a falsy value, return
@@ -157,6 +156,14 @@
 			
 		$(elm).html(status);
 	};
+	
+	pub.getUrl = function(){
+	    var http = location.protocol;
+        var slashes = http.concat("//");
+        var host = slashes.concat(window.location.hostname);
+        
+        return host;
+	};
     
     return pub;
     })();    
@@ -202,4 +209,6 @@
     });
   };
     })();
+    
+        var dataUrl = Helper.getUrl() + '/api/';//'https://hack4dk-2015-stumpdk-1.c9users.io/api/';
     
