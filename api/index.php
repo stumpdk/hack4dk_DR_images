@@ -237,8 +237,8 @@ require( __DIR__ . '/../vendor/autoload.php');
         $termNew = substr($termNew, 0, strlen($termNew)-4);
                 //$termNew = '\'' . $request->getQuery('term', null, false) . '\'';
                 $url = UrlHelper::getUrl() . '/api/img_resize/';
-        $sql = 'select distinct(images.id), s3_thumb, CONCAT("'. $url .'",images.id,"/thumb") as url from images left join images_tags ON images.id = images_tags.image_id LEFT JOIN tags on images_tags.tag_id = tags.id WHERE ' . $termNew . ' LIMIT 20';
-        $phql = "select Images.* from Images left join ImagesTags ON Images.id = ImagesTags.image_id LEFT JOIN Tags on ImagesTags.tag_id = Tags.id WHERE Tags.name LIKE '%" . $request->getQuery('term', null, false) . "%'";
+        $sql = 'select distinct(images.id), s3_thumb, CONCAT("'. $url .'",images.id,"/thumb") as url from images left join images_tags ON images.id = images_tags.image_id LEFT JOIN tags on images_tags.tag_id = tags.id WHERE ' . $termNew . ' ';
+        $phql = "select Images.* from Images left join ImagesTags ON Images.id = ImagesTags.image_id LEFT JOIN Tags on ImagesTags.tag_id = Tags.id WHERE Tags.is_used = 1 AND Tags.name LIKE '%" . $request->getQuery('term', null, false) . "%'";
 /*$manager = $app->getDI()->get('modelsManager');
 $result = $manager->executeQuery($phql);
   /*      
@@ -325,7 +325,7 @@ $result = $manager->executeQuery($phql);
         $request = new Phalcon\Http\Request();
 
         $term = $request->getQuery('term', null, false);
-        $resultSet = Tags::find('name LIKE \'%' . $term . '%\'');
+        $resultSet = Tags::find('name LIKE \'%' . $term . '%\' AND is_used = 1');
         
         echo json_encode($resultSet->toArray());
     });
