@@ -386,6 +386,9 @@
 					top: top - $el.outerHeight(true) / 2
 				});
 				
+				/**
+				 * StumpDK: Added special style for existing tags
+				 */ 
 				if(_this.options.edit == false){
 					$el.css({
 						backgroundColor: '#DE6280',
