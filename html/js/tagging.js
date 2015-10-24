@@ -68,7 +68,7 @@
         };
         
         pub.saveImageMetadata = function(data){
-            if(data.data.equals(pub.originalData)){
+            if(data.data.equals(pub.originalData) || data.data.length == 0){
                 Helper.updateStatus('ingen ændringer at gemme...');
                 return;
             }
