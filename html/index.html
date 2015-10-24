@@ -9,9 +9,9 @@
     <meta name="author" content="">
     <!-- Open Graph data -->
     <meta property="og:title" content="Opmærkning af DR's billeder" />
-    <meta property="og:url" content="https://hack4dk-2015-stumpdk-1.c9users.io/html/index.html" />
-    <meta property="og:image" content="https://hack4dk-2015-stumpdk-1.c9users.io/frontimage.jpg" />
-    <meta property="og:description" content="Hjælp os med at gøre DR's billeder tilgængelige!" />
+    <meta property="og:url" content="https://hack4dk-2015-stumpdk-1.c9.io/html/index.html" />
+    <meta property="og:image" content="https://hack4dk-2015-stumpdk-1.c9.io/frontimage.jpg" />
+    <meta property="og:description" content="Hjælp os med at gøre DR's historiske billeder tilgængelige!" />
 
     <title>Opmærkning af DR's billeder</title>
     
@@ -55,14 +55,14 @@
 	#status {
 		margin: 10px 10px 10px;
 	}
-	div.desc{
+	.desc{
     background-color: #fff;
     top: -20px;
     color: #fff;
     left: 0;
     opacity: 0.4;
     position: relative;
-    width: 130px;
+    width: 180px;
 }
 
 .fix{
@@ -131,6 +131,7 @@
         		<span id="userStats" class="text-pad">Log på for at tælle dine tags:&nbsp;</span>
     		</span>
     		<span class="fb-login-button text-pad" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></span>
+    		<div class="fb-share-button" data-href="" data-layout="link" id="facebook-share-link"></div>
 		</p>
         </div>
       </div>
@@ -214,9 +215,10 @@
 				options.edit = true;
 				taggd_user = $('.taggd').taggd( options, [] );
 				
-			    $('#tagged_container').append('<div class="desc text-center">' +
-           		'<a href="" id="fullsize_url" target="_blank" class="desc_content text-left">download billedet i fuld størrelse</a>' +
+			    $('#taggd_container').append('<div class="desc">' +
+           		'<a href="' + newData.image.url + '" id="fullsize_url" target="_blank" class="text-left">download fuld størrelse</a>' +
         		'</div>');
+        		$('#facebook-share-link').attr('data-href', window.location.href);
 				
 				if(newData.id)
 					window.history.pushState("", null, "?image_id=" + newData.id);
