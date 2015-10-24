@@ -129,39 +129,18 @@
     </body>
 
     <script>
-	var options = {
-		
-	  align: {
-	    y: 'bottom'
-	  },
-	
-	  offset: {
-	    top: -35
-	  },
-		
-		handlers: {
-	      mouseenter: 'show',
-	      mouseleave: 'hide',
-	    },
-    	
-    	edit: false
-	};
-	
-	var data = [
-	// 	{ x: 0.62, y: 0.7, text: 'Rope'             },
-	// 	{ x: 0.51, y: 0.5, text: 'Bird'             },
-	// 	{ x: 0.40, y: 0.3, text: 'Water, obviously' }
-	];
-	
-	/*var taggd = $('.taggd').taggd( options, data );
-	taggd.on('change', function(e){
-		console.log(taggd.data);
-	});*/
+
 	var taggd = '';
 	var taggd_user = '';
 
 	$('#saveData').click(function(e){
-		tagCtrl.saveData(taggd_user.data);
+		//$('#get_new_image').prop('disabled', true);
+		//$('#saveData').prop('disabled', true);
+		tagCtrl.saveData(taggd_user.data);/*.success(function(){
+			$('#get_new_image').prop('disabled', false);
+			$('#saveData').prop('disabled', false);
+			
+		});*/
 		$('#saveData').blur();
 	});
 	
@@ -171,6 +150,8 @@
 	});
 	
 	var updateImage = function(image_id){
+		$('#get_new_image').prop('disabled', true);
+		$('#saveData').prop('disabled', true);
 		Helper.updateStatus("loading image...");
 	
 		if(taggd !== ''){
@@ -186,33 +167,53 @@
 			'<img src="" class="taggd" id="tagging_image" />' +
         '<div>');
         
-        $('.taggd').click(function(event){
-        	event.stopPropagation();
-        	event.preventDefault();
-        	//$(taggd_user).click();
-        	console.log('clicked');
-        });
 		receiver.getImage(image_id).success(function(newData){
 			var img = new Image();
+			
 			img.onload = function () {
+			   $('#get_new_image').prop('disabled', false);
+			   $('#saveData').prop('disabled', false);
+			   
 			   Helper.updateStatus("click on the picture to start tagging");
-			   $('#tagged_container').append('<div class="desc text-center">' +
+			    $('#tagging_image').attr('src', newData.resizedUrl);
+				
+				$('#fullsize_url').attr('href', newData.originalUrl);
+
+				//Taggd options
+				var options = {
+					  align: {
+					    y: 'bottom'
+					  },
+					
+					  offset: {
+					    top: -35
+					  },
+					
+					handlers: {
+				      mouseenter: 'show',
+				      mouseleave: 'hide',
+				    },
+	
+			    	edit: false
+				};
+
+				taggd = $('.taggd').taggd( options, [] );
+				taggd.clear();
+				if(newData.tags){
+					taggd.addData(newData.newTags);
+				}
+				options.edit = true;
+				taggd_user = $('.taggd').taggd( options, [] );
+				
+			    $('#tagged_container').append('<div class="desc text-center">' +
            		'<a href="" id="fullsize_url" target="_blank" class="desc_content text-left">download full size</a>' +
         		'</div>');
+				
+				if(newData.id)
+					window.history.pushState("", null, "?image_id=" + newData.id);
 			};
-			img.src = newData.resizedUrl;
-			$('#tagging_image').attr('src', newData.resizedUrl);
-			$('#fullsize_url').attr('href', newData.originalUrl);
-			taggd = $('.taggd').taggd( options, [] );
-			taggd.clear();
-			if(newData.tags){
-				taggd.addData(newData.newTags);
-			}
-			options.edit = true;
-			taggd_user = $('.taggd').taggd( options, [] );
 			
-			if(newData.id)
-				window.history.pushState("", null, "?image_id=" + newData.id);
+			img.src = newData.resizedUrl;
 		});
 		
 	//	getLatestTags();

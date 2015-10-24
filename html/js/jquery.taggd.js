@@ -385,6 +385,14 @@
 					left: left - $el.outerWidth(true) / 2,
 					top: top - $el.outerHeight(true) / 2
 				});
+				
+				if(_this.options.edit == false){
+					$el.css({
+						backgroundColor: '#DE6280',
+						border: '1px solid black',
+						opacity: '0.6'
+					});
+				}
 			} else if($el.hasClass('taggd-item-hover')) {
 				if(_this.options.align.x === 'center') {
 					left -= $el.outerWidth(true) / 2;
@@ -402,36 +410,12 @@
 				
 				/**
 				 * StumpDK: Handling situations where input boxes go out of the image.
-				 */ 
-				 
-				 /**
-				  * One way to do it:
-				  */ 
-				 left = 20;
+				 */  
+				 //left = 20;
+				 //console.log(_this.wrapper.outerWidth());
+				 left = _this.wrapper.outerWidth()/2 - $el.outerWidth()/2;
 				 top = $el.outerHeight() + 26;
 				 
-				 /**
-				  * Another way:
-				  */ 
-				//Right alignment if out of image
-			/*	if( $el.outerWidth(true) + $el.attr('data-x') * _this.element.width() > _this.element.width()){
-					left = _this.element.width() - $el.outerWidth(true) -10;
-				}
-				
-				//Left alignment if out of image
-				if(left < 0){
-					left = 10;
-				}
-				
-				//Top alignment if out of image
-				if(top < 50){
-					top = $el.outerHeight(true) + 20;
-				}
-				
-				if(top > _this.element.height()){
-					top = _this.element.height()-100;
-				}
-			*/	
 				$el.css({
 					left: left + _this.options.offset.left,
 					top: top + _this.options.offset.top

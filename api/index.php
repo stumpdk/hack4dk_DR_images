@@ -269,7 +269,7 @@ $result = $manager->executeQuery($phql);
     /**
      * Set image tags
      */ 
-    $app->post('/image/metadata/{id:[0-9]+}', function($id){
+    $app->post('/image/metadata/{id:[0-9]+}', function($id) use ($app){
         $request = new Phalcon\Http\Request();
         $user = new Users();
         $data = $request->getPost('tags', null, false);
@@ -318,6 +318,8 @@ $result = $manager->executeQuery($phql);
         $data = $image->resizeExternalFile($image->url, Images::SIZE_THUMB);
         
         $image->saveFileContent($id.Images::SIZE_THUMB, $data);
+        $app->response->setStatusCode('200');
+        $app->response->send();
         
     });
     
