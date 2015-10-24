@@ -7,9 +7,14 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>DR crowdsourcing - search</title>
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Crowdsourcing DR Images" />
+    <meta property="og:url" content="https://hack4dk-2015-stumpdk-1.c9users.io/html/index.html" />
+    <meta property="og:image" content="https://hack4dk-2015-stumpdk-1.c9users.io/frontimage.jpg" />
+    <meta property="og:description" content="Hjælp os med at gøre DR's billeder tilgængelige!" />
+    
+    
+    <title>DR crowdsourcing - søg</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -21,7 +26,7 @@
     
     <style type="text/css">
       body {
-          padding-top: 20px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+      /*    padding-top: 20px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
       }
       
       .thumb {
@@ -44,12 +49,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Crowdsourcing DR history</a>
+          <a class="navbar-brand" href="/">Opmærkning af DR's billeder</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="search">Search</a></li>
-            <li><a href="about">About</a></li>
+            <li class="active"><a href="search">Søg</a></li>
+            <li><a href="about">Om projektet</a></li>
           </ul>
         </div><!--/.nav-collapse -->
     </nav>
@@ -58,7 +63,7 @@
       <div id="latest-tags" class="text-center"></div>
       <div id="remote">
         <span class="twitter-typeahead" style="position: relative; display: inline-block;">
-          <input class="typeahead" id="search_term" type="text" placeholder="Type search terms here...">
+          <input class="typeahead" id="search_term" type="text" placeholder="Skrive søgeord/tag her...">
         </span>
       </div>
       <div class="container" id="search_results"></div>
@@ -94,7 +99,7 @@
       var getLatestTags = function()
 	    {
     		receiver.getLatestTags().success(function(data){
-    			var html = '<div><p>Latest tags: ';
+    			var html = '<div><p>Seneste tags: ';
     			data.map(function(value){
     				html = html + '<a href="search?term=' + value.name + '">' + value.name + '</a>&nbsp;';
     			});
