@@ -69,11 +69,11 @@
         
         pub.saveImageMetadata = function(data){
             if(data.data.equals(pub.originalData)){
-                Helper.updateStatus('no changes to save...');
+                Helper.updateStatus('ingen ændringer at gemme...');
                 return;
             }
                 
-            Helper.updateStatus("saving data...");
+            Helper.updateStatus("gemmer tags...");
             var convertedData = {};
             convertedData.id = pub.id;
             convertedData.tags = data.data;
@@ -83,7 +83,7 @@
             }
             return $.ajax(dataUrl + 'image/metadata/' + pub.id, {method: 'post', dataType: 'json', cache: false, data: convertedData}).
             complete(function(data){
-                Helper.updateStatus("data saved...");
+                Helper.updateStatus("dine tags blev gemt...");
             });        
         };
         
@@ -128,7 +128,7 @@
     
     pub.addResultsToDOM = function(element){
       $(element).html();
-      var html = '<div>found ' + pub.results.length + ' results</div><div class="row">';
+      var html = '<div>fandt ' + pub.results.length + ' resultat(er)</div><div class="row">';
       for(var i = 0; i < pub.results.length; i++)
       {
         html = html + '<div class="col-lg-3 col-md-4 col-xs-6 thumb"><a class="thumbnail" href="/?image_id=' + pub.results[i].id + '"><img class="img-responsive" src="' + pub.results[i].url + '"/></a></div>';

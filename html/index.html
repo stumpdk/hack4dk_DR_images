@@ -8,12 +8,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Open Graph data -->
-    <meta property="og:title" content="Crowdsourcing DR Images" />
+    <meta property="og:title" content="Opmærkning af DR's billeder" />
     <meta property="og:url" content="https://hack4dk-2015-stumpdk-1.c9users.io/html/index.html" />
     <meta property="og:image" content="https://hack4dk-2015-stumpdk-1.c9users.io/frontimage.jpg" />
-    <meta property="og:description" content="Help us make DR historic photos accessible!" />
+    <meta property="og:description" content="Hjælp os med at gøre DR's billeder tilgængelige!" />
 
-    <title>DR crowdsourcing - tag</title>
+    <title>Opmærkning af DR's billeder</title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -93,12 +93,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Crowdsourcing DR history</a>
+          <a class="navbar-brand" href="/">Opmærkning af DR's billeder</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="search">Search</a></li>
-            <li><a href="about">About</a></li>
+            <li><a href="search">Søg</a></li>
+            <li><a href="about">Om projektet</a></li>
           </ul>
         </div>
     </nav>
@@ -106,8 +106,8 @@
 
       <div class="starter-template">
       	<div id="button-container" class="text-center">
-	  		<input type="button" class="btn btn-default btn-margin" id="saveData" value="Save tags" />
-	  		<input type="button" class="btn btn-default btn-margin" id="get_new_image" value="Get new" />
+	  		<input type="button" class="btn btn-default btn-margin" id="saveData" value="Gem tags" />
+	  		<input type="button" class="btn btn-default btn-margin" id="get_new_image" value="Hent nyt billede" />
       	</div>
         <p class="text-center" id="status"></p>
         <div>
@@ -119,7 +119,7 @@
         <p class="text-center">
         	<span id="stats" class="text-pad"></span>
         	<span>
-        		<span id="userStats" class="text-pad">Log on to save tag points:&nbsp;</span>
+        		<span id="userStats" class="text-pad">Log på for at tælle dine tags:&nbsp;</span>
     		</span>
     		<span class="fb-login-button text-pad" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></span>
 		</p>
@@ -152,7 +152,7 @@
 	var updateImage = function(image_id){
 		$('#get_new_image').prop('disabled', true);
 		$('#saveData').prop('disabled', true);
-		Helper.updateStatus("loading image...");
+		Helper.updateStatus("henter billede...");
 	
 		if(taggd !== ''){
 			taggd.dispose();
@@ -174,7 +174,7 @@
 			   $('#get_new_image').prop('disabled', false);
 			   $('#saveData').prop('disabled', false);
 			   
-			   Helper.updateStatus("click on the picture to start tagging");
+			   Helper.updateStatus("klik et sted på billedet for at opmærke det");
 			    $('#tagging_image').attr('src', newData.resizedUrl);
 				
 				$('#fullsize_url').attr('href', newData.originalUrl);
@@ -206,7 +206,7 @@
 				taggd_user = $('.taggd').taggd( options, [] );
 				
 			    $('#tagged_container').append('<div class="desc text-center">' +
-           		'<a href="" id="fullsize_url" target="_blank" class="desc_content text-left">download full size</a>' +
+           		'<a href="" id="fullsize_url" target="_blank" class="desc_content text-left">download billedet i fuld størrelse</a>' +
         		'</div>');
 				
 				if(newData.id)
@@ -223,9 +223,9 @@
 	var getStats = function()
 	{
 		receiver.getStats().success(function(data){
-			$('#stats').html('Tagged images: <b>' + data.imagesWithTags + '</b>');
+			$('#stats').html('Billeder med tags: <b>' + data.imagesWithTags + '</b>');
 			if(data.userTags > 0){
-				$('#userStats').html('Your points: <b>' + data.userTags + '</b>');
+				$('#userStats').html('Dine opmærkninger: <b>' + data.userTags + '</b>');
 			}
 		});
 	}
