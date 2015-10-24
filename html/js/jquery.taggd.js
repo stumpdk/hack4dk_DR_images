@@ -378,12 +378,24 @@
 			
 			var left = $el.attr('data-x') * _this.element.width();
 			var top = $el.attr('data-y') * _this.element.height();
-			
+
 			if($el.hasClass('taggd-item')) {
+							
 				$el.css({
 					left: left - $el.outerWidth(true) / 2,
 					top: top - $el.outerHeight(true) / 2
 				});
+				
+				/**
+				 * StumpDK: Added special style for existing tags
+				 */ 
+				if(_this.options.edit == false){
+					$el.css({
+						backgroundColor: '#DE6280',
+						border: '1px solid black',
+						opacity: '0.6'
+					});
+				}
 			} else if($el.hasClass('taggd-item-hover')) {
 				if(_this.options.align.x === 'center') {
 					left -= $el.outerWidth(true) / 2;
@@ -399,10 +411,20 @@
 				
 				$el.attr('data-align', $el.outerWidth(true));
 				
+				/**
+				 * StumpDK: Handling situations where input boxes go out of the image.
+				 */  
+				 //left = 20;
+				 //console.log(_this.wrapper.outerWidth());
+				 left = _this.wrapper.outerWidth()/2 - $el.outerWidth()/2;
+				 top = $el.outerHeight() + 26;
+				 
 				$el.css({
 					left: left + _this.options.offset.left,
 					top: top + _this.options.offset.top
 				});
+				
+
 			}
 		});
 	};

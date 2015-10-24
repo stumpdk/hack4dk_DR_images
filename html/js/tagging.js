@@ -1,4 +1,3 @@
-    var dataUrl = 'https://hack4dk-2015-stumpdk-1.c9.io/api/';
 
     Array.prototype.equals = function (array) {
         // if the other array is a falsy value, return
@@ -33,9 +32,9 @@
         
         pub.getImage = function(image_id){
             if(image_id !== undefined && image_id !== null){
-                return $.ajax(dataUrl + 'image/' + image_id, {method: 'GET', dataType: 'json'}).
+                return $.ajax(dataUrl + 'image/' + image_id, {method: 'GET', dataType: 'json', cache: false}).
                 success(function(data){
-                    console.log('fetched image:', data.resizedUrl);
+                    //console.log('fetched image:', data.resizedUrl);
                     pub.id = data.image.id;
                     pub.url = data.image.resizedUrl;
                     pub.tags = data.tags;
@@ -58,7 +57,7 @@
                 });
             }
             else{
-                return $.ajax(dataUrl + 'images/random', {method: 'GET', dataType: 'json'}).
+                return $.ajax(dataUrl + 'images/random', {method: 'GET', dataType: 'json', cache: false}).
                 success(function(data){
               //      console.log('fetched random image:', data.resizedUrl);
                     pub.id = data.id;
@@ -82,14 +81,18 @@
                 data.data[i].name = data.data[i].text;
                 data.data[i].category_id = 1;
             }
-            return $.ajax(dataUrl + 'image/metadata/' + pub.id, {method: 'post', dataType: 'json', data: convertedData}).
+            return $.ajax(dataUrl + 'image/metadata/' + pub.id, {method: 'post', dataType: 'json', cache: false, data: convertedData}).
             complete(function(data){
                 Helper.updateStatus("data saved...");
             });        
         };
         
         pub.getLatestTags = function(){
-          return $.ajax(dataUrl + 'tags/latest', {method: 'GET', dataType: 'json'});
+          return $.ajax(dataUrl + 'tags/latest', {method: 'GET', dataType: 'json', cache: false});
+        };
+        
+        pub.getStats = function(){
+          return $.ajax(dataUrl + 'stats', {method: 'GET', dataType: 'json', cache: false});  
         };
         
         return pub;
@@ -105,7 +108,7 @@
         pub.loadRandomImage = function(){
             new receiver();
             receiver.getImage().success(function(){
-                console.log('data saved!');
+           //     console.log('data saved!');
             });
         };
         
@@ -125,11 +128,12 @@
     
     pub.addResultsToDOM = function(element){
       $(element).html();
-      var html = '<div>found ' + pub.results.length + ' results</div>';
+      var html = '<div>found ' + pub.results.length + ' results</div><div class="row">';
       for(var i = 0; i < pub.results.length; i++)
       {
-        html = html + '<div class="col-md-4"><a href="/?image_id=' + pub.results[i].id + '"><img src="' + pub.results[i].url + '"/></a></div>';
+        html = html + '<div class="col-lg-3 col-md-4 col-xs-6 thumb"><a class="thumbnail" href="/?image_id=' + pub.results[i].id + '"><img class="img-responsive" src="' + pub.results[i].url + '"/></a></div>';
       }
+      html = html + '</div>';
       $(element).html(html);
     };
     
@@ -152,8 +156,59 @@
 			
 		$(elm).html(status);
 	};
+	
+	pub.getUrl = function(){
+	    var http = location.protocol;
+        var slashes = http.concat("//");
+        var host = slashes.concat(window.location.hostname);
+        
+        return host;
+	};
     
     return pub;
     })();    
     
+    
+    var FacebookModule = (function(){
+  window.fbAsyncInit = function() {
+    // init the FB JS SDK
+    FB.init({
+      appId      : '976309079106997',                        // App ID from the app dashboard
+  //    channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel file for x-domain comms
+      status     : true,                                 // Check Facebook Login status
+      xfbml      : true,                                  // Look for social plugins on the page
+      cookie     : true,
+      version    : '2.4'
+    });
+
+    // Additional initialization code such as adding Event Listeners goes here
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        console.log('Logged in.');
+      }
+      else {
+        console.log('Not logged in.');
+      }
+    });
+    
+    FB.Event.subscribe('auth.login', function(response){
+      if(response.status != 'connected')
+        return;
+        
+      console.log(response);
+      var oldLocation = encodeURI(window.location.href);
+      console.log('logged in. redirecting...');
+      document.location.href = '../login.php?redirect=' + oldLocation;
+    });
+    
+    FB.Event.subscribe('auth.logout', function(response){
+      console.log(response);
+      var oldLocation = encodeURI(window.location.href);
+      console.log('logged out. redirecting...');
+      document.location.href = '../logout.php?redirect=' + oldLocation;
+    });
+  };
+    })();
+    
+        var dataUrl = Helper.getUrl() + '/api/';//'https://hack4dk-2015-stumpdk-1.c9users.io/api/';
     

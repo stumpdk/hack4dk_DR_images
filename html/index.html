@@ -1,29 +1,91 @@
 <!DOCTYPE html>
 <html>
     <head>
-    	<meta charset="UTF-8">
-    		<title>Crowdsourcing images of DR</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        
-        
-        <link rel="stylesheet" href="css/normalize.css" />
-	      <link rel="stylesheet" href="css/taggd.css" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Crowdsourcing DR Images" />
+    <meta property="og:url" content="https://hack4dk-2015-stumpdk-1.c9users.io/html/index.html" />
+    <meta property="og:image" content="https://hack4dk-2015-stumpdk-1.c9users.io/frontimage.jpg" />
+    <meta property="og:description" content="Help us make DR historic photos accessible!" />
+
+    <title>DR crowdsourcing - tag</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
+    <script src="js/jquery.taggd.js"></script>
+    <script src="js/tagging.js"></script>
+    <script src="js/typeahead.bundle.js"></script>
+    <link rel="stylesheet" href="css/typeahead.css">  
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/taggd.css" />
 	      
-	      <style>
-		    img {
-			    display: block;
-			    width: 100%;
-		    }
-	      </style>
-	      <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	      <script src="js/jquery.taggd.js"></script>
-	      <script src="js/tagging.js"></script>
-	      
+  <style>
+    img {
+	    display: block;
+	    width: 100%;
+    }
+    
+    text-pad {
+	    padding: 3px;
+	}
+	.btn-margin {
+		margin-left:5px;
+		margin-right:5px;
+	}
+	
+	info {
+		font-family: serif; 
+		font-size: 0.8em; 
+		position:absolute;
+		top:4em;
+		padding:10px;
+	}	
+	.login {
+		position:relative;
+		top:10px;
+	    width: 100%;
+	}
+	#status {
+		margin: 10px 10px 10px;
+	}
+	div.desc{
+    background-color: #fff;
+    top: -20px;
+    color: #fff;
+    left: 0;
+    opacity: 0.4;
+    position: relative;
+    width: 130px;
+}
+
+.fix{
+    width: 100%;
+    padding: 0px;
+}
+  </style>
 	      
     </head>
     <body>
-    	<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+        <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/da_DK/all.js#xfbml=1&version=v2.4&appId=976309079106997";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+	//FacebookModule();
+</script>    	
+    	
+    	
+    	<nav class="navbar navbar-default">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -38,54 +100,47 @@
             <li><a href="search">Search</a></li>
             <li><a href="about">About</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+        </div>
     </nav>
     <div class="container">
 
       <div class="starter-template">
-        <h1>&nbsp;</h1>
-        <p style="text-align:center"><input type="button" class="btn btn-default" id="saveData" value="Save tags" /><input type="button" class="btn btn-default" id="get_new_image" value="Get new" /></p>
+      	<div id="button-container" class="text-center">
+	  		<input type="button" class="btn btn-default btn-margin" id="saveData" value="Save tags" />
+	  		<input type="button" class="btn btn-default btn-margin" id="get_new_image" value="Get new" />
+      	</div>
         <p class="text-center" id="status"></p>
-        <div id="image_container"><img src="" class="taggd" id="tagging_image"></div>
-        <div id='latest-tags'></div>
+        <div>
+	        <div id="image_container" class="fix">
+	        	<img src="" class="taggd" id="tagging_image">
+	        </div>
+ 		</div>
+      	<div id="text-container" class="login">
+        <p class="text-center">
+        	<span id="stats" class="text-pad"></span>
+        	<span>
+        		<span id="userStats" class="text-pad">Log on to save tag points:&nbsp;</span>
+    		</span>
+    		<span class="fb-login-button text-pad" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></span>
+		</p>
+        </div>
       </div>
     </div>
     </body>
-    
+
     <script>
-	var options = {
-		
-	  align: {
-	    y: 'bottom'
-	  },
-	
-	  offset: {
-	    top: -35
-	  },
-		
-		handlers: {
-	      mouseenter: 'show',
-	      mouseleave: 'hide',
-	    },
-    	
-    	edit: true
-	};
-	
-	var data = [
-	// 	{ x: 0.62, y: 0.7, text: 'Rope'             },
-	// 	{ x: 0.51, y: 0.5, text: 'Bird'             },
-	// 	{ x: 0.40, y: 0.3, text: 'Water, obviously' }
-	];
-	
-	/*var taggd = $('.taggd').taggd( options, data );
-	taggd.on('change', function(e){
-		console.log(taggd.data);
-	});*/
+
 	var taggd = '';
+	var taggd_user = '';
 
 	$('#saveData').click(function(e){
-		tagCtrl.saveData(taggd.data);
+		//$('#get_new_image').prop('disabled', true);
+		//$('#saveData').prop('disabled', true);
+		tagCtrl.saveData(taggd_user.data);/*.success(function(){
+			$('#get_new_image').prop('disabled', false);
+			$('#saveData').prop('disabled', false);
+			
+		});*/
 		$('#saveData').blur();
 	});
 	
@@ -95,43 +150,85 @@
 	});
 	
 	var updateImage = function(image_id){
+		$('#get_new_image').prop('disabled', true);
+		$('#saveData').prop('disabled', true);
 		Helper.updateStatus("loading image...");
+	
 		if(taggd !== ''){
 			taggd.dispose();
 		}
+		if(taggd_user !== ''){
+			taggd_user.dispose();
+		}
 	
 		$("#tagging_image").remove();
-		$("#image_container").html('<img src="" class="taggd" id="tagging_image" />');
+		$("#image_container").html(
+		'<div id="taggd_container">' + 
+			'<img src="" class="taggd" id="tagging_image" />' +
+        '<div>');
+        
 		receiver.getImage(image_id).success(function(newData){
 			var img = new Image();
+			
 			img.onload = function () {
+			   $('#get_new_image').prop('disabled', false);
+			   $('#saveData').prop('disabled', false);
+			   
 			   Helper.updateStatus("click on the picture to start tagging");
+			    $('#tagging_image').attr('src', newData.resizedUrl);
+				
+				$('#fullsize_url').attr('href', newData.originalUrl);
+
+				//Taggd options
+				var options = {
+					  align: {
+					    y: 'bottom'
+					  },
+					
+					  offset: {
+					    top: -35
+					  },
+					
+					handlers: {
+				      mouseenter: 'show',
+				      mouseleave: 'hide',
+				    },
+	
+			    	edit: false
+				};
+
+				taggd = $('.taggd').taggd( options, [] );
+				taggd.clear();
+				if(newData.tags){
+					taggd.addData(newData.newTags);
+				}
+				options.edit = true;
+				taggd_user = $('.taggd').taggd( options, [] );
+				
+			    $('#tagged_container').append('<div class="desc text-center">' +
+           		'<a href="" id="fullsize_url" target="_blank" class="desc_content text-left">download full size</a>' +
+        		'</div>');
+				
+				if(newData.id)
+					window.history.pushState("", null, "?image_id=" + newData.id);
 			};
+			
 			img.src = newData.resizedUrl;
-			$('#tagging_image').attr('src', newData.resizedUrl);
-			taggd = $('.taggd').taggd( options, [] );
-			taggd.clear();
-			if(newData.tags){
-				taggd.addData(newData.newTags);
-			}
 		});
 		
-		getLatestTags();
+	//	getLatestTags();
+		getStats();
 	};
 	
-	var getLatestTags = function()
+	var getStats = function()
 	{
-		receiver.getLatestTags().success(function(data){
-			var html = '<div><p class="lead">Latest tags: ';
-			data.map(function(value){
-				html = html + '<a href="search?term=' + value.name + '">' + value.name + '</a>&nbsp;';
-			});
-			
-			html = html + '</p></div>';
-			$('#latest-tags').html(html);
-			
+		receiver.getStats().success(function(data){
+			$('#stats').html('Tagged images: <b>' + data.imagesWithTags + '</b>');
+			if(data.userTags > 0){
+				$('#userStats').html('Your points: <b>' + data.userTags + '</b>');
+			}
 		});
-	};
+	}
 	
 	
 	$(function(){
