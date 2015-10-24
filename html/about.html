@@ -9,11 +9,11 @@
     <meta name="author" content="">
     <!-- Open Graph data -->
     <meta property="og:title" content="Crowdsourcing DR Images" />
-    <meta property="og:url" content="https://hack4dk-2015-stumpdk-1.c9users.io/html/index.html" />
-    <meta property="og:image" content="https://hack4dk-2015-stumpdk-1.c9users.io/frontimage.jpg" />
-    <meta property="og:description" content="Help us make DR historic photos accessible!" />
+    <meta property="og:url" content="https://hack4dk-2015-stumpdk-1.c9.io/html/index.html" />
+    <meta property="og:image" content="https://hack4dk-2015-stumpdk-1.c9.io/frontimage.jpg" />
+    <meta property="og:description" content="Hjælp os med at gøre DR's historiske billeder tilgængelige!" />
 
-    <title>DR crowdsourcing - about</title>
+    <title>Opmærkning af DR's billeder - om projektet</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -22,7 +22,16 @@
   </head>
 
   <body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-69261113-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
     <nav class="navbar navbar-default">
       <!--<div class="container">-->
         <div class="navbar-header">
@@ -32,12 +41,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Crowdsourcing DR history</a>
+          <a class="navbar-brand" href="/">Opmærkning af DR's billeder</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="search">Search</a></li>
-            <li class="active"><a href="about">About</a></li>
+            <li><a href="search">Søg</a></li>
+            <li class="active"><a href="about">Om projektet</a></li>
           </ul>
         </div><!--/.nav-collapse -->
      <!-- </div>-->
@@ -47,11 +56,11 @@
 
       <div class="starter-template">
 <div id="output" class="content markdown-body">
-  <h1>FAQ (in danish)</h1>
+  <h1>FAQ</h1>
 
 <h2>Hvad går projektet ud på?</h2>
 
-<p>Formålet med denne hjemmeside er at gøre DR's historiske billeder tilgængelige. Lige nu ligger de på DR's hjemmeside i en meget stor størrelse, og uden informationer, som gør det muligt at søge i dem.</p>
+<p>DR har digitaliseret 77.000 billeder, som dokumenterer DR's historie. Formålet med denne hjemmeside er at gøre disse billeder tilgængelige. Lige nu ligger de på DR's hjemmeside (se dem <a href="http://hack4dk.dr.dk/gallery/">her</a>), men man kan ikke søge efter bestemte billeder, og de tilgængelige billeder er meget store (cirka 6 megabytes pr. stk).</p>
 
 <p>Dette projekt forsøger at afhjælpe dette problem, ved, med frivilliges hjælp, at opmærke billederne. Når de bliver opmærket med informationer er det muligt at søge efter disse informationer. Og så bliver det lettere at finde rundt i dem.</p>
 
@@ -71,10 +80,14 @@
 
 <h2>Er det DR's projekt?</h2>
 
-<p>Nej, det er det ikke. DR har stillet billederne til rådighed, men DR har ikke noget med dette projekt at gøre.</p>
+<p>Nej, det er det ikke. DR har stillet billederne til rådighed for alle, men DR har ikke noget med dette projekt at gøre.</p>
+<p>Der er pt. ingen aftale med DR om at de vil benytte disse data, men håbet er, at DR vil benytte dataene når/hvis DR selv vil gøre deres billeder mere tilgængelige.</p>
 
-<p>De data du taster ind bliver stillet frit til rådighed med det samme.</p></div>
-        <h1>Technical information</h1>
+<h2>Hvad sker der med mit arbejde?</h2>
+<p>De tags du opretter, bliver stillet frit til rådighed med det samme. Det sker gennem et API (se nedenfor).</p>
+<p>&nbsp;</p>
+</div>
+        <h1>Technical information (in english)</h1>
         <p>The project is hacked together at <a href="http://hack4.dk">#Hack4DK 2015</a>.</p>
         <p>Based on <a href="http://hack4dk.dr.dk">open data</a> from the archives of DR.</p>
         <p>Source code at <a href="https://github.com/stumpdk/hack4dk_DR_images">Github</a></p>
@@ -84,20 +97,20 @@
         <div>
           <h3>Images</h4>
           <h4>Search for images with certain tags:</h4>
-          <p><a href="https://hack4dk-2015-stumpdk-1.c9users.io/api/images/search?term=search_term_goes_here">/api/images/search?term={term}</a></p>
+          <p><a href="/api/images/search?term=search_term_goes_here">/api/images/search?term={term}</a></p>
           <h4>Get random image:</h4>
-          <p><a href="https://hack4dk-2015-stumpdk-1.c9users.io/api/images/random">/api/images/random</a></p>
+          <p><a href="/api/images/random">/api/images/random</a></p>
           <h4>Get list of images</h4>
-          <p><a href="https://hack4dk-2015-stumpdk-1.c9users.io/api/images/10/100">api/images/{offset}/{limit}</a></p>
+          <p><a href="/api/images/10/100">api/images/{offset}/{limit}</a></p>
           <h4>Get a smaller image:</h4>
-          <p><a href="https://hack4dk-2015-stumpdk-1.c9users.io/api/img_resize/325445/thumb">/api/img_resize/{image_id}/{thumb|preview}</a></p>
+          <p><a href="/api/img_resize/325445/thumb">/api/img_resize/{image_id}/{thumb|preview}</a></p>
         </div>
         <div>
           <h3>Tags</h3>
           <h4>Get a list of tags:</h4>
-          <p><a href="https://hack4dk-2015-stumpdk-1.c9users.io/api/tags?term=dame">/api/tags?term={search term}</a></p> 
+          <p><a href="/api/tags?term=dame">/api/tags?term={search term}</a></p> 
           <h4>Save tags for image:</h4>
-          <p><a href="https://hack4dk-2015-stumpdk-1.c9users.io/api/images/metadata">/api/image/metadata/{image_id}</a></p> 
+          <p><a href="/api/images/metadata">/api/image/metadata/{image_id}</a></p> 
         </div>
       </div>
     </div>
