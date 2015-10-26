@@ -110,7 +110,7 @@
     		receiver.getLatestTags().success(function(data){
     			var html = '<div><p>Seneste tags: ';
     			data.map(function(value){
-    				html = html + '<a href="search?term=' + value.name + '">' + value.name + '</a>&nbsp;';
+    				html = html + '<a href="search?term=' + encodeURIComponent(value.name) + '">' + value.name + '</a>&nbsp;';
     			});
     			
     			html = html + '</p></div>';
