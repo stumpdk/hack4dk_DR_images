@@ -130,7 +130,10 @@
 		this.wrapper.find('.taggd-item-hover').each(function() {
 			var $e = $(this),
 				
-				$input = $('<input type="text" size="16" />')
+				/**
+				 * StumpDK: Added id for input
+				 */ 
+				$input = $('<input id="taggd-item-input" type="text" size="16" />')
 					.val($e.text()),
 				$button_ok = $('<button />')
 					.html(_this.options.strings.save),
@@ -424,7 +427,23 @@
 					top: top + _this.options.offset.top
 				});
 				
-
+			/*	var tagSuggestions = new Bloodhound({
+				        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+				        queryTokenizer: Bloodhound.tokenizers.whitespace,
+				        //prefetch: '../data/films/post_1960.json',
+				        remote: {
+				          url: '../api/tags?term=%QUERY',
+				          wildcard: '%QUERY'
+				        }
+				      });
+				  //$el.append('<div class="tag-suggest-taggd"></div>');    
+			      console.log($('#taggd-item-input'));
+			      $('#taggd-item-input').first().typeahead({
+			        name: 'best-pictures',
+			        display: 'name',
+			        source: tagSuggestions,
+			        minLength: 0
+			      });*/
 			}
 		});
 	};
