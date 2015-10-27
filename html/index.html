@@ -69,6 +69,10 @@
     width: 100%;
     padding: 0px;
 }
+#facebook-share-link{
+	cursor: pointer;
+    font-size: 0.9em;
+}
   </style>
 	      
     </head>
@@ -131,8 +135,8 @@
         		<span id="userStats" class="text-pad">Log på for at tælle dine tags:&nbsp;</span>
     		</span>
     		<span class="fb-login-button text-pad" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></span>
-    		<div class="fb-share-button" data-href="" data-layout="link" id="facebook-share-link"></div>
 		</p>
+		<a class="text-center" id="facebook-share-link">Del på Facebook</a>
         </div>
       </div>
     </div>
@@ -162,7 +166,7 @@
 	var updateImage = function(image_id){
 		$('#get_new_image').prop('disabled', true);
 		$('#saveData').prop('disabled', true);
-		Helper.updateStatus("henter billede...");
+		Helper.updateStatus("henter billede (det kan tage lidt tid)...");
 	
 		if(taggd !== ''){
 			taggd.dispose();
@@ -186,9 +190,9 @@
 			   $('#saveData').prop('disabled', false);
 			   $('#image_container').show();
 			   Helper.updateStatus("klik et sted på billedet for at opmærke det");
-			    $('#tagging_image').attr('src', newData.resizedUrl);
+			    $('#tagging_image').attr('src', newData.image.resizedUrl);
 				
-				$('#fullsize_url').attr('href', newData.originalUrl);
+				$('#fullsize_url').attr('href', newData.image.originalUrl);
 
 				//Taggd options
 				var options = {
@@ -210,24 +214,30 @@
 
 				taggd = $('.taggd').taggd( options, [] );
 				taggd.clear();
-				if(newData.tags){
-					taggd.addData(newData.newTags);
+				if(newData.tags && newData.tags.length > 0){
+					taggd.addData(newData.tags);
 				}
 				options.edit = true;
 				taggd_user = $('.taggd').taggd( options, [] );
 				
 			    $('#taggd_container').append('<div class="desc">' +
-           		'<a href="' + newData.originalUrl + '" id="fullsize_url" target="_blank" class="text-left">download fuld størrelse</a>' +
+           		'<a href="' + newData.image.originalUrl + '" id="fullsize_url" target="_blank" class="text-left">download fuld størrelse</a>' +
         		'</div>');
-        		$('#facebook-share-link').attr('data-href', window.location.href);
-				
-				$("meta[property='og:image']").attr("content", newData.resizedUrl);
-				
-				if(newData.id)
-					window.history.pushState("", null, "?image_id=" + newData.id);
+        	//	$('#facebook-share-link').attr('data-href', window.location.href.replace('html/','html/static.php'));
+				$('#facebook-share-link').off();
+				$('#facebook-share-link').click(function(){
+					console.log(window.location.href.replace('html/','html/static.php'));
+					FB.ui(
+					 {
+					  method: 'share',
+					  href: window.location.href.replace('html/','html/static.php')
+					}, function(response){});
+				});
+				if(newData.image.id)
+					window.history.pushState("", null, "?image_id=" + newData.image.id);
 			};
 			
-			img.src = newData.resizedUrl;
+			img.src = newData.image.resizedUrl;
 		});
 		
 	//	getLatestTags();

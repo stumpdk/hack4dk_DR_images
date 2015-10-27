@@ -64,7 +64,7 @@ require( __DIR__ . '/../vendor/autoload.php');
         ->columns('min(id) as minimum, max(id) as maximum')
         ->getQuery()
         ->getSingleResult();
-        
+   /*     
         $number = rand($minMax->minimum, $minMax->maximum);
       //  $result = Images::findFirstById($number);
       //var_dump($number);
@@ -75,16 +75,21 @@ require( __DIR__ . '/../vendor/autoload.php');
             ->where('Images.id = ' . $number)
             ->getQuery()
             ->getSingleResult();
+      
         
         $response->setJsonContent($result);
         $response->send();        
+         */ 
+        $id= rand($minMax->minimum, $minMax->maximum);
+        $image = new Images();
+        echo json_encode($image->getImageInfo($id));
     });
     
     /**
      * Get specific image
      */ 
     $app->get('/image/{id:[0-9]+}', function($id) use ($app, $response) {
-        $image = Images::findFirstById($id);
+        /*$image = Images::findFirstById($id);
         
         $sql = 'select x, y, value, name as text FROM images_tags left join tags on images_tags.tag_id = tags.id WHERE confidence is null AND images_tags.image_id = ' . $id;
         
@@ -98,8 +103,9 @@ require( __DIR__ . '/../vendor/autoload.php');
         $result['image'] = $image;
         
         $i = 0;
-        $result['tags'] = $resultSet->fetchAll();
-        echo json_encode($result);
+        $result['tags'] = $resultSet->fetchAll();*/
+        $image = new Images();
+        echo json_encode($image->getImageInfo($id));
        
      /*   $manager = $app->getDI()->get('modelsManager');
         $tags = $manager->createBuilder()
@@ -168,9 +174,10 @@ require( __DIR__ . '/../vendor/autoload.php');
         $rowcount = ImagesTags::count(['distinct' => 'image_id', 'conditions' => 'confidence is null']);
         $imagesCount = Images::count();
         $tags = ImagesTags::count(['distinct' => 'tag_id', 'conditions' => 'confidence is null']);
+        $users = Users::count();
         
        // $latestTag = ImagesTags::findFirst(['orderBy' => 'created DESC', 'conditions' => 'confidence is null', 'limit' => 1])->getTags();
-        $response->setJsonContent(['imagesWithTags' => $rowcount, 'images' => $imagesCount, 'tags' => $tags, 'userTags' =>$userTags, 'latestTag' => 0]);
+        $response->setJsonContent(['imagesWithTags' => $rowcount, 'images' => $imagesCount, 'tags' => $tags, 'userTags' =>$userTags, 'latestTag' => 0, 'users' => $users]);
         $response->send();
     });
     
@@ -309,15 +316,20 @@ $result = $manager->executeQuery($phql);
         
         $image->imagesTags->tags = $tags;
         
+        $hasThumb = $image->s3_thumb;
+        
         $image->s3_thumb = 1;
         if(!$image->save()){
             var_dump($image->getMessages());
         }
         
         //$image->resizeExternalFile($id, $image->url, Images::SIZE_THUMB);
-        $data = $image->resizeExternalFile($image->url, Images::SIZE_THUMB);
+        //We only resize if the image is not resized already
+        if($hasThumb == 0){
+            $data = $image->resizeExternalFile($image->url, Images::SIZE_THUMB);
+            $image->saveFileContent($id.Images::SIZE_THUMB, $data);
+        }
         
-        $image->saveFileContent($id.Images::SIZE_THUMB, $data);
         $app->response->setStatusCode('200');
         $app->response->send();
         

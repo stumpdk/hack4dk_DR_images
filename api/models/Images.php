@@ -26,6 +26,7 @@ class Images extends Model
         $this->resizedUrl = UrlHelper::getUrl() . '/api/img_resize/' . $this->id . '/preview';
         $this->thumbUrl = UrlHelper::getUrl() . '/api/img_resize/' . $this->id . '/thumb';
         $this->originalUrl = str_replace(UrlHelper::getUrl(),'http://hack4dk.dr.dk',$this->url);
+        $this->imagePageUrl = UrlHelper::getUrl() . '/html/?image_id=' . $this->id;
         
         if($this->s3_thumb == 1)
         {
@@ -91,5 +92,24 @@ class Images extends Model
     public function saveFileContent($id, $fileData){
         $s3 = new S3Helper();
         $s3->put($id, $fileData);
+    }
+    
+    public function getImageInfo($id){
+        $image = Images::findFirst($id);
+        $sql = 'select x, y, value, name as text FROM images_tags left join tags on images_tags.tag_id = tags.id WHERE confidence is null AND images_tags.image_id = ' . $id;
+        
+        $resultSet = $this->getDI()->get('db')->query($sql);
+
+        $resultSet->setFetchMode(Phalcon\Db::FETCH_ASSOC);
+
+        $tags = $image->getTags()->toArray();
+        $imageTags = $image->getImagesTags()->toArray();
+        $result = [];
+        $result['image'] = $image;
+        
+        $i = 0;
+        $result['tags'] = $resultSet->fetchAll();
+        
+        return $result;
     }
 }

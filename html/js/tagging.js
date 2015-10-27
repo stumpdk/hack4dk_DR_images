@@ -60,8 +60,8 @@
                 return $.ajax(dataUrl + 'images/random', {method: 'GET', dataType: 'json', cache: false}).
                 success(function(data){
               //      console.log('fetched random image:', data.resizedUrl);
-                    pub.id = data.id;
-                    pub.url = data.resizedUrl;
+                    pub.id = data.image.id;
+                    pub.url = data.image.resizedUrl;
                     return data;
                 });
             }
