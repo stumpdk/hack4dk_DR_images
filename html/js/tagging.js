@@ -129,9 +129,10 @@
     pub.addResultsToDOM = function(element){
       $(element).html();
       var html = '<div>fandt ' + pub.results.length + ' resultat(er)</div><div class="row">';
+      var url = Helper.getUrl();
       for(var i = 0; i < pub.results.length; i++)
       {
-        html = html + '<div class="col-lg-3 col-md-4 col-xs-6 thumb"><a class="thumbnail" href="/?image_id=' + pub.results[i].id + '"><img class="img-responsive" src="' + pub.results[i].url + '"/></a></div>';
+        html = html + '<div class="col-lg-3 col-md-4 col-xs-6 thumb"><a class="thumbnail" href="' + url + '/html/?image_id=' + pub.results[i].id + '"><img class="img-responsive" src="' + pub.results[i].url + '"/></a></div>';
       }
       html = html + '</div>';
       $(element).html(html);
