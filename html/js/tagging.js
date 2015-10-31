@@ -160,7 +160,10 @@
 	pub.getUrl = function(){
 	    var http = location.protocol;
         var slashes = http.concat("//");
-        var host = slashes.concat(window.location.hostname);
+        var host = slashes.concat(window.location.href);
+        
+   //     host = ;
+        host = host.substr(0, host.indexOf('/html'));
         
         return host;
 	};
