@@ -73,6 +73,32 @@
 	cursor: pointer;
     font-size: 0.9em;
 }
+.tt-menu {
+  max-height: 150px;
+  overflow-y: auto;
+
+  /*width: 100%;*/
+  width:226px;
+  margin: 12px 0;
+  padding: 8px 0;
+  background-color: rgba(219, 50, 92, 0.75);
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.tt-suggestion {
+  padding: 3px 20px;
+  /* font-size: 16px; */
+  /* line-height: 24px; */
+}
+.tt-hint {
+visibility:hidden;
+}
   </style>
 	      
     </head>
@@ -106,7 +132,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Opmærkning af DR's billeder</a>
+          <a class="navbar-brand" href="/html">Opmærkning af DR's billeder</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -189,7 +215,7 @@
 			   $('#get_new_image').prop('disabled', false);
 			   $('#saveData').prop('disabled', false);
 			   $('#image_container').show();
-			   Helper.updateStatus("klik et sted på billedet for at opmærke det");
+			   Helper.updateStatus("klik et sted på billedet for at opmærke det. I tvivl om hvordan du kommer i gang? Klik <a href='/html/about'>her</a>");
 			    $('#tagging_image').attr('src', newData.image.resizedUrl);
 				
 				$('#fullsize_url').attr('href', newData.image.originalUrl);
