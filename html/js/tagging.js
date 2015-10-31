@@ -158,8 +158,8 @@
 	};
 	
 	pub.getUrl = function(){
-	    var http = location.protocol;
-        var slashes = http.concat("//");
+	//    var http = location.protocol;
+    //    var slashes = http.concat("//");
         var host = slashes.concat(window.location.href);
         
    //     host = ;
