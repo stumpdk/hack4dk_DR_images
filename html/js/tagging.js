@@ -119,7 +119,7 @@
     var pub = {};
     
     pub.search = function(term){
-        $.ajax('/api/images/search?term=' + encodeURI(term), {'dataType' : 'json', 'method': 'get'})
+        $.ajax( Helper.getUrl() + '/api/images/search?term=' + encodeURI(term), {'dataType' : 'json', 'method': 'get'})
         .success(function(data){
             pub.results = data;
             pub.addResultsToDOM('#search_results');
