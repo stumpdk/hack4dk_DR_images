@@ -27,6 +27,7 @@ require( __DIR__ . '/../vendor/autoload.php');
         $session->start();
         return $session;
     });    
+    
     $di->setShared('facebook', function() {
         return new Facebook\Facebook([
           'app_id' => '976309079106997',
@@ -35,18 +36,9 @@ require( __DIR__ . '/../vendor/autoload.php');
         ]);
     });
     
-    // Set up the database service
-    $di->set('db', function () {
-        return new PdoMysql(
-            array(
-                "host"     => "127.0.0.1",
-                "username" => "stumpdk",
-                "password" => "",
-                "dbname"   => "test",
-                "charset"  => "utf8"
-            )
-        );
-    });
+    //Run config.php
+    require './config/config.php';
+    
     $di->set("request", "Phalcon\Http\Request", true);
     
     $app = new Micro();
@@ -173,11 +165,20 @@ require( __DIR__ . '/../vendor/autoload.php');
         }
         $rowcount = ImagesTags::count(['distinct' => 'image_id', 'conditions' => 'confidence is null']);
         $imagesCount = Images::count();
+        $imagesThumbs = Images::count(['conditions' => 's3_preview = 1']);
         $tags = ImagesTags::count(['distinct' => 'tag_id', 'conditions' => 'confidence is null']);
         $users = Users::count();
         
        // $latestTag = ImagesTags::findFirst(['orderBy' => 'created DESC', 'conditions' => 'confidence is null', 'limit' => 1])->getTags();
-        $response->setJsonContent(['imagesWithTags' => $rowcount, 'images' => $imagesCount, 'tags' => $tags, 'userTags' =>$userTags, 'latestTag' => 0, 'users' => $users]);
+        $response->setJsonContent([
+            'imagesWithTags' => $rowcount, 
+            'images' => $imagesCount, 
+            'tags' => $tags, 
+            'userTags' =>$userTags, 
+            'latestTag' => 0, 
+            'users' => $users,
+            'ImagesThumbs' => $imagesThumbs
+        ]);
         $response->send();
     });
     
@@ -218,11 +219,11 @@ require( __DIR__ . '/../vendor/autoload.php');
           
           header("Content-type: image/jpeg");
           echo $imageData;
-          
-          $image->saveFileContent($id.$size, $imageData);
           $image->s3_preview = $s3_preview;
           $image->s3_thumb = $s3_thumb;
           $image->save();
+          
+          $image->saveFileContent($id.$size, $imageData);
         }
     });
 
