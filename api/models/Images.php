@@ -26,7 +26,7 @@ class Images extends Model
         $this->resizedUrl = UrlHelper::getUrl($this->getDI()) . '/api/img_resize/' . $this->id . '/preview';
         $this->thumbUrl = UrlHelper::getUrl($this->getDI()) . '/api/img_resize/' . $this->id . '/thumb';
         $this->originalUrl = str_replace(UrlHelper::getUrl($this->getDI()),'http://hack4dk.dr.dk',$this->url);
-        $this->imagePageUrl = UrlHelper::getUrl($this->getDI()) . '/html/?image_id=' . $this->id;
+        $this->imagePageUrl = UrlHelper::getUrl($this->getDI()) . '/?image_id=' . $this->id;
         
         if($this->s3_thumb == 1)
         {

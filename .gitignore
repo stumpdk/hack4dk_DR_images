@@ -2,3 +2,4 @@ resized_images/*
 php_errors.log
 composer.phar
 vendor/
+api/config/
