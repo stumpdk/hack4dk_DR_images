@@ -96,6 +96,11 @@ class Images extends Model
     
     public function getImageInfo($id){
         $image = Images::findFirst($id);
+        
+        if(!$image){
+            die('image not found!');
+        }
+        
         $sql = 'select x, y, value, name as text FROM images_tags left join tags on images_tags.tag_id = tags.id WHERE confidence is null AND images_tags.image_id = ' . $id;
         
         $resultSet = $this->getDI()->get('db')->query($sql);

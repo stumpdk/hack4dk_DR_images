@@ -19,7 +19,11 @@ require( __DIR__ . '/../vendor/autoload.php');
         )
     )->register();
     
+    //New DI
     $di = new FactoryDefault();
+    
+    //Run config.php
+    require './config/config.php';
     
     // Start the session the first time when some component request the session service
     $di->setShared('session', function () {
@@ -28,6 +32,7 @@ require( __DIR__ . '/../vendor/autoload.php');
         return $session;
     });    
     
+    //Set shared Facebook SDK
     $di->setShared('facebook', function() {
         return new Facebook\Facebook([
           'app_id' => '976309079106997',
@@ -36,9 +41,7 @@ require( __DIR__ . '/../vendor/autoload.php');
         ]);
     });
     
-    //Run config.php
-    require './config/config.php';
-    
+    //Set request object
     $di->set("request", "Phalcon\Http\Request", true);
     
     $app = new Micro();
@@ -56,62 +59,22 @@ require( __DIR__ . '/../vendor/autoload.php');
         ->columns('min(id) as minimum, max(id) as maximum')
         ->getQuery()
         ->getSingleResult();
-   /*     
-        $number = rand($minMax->minimum, $minMax->maximum);
-      //  $result = Images::findFirstById($number);
-      //var_dump($number);
-        $result = $manager->createBuilder()
-            ->from('Images')
-     //       ->join('Tags')
-            ->columns('*')
-            ->where('Images.id = ' . $number)
-            ->getQuery()
-            ->getSingleResult();
-      
-        
-        $response->setJsonContent($result);
-        $response->send();        
-         */ 
+
         $id= rand($minMax->minimum, $minMax->maximum);
+        
         $image = new Images();
-        echo json_encode($image->getImageInfo($id));
+        $response->setJsonContent($image->getImageInfo($id));
+        $response->send();
     });
     
     /**
      * Get specific image
      */ 
     $app->get('/image/{id:[0-9]+}', function($id) use ($app, $response) {
-        /*$image = Images::findFirstById($id);
-        
-        $sql = 'select x, y, value, name as text FROM images_tags left join tags on images_tags.tag_id = tags.id WHERE confidence is null AND images_tags.image_id = ' . $id;
-        
-        $resultSet = $app->getDI()->get('db')->query($sql);
-
-        $resultSet->setFetchMode(Phalcon\Db::FETCH_ASSOC);
-
-        $tags = $image->getTags()->toArray();
-        $imageTags = $image->getImagesTags()->toArray();
-        $result = [];
-        $result['image'] = $image;
-        
-        $i = 0;
-        $result['tags'] = $resultSet->fetchAll();*/
         $image = new Images();
-        echo json_encode($image->getImageInfo($id));
-       
-     /*   $manager = $app->getDI()->get('modelsManager');
-        $tags = $manager->createBuilder()
-        ->from('Images')
-        ->columns('*')
-        ->leftjoin('Tags')
-        ->where('ImagesTags.id = :name', ['id' => $id])
-        ->limit(100)
-        ->getQuery()
-        ->getSingleResult();        
-        
-        $response->setJsonContent($tags->toArray());
+
+        $response->setJsonContent($image->getImageInfo($id));
         $response->send();
-       */ 
     });
 
     $app->get('/tags/latest', function() use ($app, $response){
@@ -132,29 +95,12 @@ require( __DIR__ . '/../vendor/autoload.php');
     });
     
     $app->get('/test', function() use ($app, $response){
-/*        $request = $app->getDI()->get('request');
-        $name = $request->getQuery('term', null, false);
 
-        $manager = $app->getDI()->get('modelsManager');
-        $tags = $manager->createBuilder()
-        ->from('Images')
-        ->columns('*')
-        ->leftjoin('Tags')
-        ->where('Tags.name LIKE :name:', ['name' => '%'.$name.'%'])
-        ->limit(100)
-        ->getQuery()
-        ->execute();
-        
-        $response->setJsonContent($tags->toArray());
-        $response->send();*/
-        //$user = new Users();
-//$user->logout();
-        //var_dump( $user->checkLogin());
-        //To get this to work: Put a credentials file in /home/your_user/.aws/
-        $image = new Images();
-        $image->resize();
     });
     
+    /**
+     * Present stats
+     */ 
     $app->get('/stats', function() use ($response){
     //    $it = new ImagesTags();
         $user = new Users();
@@ -186,17 +132,20 @@ require( __DIR__ . '/../vendor/autoload.php');
      * Present image list by offset and limit
      */ 
     $app->get('/images/{offset:[0-9]+}/{limit:[0-9]+}', function($offset, $limit) use ($response){
+        if($limit > 10000)
+            die('maximum limit is 10000');
+            
         echo json_encode(Images::find(['offset' => $offset, 'limit' => $limit])->toArray(), JSON_NUMERIC_CHECK);
     });
     
     /**
-     * resizing images.
-     * TODO: Get caching to work.
+     * Resizing images
      */ 
     $app->get('/img_resize/{id:[0-9]+}/{size}', function($id, $size) use ($app, $response) {
         $image = Images::findFirstById($id);
         $s3_thumb = 0;
         $s3_preview = 0;
+        $imageData = false;
         
         if($size == 'preview'){
             $size = Images::SIZE_PREVIEW;
@@ -243,27 +192,14 @@ require( __DIR__ . '/../vendor/autoload.php');
         }
         
         $termNew = substr($termNew, 0, strlen($termNew)-4);
-                //$termNew = '\'' . $request->getQuery('term', null, false) . '\'';
-                $url = UrlHelper::getUrl($app->getDI()) . '/api/img_resize/';
+
+        $url = UrlHelper::getUrl($app->getDI()) . '/api/img_resize/';
         $sql = 'select distinct(images.id), s3_thumb, CONCAT("'. $url .'",images.id,"/thumb") as url from images left join images_tags ON images.id = images_tags.image_id LEFT JOIN tags on images_tags.tag_id = tags.id WHERE ' . $termNew . ' ';
         $phql = "select Images.* from Images left join ImagesTags ON Images.id = ImagesTags.image_id LEFT JOIN Tags on ImagesTags.tag_id = Tags.id WHERE Tags.is_used = 1 AND Tags.name LIKE '%" . $request->getQuery('term', null, false) . "%'";
-/*$manager = $app->getDI()->get('modelsManager');
-$result = $manager->executeQuery($phql);
-  /*      
-        $manager = $app->getDI()->get('modelsManager');
-        $result = $manager->createBuilder()
-        ->from('Images')
-        ->leftJoin('Tags')
-        //->columns('*')
-        ->where('Tags.name LIKE :name:', ['name' => '%' . $request->getQuery('term', null, false) . '%'])
-        ->getQuery()
-        ->execute();
-    */    
-//echo json_encode($result->toArray());
         
         $resultSet = $app->getDI()->get('db')->query($sql);
-
         $resultSet->setFetchMode(Phalcon\Db::FETCH_ASSOC);
+        
         $data = [];
         foreach($resultSet->fetchAll() as $row){
             if($row['s3_thumb'] == 1)
@@ -285,6 +221,7 @@ $result = $manager->executeQuery($phql);
         $image = Images::findFirst("id = '" . $id . "'");   
 
         $tags = [];   
+        
         foreach($data as $tagRow){
             $tag = Tags::findFirst("name = '" . $tagRow['name'] . "' AND category_id = '" . $tagRow['category_id']  . "'");
             
@@ -298,6 +235,8 @@ $result = $manager->executeQuery($phql);
                 echo 'could not save tag.';
                 var_dump($tagRow);
                 var_dump($tag->getMessages());
+                $app->response->setStatusCode('500');
+                $app->response->send();
             }
             $tag->refresh();
             
@@ -310,6 +249,8 @@ $result = $manager->executeQuery($phql);
                         
             if(!$imagesTags->save()){
                 var_dump($imagesTags->getMessages());
+                $app->response->setStatusCode('500');
+                $app->response->send();
             }
             
             $tags[] = $tag;
@@ -322,9 +263,10 @@ $result = $manager->executeQuery($phql);
         $image->s3_thumb = 1;
         if(!$image->save()){
             var_dump($image->getMessages());
+            $app->response->setStatusCode('500');
+            $app->response->send();
         }
-        
-        //$image->resizeExternalFile($id, $image->url, Images::SIZE_THUMB);
+
         //We only resize if the image is not resized already
         if($hasThumb == 0){
             $data = $image->resizeExternalFile($image->url, Images::SIZE_THUMB);
@@ -332,6 +274,7 @@ $result = $manager->executeQuery($phql);
         }
         
         $app->response->setStatusCode('200');
+        $app->response->setJsonContent([]);
         $app->response->send();
         
     });
