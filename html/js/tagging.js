@@ -81,10 +81,19 @@
                 data.data[i].name = data.data[i].text;
                 data.data[i].category_id = 1;
             }
-            return $.ajax(dataUrl + 'image/metadata/' + pub.id, {method: 'post', dataType: 'json', cache: false, data: convertedData}).
-            complete(function(data){
-                Helper.updateStatus("dine tags blev gemt...");
-            });        
+            var request = $.ajax(dataUrl + 'image/metadata/' + pub.id, {
+                method: 'post', 
+                dataType: 'json', 
+                cache: false, data: convertedData,
+                success: function(data){
+                    Helper.updateStatus("dine tags blev gemt...");
+                },
+                error: function(){
+                    Helper.updateStatus('kunne ikke gemme! Prøv igen...');
+                }
+            });
+            
+            return request;
         };
         
         pub.getLatestTags = function(){

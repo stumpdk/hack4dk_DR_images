@@ -131,9 +131,9 @@
 			var $e = $(this),
 				
 				/**
-				 * StumpDK: Added id for input
+				 * StumpDK: Added class for input
 				 */ 
-				$input = $('<input id="taggd-item-input" type="text" size="16" />')
+				$input = $('<input class="taggd-item-input bootstraptypeahead" type="text" size="16" />')
 					.val($e.text()),
 				$button_ok = $('<button />')
 					.html(_this.options.strings.save),
@@ -164,7 +164,7 @@
 					}).pop();
 				
 				if(item) item.text = $input.val();
-				
+
 				_this.addDOM();
 				_this.element.triggerHandler('change');
 			});
@@ -331,7 +331,10 @@
 			_this.wrapper.append($item);
 			
 			if(typeof v.text === 'string' && (v.text.length > 0 || _this.options.edit)) {
-				$hover = $('<span class="taggd-item-hover" style="position: absolute;" />').html(v.text);
+				/**
+				 * StumpDK: Added overflow:visible for display of typeahead
+				 */ 
+				$hover = $('<span class="taggd-item-hover" style="position: absolute;overflow: visible;" />').html(v.text);
 				
 				$hover.attr({
 					'data-x': v.x,
@@ -419,33 +422,56 @@
 				 */  
 				 //left = 20;
 				 //console.log(_this.wrapper.outerWidth());
-				 left = _this.wrapper.outerWidth()/2 - $el.outerWidth()/2;
-				 top = $el.outerHeight() + 26;
+				left = _this.wrapper.outerWidth()/2 - $el.outerWidth()/2;
+				top = $el.outerHeight() + 26;
 				 
 				$el.css({
 					left: left + _this.options.offset.left,
 					top: top + _this.options.offset.top
 				});
-				
-			/*	var tagSuggestions = new Bloodhound({
-				        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-				        queryTokenizer: Bloodhound.tokenizers.whitespace,
-				        //prefetch: '../data/films/post_1960.json',
-				        remote: {
-				          url: '../api/tags?term=%QUERY',
-				          wildcard: '%QUERY'
-				        }
-				      });
-				  //$el.append('<div class="tag-suggest-taggd"></div>');    
-			      console.log($('#taggd-item-input'));
-			      $('#taggd-item-input').first().typeahead({
-			        name: 'best-pictures',
-			        display: 'name',
-			        source: tagSuggestions,
-			        minLength: 0
-			      });*/
 			}
 		});
+		
+		
+		//StumpDK: Adding Bloodhound Typeahead if option is set
+		if(_this.options.edit == true && _this.options.bloodhoundTypeahead){
+		/*	if(_this.typeaheads && _this.typeaheads.length){
+				for(var i = 0; i < _this.typeaheads.length; i++){
+					_this.typeaheads[i][0].dispose();
+				}
+			}
+			_this.typeaheads = [];
+		*/	
+			
+			//var elements = _this.wrapper.find('input.taggd-item-input.bootstraptypeahead.tt-input:not(.tt-hint)');
+			var elements = _this.wrapper.find('input.taggd-item-input.bootstraptypeahead:not(.tt-hint)');
+			
+			elements.each(function() {
+				
+				console.log('adding for ',this);
+		      	var elem = $(this);
+		      	/*var typeahead =*/ elem.typeahead(null, {
+		        	display: 'name',
+		        	source: _this.options.bloodhoundTypeahead,
+		        	minLength: 0,
+		        	limit: 5
+		      	});
+		      	
+		      	//_this.typeaheads.push(typeahead);
+		      	
+	  	      	elem.on('typeahead:select', function(e){
+		  	      	console.log('selected typeahead value');
+			        elements.triggerHandler('change');
+			       /* term = $('#search_term').val();
+			        if(term.trim().length > 0){
+			          //Perform search
+			          searchModule.search(term);
+			          window.history.pushState("", null, "?term=" + term);
+			          getLatestTags();
+			        }*/
+		      });
+			});
+		}
 	};
 	
 	

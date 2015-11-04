@@ -54,7 +54,7 @@
 
 .taggd-wrapper .taggd-item-hover {
     background-color: rgb(219, 50, 92);
-	color: transparent;
+	/*color: transparent;*/
 	cursor: default;
 	display: block;
     font-weight: lighter;
