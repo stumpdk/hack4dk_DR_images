@@ -249,5 +249,5 @@
   };
     })();
     
-        var dataUrl = Helper.getUrl() + '/api/';//'https://hack4dk-2015-stumpdk-1.c9users.io/api/';
+        var dataUrl = Helper.getUrl() + 'api/';//'https://hack4dk-2015-stumpdk-1.c9users.io/api/';
     
