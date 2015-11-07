@@ -17,7 +17,7 @@
     <title>Opmærkning af DR's billeder</title>
     </head>
     <body>
-    	<img src="<?php echo $imageData['image']['resizedUrl']; ?>">
+    	<!--<img src="<?php echo $imageData['image']['resizedUrl']; ?>">-->
     	<?php foreach($imageData['tags'] as $tag){ ?>
     	<p><?php echo $tag['name']; ?></p>
     	<?php } ?>
