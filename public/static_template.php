@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Open Graph data -->
     <meta property="og:title" content="Opmærkning af DR's billeder" />
-    <meta property="og:url" content="<?php echo $url . '/html/static.php?image_id=' . $imageData['image']['id']; ?>" />
+    <meta property="og:url" content="<?php echo curPageUrl(); ?>" />
     <meta property="og:image" content="<?php echo $imageData['image']['resizedUrl']; ?>" />
     <meta property="og:description" content="Hjælp os med at gøre DR's historiske billeder tilgængelige!" />
 
