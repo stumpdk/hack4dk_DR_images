@@ -137,7 +137,7 @@
     
     pub.addResultsToDOM = function(element){
       $(element).html();
-      var html = '<div>fandt ' + pub.results.length + ' resultat(er)</div><div class="row">';
+      var html = '<div>fandt ' + pub.results.length + ' resultater</div><div class="row">';
       var url = Helper.getUrl();
       for(var i = 0; i < pub.results.length; i++)
       {

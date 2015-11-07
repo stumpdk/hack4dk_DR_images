@@ -56,13 +56,13 @@
 		margin: 10px 10px 10px;
 	}
 	.desc{
-    background-color: #fff;
-    top: -20px;
-    color: #fff;
-    left: 0;
-    opacity: 0.4;
+        /* background-color: #fff; */
+    top: -22px;
+    /* color: #fff; */
+    /* left: 0; */
+    opacity: 0.7;
     position: relative;
-    width: 180px;
+    /* width: 330px; */
 }
 
 .fix{
@@ -145,9 +145,14 @@ visibility:hidden;
 
       <div class="starter-template">
       	<div id="button-container" class="text-center">
-	  		<input type="button" class="btn btn-default btn-margin" id="saveData" value="Gem tags" />
-	  		<!--<input type="button" class="btn btn-default btn-margin" id="get_next_images" value="Hent næste i rækken" />-->
-	  		<input type="button" class="btn btn-default btn-margin" id="get_new_image" value="Hent tilfældigt billede" />
+	  		<span>Navigér:</span>
+	  		<button type="button" class="btn btn-default btn-xs nav-buttons" id="get_last_image"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </button>
+	  		<button type="button" class="btn btn-default btn-xs nav-buttons" id="get_next_image"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> </button>
+	  		<button type="button" class="btn btn-default btn-xs nav-buttons" id="get_new_image"><span class="glyphicon glyphicon-random" aria-hidden="true"></span> Tilfældigt</button>
+	  		<span>Gem:</span>
+	  		<button type="button" class="btn btn-default btn-xs nav-buttons" id="saveData"><span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span> Gem tags</button>
+	  		<!--<button type="button" class="btn btn-default btn-xs" onclick="location.href='/about';"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Hjælp</button>-->
+	  		
       	</div>
         <p class="text-center" id="status"></p>
         <div>
@@ -163,7 +168,6 @@ visibility:hidden;
     		</span>
     		<span class="fb-login-button text-pad" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></span>
 		</p>
-		<a class="text-center" id="facebook-share-link">Del på Facebook</a>
         </div>
       </div>
     </div>
@@ -190,9 +194,21 @@ visibility:hidden;
 		$('#get_new_image').blur();
 	});
 	
+	$("#get_next_image").click(function(e){
+	    var nextId = parseInt(Helper.gup('image_id')) + 1;
+		updateImage(nextId);
+		$('#get_next_image').blur();
+	});
+	
+	$("#get_last_image").click(function(e){
+	    var nextId = parseInt(Helper.gup('image_id')) - 1;
+		updateImage(nextId);
+		$('#get_last_image').blur();
+	});
+	
 	var updateImage = function(image_id){
-		$('#get_new_image').prop('disabled', true);
-		$('#saveData').prop('disabled', true);
+		$('.nav-buttons').each(function(){ $(this).prop('disabled',true); });
+
 		Helper.updateStatus("henter billede (det kan tage lidt tid)...");
 	
 		if(taggd !== ''){
@@ -213,10 +229,15 @@ visibility:hidden;
 			var img = new Image();
 			
 			img.onload = function () {
-			   $('#get_new_image').prop('disabled', false);
-			   $('#saveData').prop('disabled', false);
+			//   $("#button").click(function() {
+				    $('html, body').animate({
+				        scrollTop: $("#get_last_image").offset().top
+				    }, 150);
+			//	});
+			   
+			   $('.nav-buttons').each(function(){ $(this).prop('disabled',false); });
 			   $('#image_container').show();
-			   Helper.updateStatus("klik et sted på billedet for at opmærke det. I tvivl om hvordan du kommer i gang? Klik <a href='/about'>her</a>");
+			   Helper.updateStatus("klik et sted på billedet for at opmærke det. I tvivl om hvordan du kommer i gang? <a href='/about'>Klik her</a>");
 			    $('#tagging_image').attr('src', newData.image.resizedUrl);
 				
 				$('#fullsize_url').attr('href', newData.image.originalUrl);
@@ -257,17 +278,24 @@ visibility:hidden;
 				options.edit = true;
 				taggd_user = $('.taggd').taggd( options, [] );
 				
-			    $('#taggd_container').append('<div class="desc">' +
-           		'<a href="' + newData.image.originalUrl + '" id="fullsize_url" target="_blank" class="text-left">download fuld størrelse</a>' +
+			    $('#taggd_container').append('<div class="desc text-right">' +
+           		'<button type="button" class="btn btn-default btn-xs" id="download-btn"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Hent</button>' +
+           		'<button type="button" class="btn btn-default btn-xs" id="share-btn"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> Del på Facebook</button>' +
         		'</div>');
         	//	$('#facebook-share-link').attr('data-href', window.location.href.replace('html/','html/static.php'));
-				$('#facebook-share-link').off();
-				$('#facebook-share-link').click(function(){
-					console.log(window.location.href.replace('html/','html/static.php'));
+				$('#share-btn').off();
+				$('#share-btn').click(function(){
+					var position = window.location.href.indexOf('?image_id');
+					var a = window.location.href;
+					var b = 'static.php';
+					var href = [a.slice(0, position), b, a.slice(position)].join('');
+					//console.log(href);
+					//console.log(window.location.href.indexOf('?image_id'));
+					//console.log(window.location.href.replace('html/','html/static.php'));
 					FB.ui(
 					 {
 					  method: 'share',
-					  href: window.location.href.replace('html/','html/static.php')
+					  href: href
 					}, function(response){});
 				});
 				if(newData.image.id)

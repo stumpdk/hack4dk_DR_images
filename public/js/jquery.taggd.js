@@ -456,7 +456,9 @@
 		        	minLength: 0,
 		        	limit: 5
 		      	});
-		      	
+		      	elem.focus();
+		   //   	jQuery.data(elem, 'typeahead', 'true');
+		     // 	console.log(jQuery.data(elem, 'typeahead'));
 		      	//_this.typeaheads.push(typeahead);
 		      	
 	  	      	elem.on('typeahead:select', function(e){
@@ -469,7 +471,7 @@
 			          window.history.pushState("", null, "?term=" + term);
 			          getLatestTags();
 			        }*/
-		      });
+		      	});
 			});
 		}
 	};
