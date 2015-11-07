@@ -23,7 +23,7 @@ class Images extends Model
     public function afterFetch()
     {
         // Convert the string to an array
-        $this->resizedUrl = UrlHelper::getUrl($this->getDI()) . '/api/img_resize/' . $this->id . '/preview';
+      /*  $this->resizedUrl = UrlHelper::getUrl($this->getDI()) . '/api/img_resize/' . $this->id . '/preview';
         $this->thumbUrl = UrlHelper::getUrl($this->getDI()) . '/api/img_resize/' . $this->id . '/thumb';
         $this->originalUrl = str_replace(UrlHelper::getUrl($this->getDI()),'http://hack4dk.dr.dk',$this->url);
         $this->imagePageUrl = UrlHelper::getUrl($this->getDI()) . '/?image_id=' . $this->id;
@@ -34,7 +34,14 @@ class Images extends Model
         }
         if($this->s3_preview == 1){
             $this->resizedUrl = 'https://s3-eu-west-1.amazonaws.com/crowdsourcing-dr-images/' . $this->id . Images::SIZE_PREVIEW;
-        }
+        }*/
+        
+        $this->resizedUrl = 'https://s3-eu-west-1.amazonaws.com/drbilleder/' . $this->id . '_1024.jpg';
+        $this->thumbUrl = 'https://s3-eu-west-1.amazonaws.com/drbilleder/' . $this->id . '_thumb.jpg';
+        
+        $this->originalUrl = str_replace(UrlHelper::getUrl($this->getDI()),'http://hack4dk.dr.dk',$this->url);
+        
+        $this->imagePageUrl = UrlHelper::getUrl($this->getDI()) . '?image_id=' . $this->id;
     }
     
     public function validation()

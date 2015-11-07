@@ -141,7 +141,7 @@ require( __DIR__ . '/../vendor/autoload.php');
     /**
      * Resizing images
      */ 
-    $app->get('/img_resize/{id:[0-9]+}/{size}', function($id, $size) use ($app, $response) {
+   /* $app->get('/img_resize/{id:[0-9]+}/{size}', function($id, $size) use ($app, $response) {
         $image = Images::findFirstById($id);
         $s3_thumb = 0;
         $s3_preview = 0;
@@ -175,7 +175,7 @@ require( __DIR__ . '/../vendor/autoload.php');
           $image->saveFileContent($id.$size, $imageData);
         }
     });
-
+*/
     /**
      * Searching images for tags
      */ 
