@@ -211,6 +211,15 @@ require( __DIR__ . '../../vendor/autoload.php');
         echo json_encode($data);
     });
     
+    $app->get('/images/latest', function() use ($app){
+        $url = 'https://s3-eu-west-1.amazonaws.com/drbilleder/';
+        $sql = 'select distinct(images.id), s3_thumb, CONCAT("'. $url .'",images.id,"_thumb.jpg") as url from images left join images_tags ON images.id = images_tags.image_id order by images_tags.created DESC limit 50';
+        $resultSet = $app->getDI()->get('db')->query($sql);
+        $resultSet->setFetchMode(Phalcon\Db::FETCH_ASSOC);
+        
+        echo json_encode($resultSet->fetchAll());
+    });
+    
     /**
      * Set image tags
      */ 

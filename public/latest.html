@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Crowdsourcing DR Images" />
+    <meta property="og:url" content="https://hack4dk-2015-stumpdk-1.c9.io/index.html" />
+    <meta property="og:image" content="https://hack4dk-2015-stumpdk-1.c9.io/frontimage.jpg" />
+    <meta property="og:description" content="Hjælp os med at gøre DR's historiske billeder tilgængelige!" />
+    
+    
+    <title>DR crowdsourcing - søg</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
+    <script src="js/tagging.js"></script>
+    <script src="js/typeahead.bundle.js"></script>
+    <link rel="stylesheet" href="css/typeahead.css">   
+    
+    <style type="text/css">
+      body {
+      /*    padding-top: 20px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+      }
+      
+      .thumb {
+          margin-bottom: 30px;
+      }
+      
+      footer {
+          margin: 50px 0;
+      }
+    </style>    
+  </head>
+
+  <body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69261113-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./">Opmærkning af DR's billeder</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="search">Søg</a></li>
+            <li><a href="about">Om projektet</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+    </nav>
+
+    <div class="container">
+      <div class="text-center"><h2>Seneste billeder med tags</h2></div>
+      <div class="container" id="latest_tagged_images"></div>
+    </div>
+    <script>
+      $(function(){
+        LatestTaggedImagesModule.get();
+      });
+      
+    </script>
+  </body>
+</html>
