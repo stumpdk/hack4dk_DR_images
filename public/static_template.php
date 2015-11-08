@@ -14,7 +14,7 @@
     <meta property="og:image" content="<?php echo $imageData['image']['resizedUrl']; ?>" />
     <meta property="og:image:width" content="1024" />
     <meta property="og:image:height" content="1024" />
-    <meta property="og:description" content="Hjælp med at få dem på nettet" />
+    <meta property="og:description" content="Klik her og hjælp med at få dem på nettet" />
 
     <title>Opmærkning af DR's billeder</title>
     </head>
