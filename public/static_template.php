@@ -9,10 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Open Graph data -->
-    <meta property="og:title" content="Opmærkning af DR's billeder" />
+    <meta property="og:title" content="DR's billeder" />
     <meta property="og:url" content="<?php echo curPageUrl(); ?>" />
     <meta property="og:image" content="<?php echo $imageData['image']['resizedUrl']; ?>" />
-    <meta property="og:description" content="Hjælp os med at gøre DR's historiske billeder tilgængelige!" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:description" content="DR's historiske billeder online" />
 
     <title>Opmærkning af DR's billeder</title>
     </head>
