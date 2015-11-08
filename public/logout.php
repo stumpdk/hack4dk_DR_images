@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require( '../application/config_no_phalcon.php');
+    require( '../application/config/config_no_phalcon.php');
     
 $my = new mysqli($config['db']['host'], $config['db']['username'], $config['db']['password'], $config['db']['dbname']);
 $my->set_charset("utf8");
