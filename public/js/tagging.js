@@ -237,14 +237,14 @@
       console.log(response);
       var oldLocation = encodeURI(window.location.href);
       console.log('logged in. redirecting...');
-      document.location.href = '../login.php?redirect=' + oldLocation;
+      document.location.href = 'login.php?redirect=' + oldLocation;
     });
     
     FB.Event.subscribe('auth.logout', function(response){
       console.log(response);
       var oldLocation = encodeURI(window.location.href);
       console.log('logged out. redirecting...');
-      document.location.href = '../logout.php?redirect=' + oldLocation;
+      document.location.href = 'logout.php?redirect=' + oldLocation;
     });
   };
     })();
