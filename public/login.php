@@ -1,5 +1,6 @@
 <?php
 require( __DIR__ . '../../vendor/autoload.php');
+require(__DIR__ . '../application/config_no_phalcon.php');
 session_start();
 
 $fb = new Facebook\Facebook([  
@@ -46,7 +47,8 @@ if (! isset($accessToken)) {
 // Get the user
 $user = $fb->get('/me?fields=id,name,first_name', $accessToken->getValue())->getGraphUser();
 
-$my = new mysqli("127.0.0.1", "stumpdk", "", "test");
+$my = new mysqli($config['db']['host'], $config['db']['username'], $config['db']['password'], $config['db']['dbname']);
+$my->set_charset("utf8");
 if(!$stmt = $my->prepare('select count(id) as num from users where id = ?')){
     die ('could not prepare statement');
 }
