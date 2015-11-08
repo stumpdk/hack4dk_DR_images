@@ -14,7 +14,7 @@
     <meta property="og:image" content="<?php echo $imageData['image']['resizedUrl']; ?>" />
     <meta property="og:image:width" content="1024" />
     <meta property="og:image:height" content="1024" />
-    <meta property="og:description" content="DR's historiske billeder online" />
+    <meta property="og:description" content="Hjælp med at få dem på nettet" />
 
     <title>Opmærkning af DR's billeder</title>
     </head>
