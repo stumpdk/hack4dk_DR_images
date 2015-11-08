@@ -30,14 +30,16 @@ else{
 
 //$url = UrlHelper::getUrl();
 
-$jsonurl = curPageUrl() . "/api/image/" . $imageId;
+$jsonurl = substr(curPageUrl(), 0, strrpos(curPageUrl(), '/')) . "/api/image/" . $imageId;
+
 //echo $jsonurl;
 $imageData = json_decode(file_get_contents($jsonurl), true);
-
-if(!$imageData)
+}
+if(!$imageData){
+    echo 'no image data found!';
     return;
-    
 }
 
 include('static_template.php');
+
 ?>

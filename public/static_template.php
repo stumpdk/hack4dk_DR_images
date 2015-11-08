@@ -1,4 +1,4 @@
-<?php //var_dump($imageData); ?>
+<?php //var_dump($imageData);?>
 <!DOCTYPE html>
 <html>
     <head>
