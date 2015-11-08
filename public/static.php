@@ -16,8 +16,8 @@ function curPageURL() {
 //load template
 $imageId = $_GET['image_id'];
 
-$url = 'http://'.$_SERVER['HTTP_HOST'];
-$url = str_replace(':80','',$url);
+/*$url = 'http://'.$_SERVER['HTTP_HOST'];
+$url = str_replace(':80','',$url);*/
 
 if(!is_numeric($imageId)){
     $imageData = [];
@@ -30,7 +30,7 @@ else{
 
 //$url = UrlHelper::getUrl();
 
-$jsonurl = $url . "/api/image/" . $imageId;
+$jsonurl = curPageUrl() . "/api/image/" . $imageId;
 //echo $jsonurl;
 $imageData = json_decode(file_get_contents($jsonurl), true);
 
