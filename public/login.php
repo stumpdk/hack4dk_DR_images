@@ -1,6 +1,6 @@
 <?php
-require( __DIR__ . '../../vendor/autoload.php');
-require(__DIR__ . '/../application/config_no_phalcon.php');
+require( '../vendor/autoload.php');
+require( '../application/config/config_no_phalcon.php');
 session_start();
 
 $fb = new Facebook\Facebook([  
