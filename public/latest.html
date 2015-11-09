@@ -62,71 +62,20 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="search">Søg</a></li>
-            <li><a href="latest">Seneste</a></li>
+            <li><a href="search">Søg</a></li>
+            <li class="active"><a href="latest">Seneste</a></li>
             <li><a href="about">Om projektet</a></li>
           </ul>
         </div><!--/.nav-collapse -->
     </nav>
 
     <div class="container">
-      <div id="latest-tags" class="text-center"></div>
-      <div id="remote">
-        <span class="twitter-typeahead" style="position: relative; display: inline-block;">
-          <input class="typeahead" id="search_term" type="text" placeholder="Skrive søgeord/tag her...">
-        </span>
-      </div>
-      <div class="container" id="search_results"></div>
+      <div class="text-center"><h2>Seneste billeder med tags</h2></div>
+      <div class="container" id="latest_tagged_images"></div>
     </div>
     <script>
-      var tagSuggestions = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        //prefetch: '../data/films/post_1960.json',
-        remote: {
-          url: '../api/tags?term=%QUERY',
-          wildcard: '%QUERY'
-        }
-      });
-      
-      $('#remote .typeahead').typeahead(null, {
-        name: 'best-pictures',
-        display: 'name',
-        source: tagSuggestions,
-        minLength: 0
-      });
-      
-      $('#remote').on('typeahead:select', function(e){
-        term = $('#search_term').val();
-        if(term.trim().length > 0){
-          //Perform search
-          searchModule.search(term);
-          window.history.pushState("", null, "?term=" + term);
-          getLatestTags();
-        }
-      });
-      
-      var getLatestTags = function()
-	    {
-    		receiver.getLatestTags().success(function(data){
-    			var html = '<div><p>Seneste tags: ';
-    			data.map(function(value){
-    				html = html + '<a href="search?term=' + encodeURIComponent(value.name) + '">' + value.name + '</a>&nbsp;';
-    			});
-    			
-    			html = html + '</p></div>';
-    			$('#latest-tags').html(html);
-    			
-    		});
-    	};
-      
       $(function(){
-        getLatestTags();
-        term = Helper.gup('term');
-        if(term){
-          $('#search_term').val(term);
-          searchModule.search(term);
-        }
+        LatestTaggedImagesModule.get();
       });
       
     </script>

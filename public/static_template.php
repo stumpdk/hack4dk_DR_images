@@ -1,4 +1,4 @@
-<?php //var_dump($imageData); ?>
+<?php //var_dump($imageData);?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,17 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Open Graph data -->
-    <meta property="og:title" content="Opmærkning af DR's billeder" />
-    <meta property="og:url" content="<?php echo $url . '/html/static.php?image_id=' . $imageData['image']['id']; ?>" />
+    <meta property="og:title" content="DR's billeder" />
+    <meta property="og:url" content="<?php echo curPageUrl(); ?>" />
     <meta property="og:image" content="<?php echo $imageData['image']['resizedUrl']; ?>" />
-    <meta property="og:description" content="Hjælp os med at gøre DR's historiske billeder tilgængelige!" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:description" content="Klik her og hjælp med at få dem på nettet" />
 
     <title>Opmærkning af DR's billeder</title>
     </head>
     <body>
-    	<img src="<?php echo $imageData['image']['resizedUrl']; ?>">
-    	<?php foreach($imageData['tags'] as $tag){ ?>
-    	<p><?php echo $tag['name']; ?></p>
+    	<!--<img src="<?php //echo $imageData['image']['resizedUrl']; ?>">-->
+    	<?php if($imageData['tags']){ ?>
+        	<?php foreach($imageData['tags'] as $tag){ ?>
+        	<p><?php echo $tag['text']; ?></p>
+        	<?php } ?>
     	<?php } ?>
     </body>
 </html>

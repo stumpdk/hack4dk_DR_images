@@ -1,7 +1,9 @@
 <?php
     session_start();
+    require( '../application/config/config_no_phalcon.php');
     
-$my = new mysqli("127.0.0.1", "stumpdk", "", "test");
+$my = new mysqli($config['db']['host'], $config['db']['username'], $config['db']['password'], $config['db']['dbname']);
+$my->set_charset("utf8");
 if(!$stmt = $my->prepare('update users set last_seen = NOW() where id = ?')){
     die ('could not prepare statement');
 }

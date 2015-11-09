@@ -7,7 +7,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 use Phalcon\Session\Adapter\Files as Session;
 
-require( __DIR__ . '/../vendor/autoload.php');
+require( __DIR__ . '../../vendor/autoload.php');
 
     // Use Loader() to autoload our model
     $loader = new Loader();
@@ -23,7 +23,7 @@ require( __DIR__ . '/../vendor/autoload.php');
     $di = new FactoryDefault();
     
     //Run config.php
-    require './config/config.php';
+    require __DIR__ . '/config/config.php';
     
     // Start the session the first time when some component request the session service
     $di->setShared('session', function () {
@@ -193,8 +193,9 @@ require( __DIR__ . '/../vendor/autoload.php');
         
         $termNew = substr($termNew, 0, strlen($termNew)-4);
 
-        $url = UrlHelper::getUrl($app->getDI()) . '/api/img_resize/';
-        $sql = 'select distinct(images.id), s3_thumb, CONCAT("'. $url .'",images.id,"/thumb") as url from images left join images_tags ON images.id = images_tags.image_id LEFT JOIN tags on images_tags.tag_id = tags.id WHERE ' . $termNew . ' ';
+      //  $url = //UrlHelper::getUrl($app->getDI()) . '/api/img_resize/';
+        $url = 'https://s3-eu-west-1.amazonaws.com/drbilleder/';
+        $sql = 'select distinct(images.id), s3_thumb, CONCAT("'. $url .'",images.id,"_thumb.jpg") as url from images left join images_tags ON images.id = images_tags.image_id LEFT JOIN tags on images_tags.tag_id = tags.id WHERE ' . $termNew . ' ';
         $phql = "select Images.* from Images left join ImagesTags ON Images.id = ImagesTags.image_id LEFT JOIN Tags on ImagesTags.tag_id = Tags.id WHERE Tags.is_used = 1 AND Tags.name LIKE '%" . $request->getQuery('term', null, false) . "%'";
         
         $resultSet = $app->getDI()->get('db')->query($sql);
@@ -202,12 +203,21 @@ require( __DIR__ . '/../vendor/autoload.php');
         
         $data = [];
         foreach($resultSet->fetchAll() as $row){
-            if($row['s3_thumb'] == 1)
-                $row['url'] = 'https://s3-eu-west-1.amazonaws.com/crowdsourcing-dr-images/' . $row['id'] . Images::SIZE_THUMB;
-            
+            /*if($row['s3_thumb'] == 1)
+                $row['url'] = $url . $row['id'] . Images::SIZE_THUMB;
+            */
             $data[] = $row;
         }
         echo json_encode($data);
+    });
+    
+    $app->get('/images/latest', function() use ($app){
+        $url = 'https://s3-eu-west-1.amazonaws.com/drbilleder/';
+        $sql = 'select distinct(images.id), s3_thumb, CONCAT("'. $url .'",images.id,"_thumb.jpg") as url from images left join images_tags ON images.id = images_tags.image_id order by images_tags.created DESC limit 30';
+        $resultSet = $app->getDI()->get('db')->query($sql);
+        $resultSet->setFetchMode(Phalcon\Db::FETCH_ASSOC);
+        
+        echo json_encode($resultSet->fetchAll());
     });
     
     /**

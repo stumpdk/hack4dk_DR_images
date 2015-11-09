@@ -137,11 +137,37 @@
     
     pub.addResultsToDOM = function(element){
       $(element).html();
-      var html = '<div>fandt ' + pub.results.length + ' resultat(er)</div><div class="row">';
+      var html = '<div>fandt ' + pub.results.length + ' resultater</div><div class="row">';
       var url = Helper.getUrl();
       for(var i = 0; i < pub.results.length; i++)
       {
-        html = html + '<div class="col-lg-3 col-md-4 col-xs-6 thumb"><a class="thumbnail" href="' + url + '/?image_id=' + pub.results[i].id + '"><img class="img-responsive" src="' + pub.results[i].url + '"/></a></div>';
+        html = html + '<div class="col-lg-3 col-md-4 col-xs-6 thumb"><a class="thumbnail" href="' + url + '?image_id=' + pub.results[i].id + '"><img class="img-responsive" src="' + pub.results[i].url + '"/></a></div>';
+      }
+      html = html + '</div>';
+      $(element).html(html);
+    };
+    
+    return pub;
+    })();
+    
+    var LatestTaggedImagesModule = (function(){
+    var pub = {};
+    
+    pub.get = function(term){
+        $.ajax( Helper.getUrl() + '/api/images/latest', {'dataType' : 'json', 'method': 'get'})
+        .success(function(data){
+            pub.results = data;
+            pub.addResultsToDOM('#latest_tagged_images');
+        });
+    };
+    
+    pub.addResultsToDOM = function(element){
+      $(element).html();
+      var html = '<div class="row">';
+      var url = Helper.getUrl();
+      for(var i = 0; i < pub.results.length; i++)
+      {
+        html = html + '<div class="col-lg-3 col-md-4 col-xs-6 thumb"><a class="thumbnail" href="' + url + '?image_id=' + pub.results[i].id + '"><img class="img-responsive" src="' + pub.results[i].url + '"/></a></div>';
       }
       html = html + '</div>';
       $(element).html(html);
@@ -173,8 +199,10 @@
         var host = window.location.href;
         
    //     host = ;
-        host = host.substr(0, host.indexOf('/html'));
-        
+/*        if(host.indexOf('/html') !== -1){
+            host = host.substr(0, host.indexOf('/html'));
+        }*/
+        host = host.substring(0, host.lastIndexOf('/')) + '/';
         return host;
 	};
     
@@ -211,17 +239,17 @@
       console.log(response);
       var oldLocation = encodeURI(window.location.href);
       console.log('logged in. redirecting...');
-      document.location.href = '../login.php?redirect=' + oldLocation;
+      document.location.href = 'login.php?redirect=' + oldLocation;
     });
     
     FB.Event.subscribe('auth.logout', function(response){
       console.log(response);
       var oldLocation = encodeURI(window.location.href);
       console.log('logged out. redirecting...');
-      document.location.href = '../logout.php?redirect=' + oldLocation;
+      document.location.href = 'logout.php?redirect=' + oldLocation;
     });
   };
     })();
     
-        var dataUrl = Helper.getUrl() + '/api/';//'https://hack4dk-2015-stumpdk-1.c9users.io/api/';
+        var dataUrl = Helper.getUrl() + 'api/';//'https://hack4dk-2015-stumpdk-1.c9users.io/api/';
     
