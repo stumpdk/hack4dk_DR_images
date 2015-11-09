@@ -1,6 +1,7 @@
 #Crowdsourcing historic images of DR
 
-Check it out: https://hack4dk-2015-stumpdk-1.c9.io/
+Check it out: http://www.bbhenriksen.dk/drsbilleder
+
 
 ##Read more about the API:
 
