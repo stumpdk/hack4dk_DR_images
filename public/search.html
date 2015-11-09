@@ -84,7 +84,7 @@
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         //prefetch: '../data/films/post_1960.json',
         remote: {
-          url: '../api/tags?term=%QUERY',
+          url:  Helper.getUrl() + '/api/tags?term=%QUERY',
           wildcard: '%QUERY'
         }
       });
