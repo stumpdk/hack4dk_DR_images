@@ -193,18 +193,21 @@ visibility:hidden;
 	$("#get_new_image").click(function(e){
 		updateImage();
 		$('#get_new_image').blur();
+		ga('send', 'event', 'image_navigation', 'random');
 	});
 	
 	$("#get_next_image").click(function(e){
 	    var nextId = parseInt(Helper.gup('image_id')) + 1;
 		updateImage(nextId);
 		$('#get_next_image').blur();
+		ga('send', 'event', 'image_navigation', 'next');
 	});
 	
 	$("#get_last_image").click(function(e){
 	    var nextId = parseInt(Helper.gup('image_id')) - 1;
 		updateImage(nextId);
 		$('#get_last_image').blur();
+		ga('send', 'event', 'image_navigation', 'last');
 	});
 	
 	var updateImage = function(image_id){
@@ -238,7 +241,7 @@ visibility:hidden;
 			   
 			   $('.nav-buttons').each(function(){ $(this).prop('disabled',false); });
 			   $('#image_container').show();
-			   Helper.updateStatus('klik på billedet for at opmærke det. I tvivl om hvordan du kommer i gang? <a href="about">Klik her</a>. Besøg også vores <a href="https://www.facebook.com/groups/drsbilleder">gruppe på Facebook</a>');
+			   Helper.updateStatus('klik på billedet for at opmærke det. Tryk "gem tags" efter hver opmærkning. Find mere hjælp <a href="about">her</a> og i vores <a href="https://www.facebook.com/groups/drsbilleder">gruppe på Facebook</a>');
 			    $('#tagging_image').attr('src', newData.image.resizedUrl);
 				
 				$('#fullsize_url').attr('href', newData.image.originalUrl);
