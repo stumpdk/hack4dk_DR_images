@@ -1,6 +1,15 @@
 RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/public/.*$
+RewriteRule ^(.*)$ public/$1 [L]
 
-RewriteRule !^public/ public%{REQUEST_URI} [L]
 
-RewriteCond %{THE_REQUEST} ^GET\ /public/
-RewriteRule ^public/(.*) /$1 [L,R=301]
+#RewriteRule ^$ public [L]
+
+#RewriteCond %{REQUEST_URI} !^/public
+#RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} !-f
+#RewriteRule ^(.*[^/])$ drsbilleder/public/$1 [L,R=301,NC]
+
+#RewriteRule !^public/ /public%{REQUEST_URI} [L]
+
+#RewriteCond %{THE_REQUEST} ^GET\ /public/
+#RewriteRule ^public/(.*) /$1 [L,R=301]
