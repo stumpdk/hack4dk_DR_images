@@ -210,7 +210,7 @@ visibility:hidden;
 	var updateImage = function(image_id){
 		$('.nav-buttons').each(function(){ $(this).prop('disabled',true); });
 
-		Helper.updateStatus("henter billede (det kan tage lidt tid)...");
+		Helper.updateStatus("henter billede...");
 	
 		if(taggd !== ''){
 			taggd.dispose();
@@ -238,7 +238,7 @@ visibility:hidden;
 			   
 			   $('.nav-buttons').each(function(){ $(this).prop('disabled',false); });
 			   $('#image_container').show();
-			   Helper.updateStatus("klik et sted på billedet for at opmærke det. I tvivl om hvordan du kommer i gang? <a href='about'>Klik her</a>");
+			   Helper.updateStatus('klik på billedet for at opmærke det. I tvivl om hvordan du kommer i gang? <a href="about">Klik her</a>. Besøg også vores <a href="https://www.facebook.com/groups/drsbilleder">gruppe på Facebook</a>'>);
 			    $('#tagging_image').attr('src', newData.image.resizedUrl);
 				
 				$('#fullsize_url').attr('href', newData.image.originalUrl);
