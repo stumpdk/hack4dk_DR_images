@@ -16,6 +16,17 @@ function curPageURL() {
 //load template
 $imageId = $_GET['image_id'];
 
+if (
+    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") == false ||          
+    strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") == false
+) {
+  //It's not Facebook looking, let's redirect the user
+  header('Location: ' . str_replace('static.php','',curPageUrl()));
+}
+else {
+    // that is not Facebook
+}
+
 /*$url = 'http://'.$_SERVER['HTTP_HOST'];
 $url = str_replace(':80','',$url);*/
 
