@@ -17,11 +17,15 @@ function curPageURL() {
 $imageId = $_GET['image_id'];
 
 if (
-    (strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") == false ||          
-    strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") == false) && !isset($_GET['debug'])
+    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") === false &&          
+    strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") === false/* && 
+    !isset($_GET['debug'])*/
 ) {
   //It's not Facebook looking, let's redirect the user
   header('Location: ' . str_replace('static.php','', curPageUrl()));
+/*  echo 'redirects here. Real user assumed. This is user agent: ' . $_SERVER["HTTP_USER_AGENT"];
+  var_dump( strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/"));
+  var_dump( strpos($_SERVER["HTTP_USER_AGENT"], "Facebot"));*/
 }
 
 /*$url = 'http://'.$_SERVER['HTTP_HOST'];
