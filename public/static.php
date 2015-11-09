@@ -17,8 +17,8 @@ function curPageURL() {
 $imageId = $_GET['image_id'];
 
 if (
-    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") == false ||          
-    strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") == false || !isset($_GET['debug'])
+    (strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") == false ||          
+    strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") == false) && !isset($_GET['debug'])
 ) {
   //It's not Facebook looking, let's redirect the user
   header('Location: ' . str_replace('static.php','', curPageUrl()));
