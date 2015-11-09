@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Open Graph data -->
     <meta property="og:title" content="DR's billeder" />
-    <meta property="og:url" content="<?php echo $imageData['image']['imagePageUrl']; ?>" />
+    <meta property="og:url" content="<?php curPageUrl(); ?>" />
     <meta property="og:image" content="<?php echo $imageData['image']['resizedUrl']; ?>" />
     <meta property="og:image:width" content="1024" />
     <meta property="og:image:height" content="1024" />
