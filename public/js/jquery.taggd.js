@@ -463,7 +463,7 @@
 		      	
 	  	      	elem.on('typeahead:select', function(e){
 		  	      	console.log('selected typeahead value');
-			        elements.triggerHandler('change');
+			        elem.triggerHandler('change');
 			       /* term = $('#search_term').val();
 			        if(term.trim().length > 0){
 			          //Perform search
