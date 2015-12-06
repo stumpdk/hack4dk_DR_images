@@ -225,7 +225,9 @@ require( __DIR__ . '../../vendor/autoload.php');
      */ 
     $app->post('/image/metadata/{id:[0-9]+}', function($id) use ($app){
         $request = new Phalcon\Http\Request();
+        $filter = new Phalcon\Filter();
         $user = new Users();
+    
         $data = $request->getPost('tags', null, false);
 
         $image = Images::findFirst("id = '" . $id . "'");   
@@ -233,12 +235,15 @@ require( __DIR__ . '../../vendor/autoload.php');
         $tags = [];   
         
         foreach($data as $tagRow){
-            $tag = Tags::findFirst("name = '" . $tagRow['name'] . "' AND category_id = '" . $tagRow['category_id']  . "'");
+            
+            $name = $filter->sanitize($tagRow['name'], 'string');
+            
+            $tag = Tags::findFirst("name = '" . $name . "' AND category_id = '" . $tagRow['category_id']  . "'");
             
             if(!$tag)
                 $tag = new Tags();
 
-            $tag->name = $tagRow['name'];
+            $tag->name = $name;
             $tag->category_id = $tagRow['category_id'];
             
             if(!$tag->save()){
