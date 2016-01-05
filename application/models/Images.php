@@ -109,9 +109,7 @@ class Images extends Model
         }
         
         $sql = 'select x, y, value, name as text FROM images_tags left join tags on images_tags.tag_id = tags.id WHERE confidence is null AND images_tags.image_id = ' . $id;
-        
         $resultSet = $this->getDI()->get('db')->query($sql);
-
         $resultSet->setFetchMode(Phalcon\Db::FETCH_ASSOC);
 
         $tags = $image->getTags()->toArray();
@@ -119,8 +117,16 @@ class Images extends Model
         $result = [];
         $result['image'] = $image;
         
-        $i = 0;
         $result['tags'] = $resultSet->fetchAll();
+        
+        $additionalDataSql = 'select * from additional_image_info a WHERE a.filename = \'' . $image->filename . '\'';
+        $resultSet2 = $this->getDI()->get('db')->query($additionalDataSql);
+        $resultSet2->setFetchMode(Phalcon\Db::FETCH_ASSOC);
+        
+        $result['additional_info'] = $resultSet2->fetchAll()[0];
+        
+        if($result['additional_info']['fotograf'] == null)
+            $result['additional_info']['fotograf'] = 'DR';
         
         return $result;
     }
