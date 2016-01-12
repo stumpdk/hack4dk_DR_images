@@ -119,7 +119,7 @@ class Images extends Model
         
         $result['tags'] = $resultSet->fetchAll();
         
-        $additionalDataSql = 'select * from additional_image_info a WHERE a.filename = \'' . $image->filename . '\'';
+        $additionalDataSql = 'select * from additional_image_info a WHERE a.filename = \'' . $image->filename . '\' LIMIT 1';
         $resultSet2 = $this->getDI()->get('db')->query($additionalDataSql);
         $resultSet2->setFetchMode(Phalcon\Db::FETCH_ASSOC);
         
