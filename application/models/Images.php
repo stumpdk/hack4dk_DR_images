@@ -125,7 +125,7 @@ class Images extends Model
         
         $result['additional_info'] = $resultSet2->fetchAll()[0];
         
-        if($result['additional_info']['fotograf'] == null)
+        if($result['additional_info']['fotograf'] == null || $result['additional_info']['fotograf'] == ´´ || $result['additional_info']['fotograf'] == '?')
             $result['additional_info']['fotograf'] = 'DR';
         
         return $result;
