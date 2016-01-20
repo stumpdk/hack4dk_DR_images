@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Open Graph data -->
+    <meta property="og:title" content="DR's billeder" />
+    <meta property="og:url" content="http://www.bbhenriksen.dk/drsbilleder" />
+    <meta property="og:image" content="http://www.bbhenriksen.dk/drsbilleder/frontimage.jpg" />
+    <meta property="og:description" content="Klik her og hjælp med at få dem på nettet" />
+
+    <title>Opmærkning af DR's billeder - om projektet</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/tagging.js"></script>
+    <script src="js/d3.v3.js"></script>
+    <script src="js/nv.d3.min.js"></script>
+    <link rel="stylesheet" href="css/nv.d3.min.css">
+    
+    	<script type="text/javascript">
+	window.onload = function () {
+
+    var chartData = [{
+        "key": "Long",
+        "values": []
+    }];
+    
+    var chart;
+    var duration= 1500;
+    
+    function redraw() {
+       
+        
+       nv.addGraph(function () {
+         chart = nv.models.lineChart()
+                        .margin({left: 100, right: 100})  //Adjust chart margins to give the x-axis some breathing room.
+                        .useInteractiveGuideline(false)  //We want nice looking tooltips and a guideline!
+                        .duration(1000  )  //how fast do you want the lines to transition?
+                        .showLegend(false)       //Show the legend, allowing users to turn on/off line series.
+                        .showYAxis(true)        //Show the y-axis
+                        .showXAxis(true)        //Show the x-axis
+          ;
+
+
+        chart.xAxis
+            .tickFormat(function(d) { return d3.time.format("%H:%M:%S")(new Date(d)); });
+        
+        chart.yAxis
+            .tickFormat(d3.format("0f"));
+
+        d3.select('#chartContainer svg')
+            .datum(chartData)
+            .transition().duration(duration)
+            .call(chart);
+
+        nv.utils.windowResize(chart.update);
+
+        return chart;
+    });        
+        
+    
+    }
+		var xVal = 0;
+		var yVal = 100;	
+		//How often do we want to update?
+		var updateInterval = 5000;
+		var dataLength = 10; // number of dataPoints visible at any point
+		var lastUpdate = 0;
+        var lastY = 0;
+        //How many miliseconds between Y points?
+        var Yspan = 30000;
+
+		var updateChart = function (point) {
+			var timespan = Date.now()-lastUpdate;
+			if(timespan < Yspan)
+			{
+			    point = lastY;
+			}
+			else{
+			    lastUpdate = Date.now();
+			    
+        		lastY = point;
+        	
+                var long = chartData[0].values;
+                var next = new Date();
+        
+                long.push({x:next, y:point});
+                
+                if(long.length > dataLength)
+                    long.shift();
+                
+                chartData[0].values = long;
+                
+                redraw();
+    		}
+		};
+
+		var updateStats = function()
+		{
+		    //Get latest images
+		    //Get latest tags
+		    //Get stats (number of tagged images, number of tags, number of users)
+		    
+            $.ajax( Helper.getUrl() + '/api/images/latest', {'dataType' : 'json', 'method': 'get', cache: 'false'})
+            .success(function(data){
+                LatestTaggedImagesModule.results = data.slice(0,4);
+                LatestTaggedImagesModule.addResultsToDOM('#latest_tagged_images');
+            });
+
+            $.ajax(Helper.getUrl() + '/api/stats', {method: 'GET', dataType: 'json', cache: false})
+            .success(function(data){
+                $("#stats-users").html(numberWithDot(data['users']));
+                $("#stats-images").html(numberWithDot(data['images']));
+                $("#stats-tags").html(numberWithDot(data['tags']));
+                $("#stats-points").html(numberWithDot(data['imagesWithTags']));
+                
+                updateChart(data['imagesWithTags']);
+                //updateChart(Math.random()*1000);
+            });
+            
+            $.ajax(Helper.getUrl() + '/api/tags/latest', {method: 'GET', dataType: 'json', cache: false})
+            .success(function(data){
+    			var html = '<div><p>';
+    			data.map(function(value){
+    				html = html + '<a style="margin-left:10px;margin-right:10px;" href="search?term=' + encodeURIComponent(value.name) + '">' + value.name + '</a>&nbsp;';
+    			});
+    			
+    			html = html + '</p></div>';
+    			$('#latest_taggs').html(html);
+            });
+		};
+
+        var numberWithDot = function(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        };
+
+        updateStats();
+
+		// update chart after specified time. 
+		setInterval(function(){updateStats()}, updateInterval); 
+
+	}
+	</script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">DR's billeder</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center"><span id="stats-points"></span> opmærkede billeder</h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="chartContainer" class="text-center">
+                        <svg />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"><h3 class="text-center" id="stats-tags"></p></div>
+                <div class="col-md-4"><h3 class="text-center" id="stats-images"></p></div>
+                <div class="col-md-4"><h3 class="text-center" id="stats-users"></p></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><p class="text-center">tags</p></div>
+                <div class="col-md-4"><p class="text-center">billeder</p></div>
+                <div class="col-md-4"><p class="text-center">brugere</p></div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 id="latest_taggs" class="text-center"></h3>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="container" id="latest_tagged_images">
+            
+        </div>
+    </div>
+</body>
