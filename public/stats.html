@@ -51,7 +51,7 @@
 
 
         chart.xAxis
-            .tickFormat(function(d) { return d3.time.format("%H:%M:%S")(new Date(d)); });
+            .tickFormat(function(d) { return d3.time.format("%H:%M")(new Date(d)); });
         
         chart.yAxis
             .tickFormat(d3.format("0f"));
