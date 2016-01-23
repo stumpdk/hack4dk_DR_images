@@ -123,7 +123,10 @@ class Images extends Model
         $resultSet2 = $this->getDI()->get('db')->query($additionalDataSql);
         $resultSet2->setFetchMode(Phalcon\Db::FETCH_ASSOC);
         
-        $result['additional_info'] = $resultSet2->fetchAll()[0];
+        $addData = $resultSet2->fetchAll();
+        
+        if(isset($addData[0]))
+            $result['additional_info'] = $addData[0];
         
         if($result['additional_info']['fotograf'] == null || $result['additional_info']['fotograf'] == ´´ || $result['additional_info']['fotograf'] == '?')
             $result['additional_info']['fotograf'] = 'DR';
