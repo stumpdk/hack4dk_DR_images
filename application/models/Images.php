@@ -127,10 +127,14 @@ class Images extends Model
         
         if(isset($addData[0])){
             $result['additional_info'] = $addData[0];
-        
-            if($result['additional_info']['fotograf'] == null || $result['additional_info']['fotograf'] == '' || $result['additional_info']['fotograf'] == '?')
-                $result['additional_info']['fotograf'] = 'DR';
         }
+        else{
+            $result['additional_info'] = [];
+            $result['additional_info']['fotograf'] = null;
+        }
+        
+        if($result['additional_info']['fotograf'] == null || $result['additional_info']['fotograf'] == '' || $result['additional_info']['fotograf'] == '?')
+            $result['additional_info']['fotograf'] = 'DR';
         
         return $result;
     }
