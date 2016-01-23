@@ -66,7 +66,7 @@
 	}
 	.desc{
         /* background-color: #fff; */
-    top: -22px;
+   /* top: -22px;*/
     /* color: #fff; */
     /* left: 0; */
     opacity: 0.7;
@@ -303,12 +303,18 @@ visibility:hidden;
 				options.edit = true;
 				taggd_user = $('.taggd').taggd( options, [] );
 				
-			    $('#taggd_container').append('<div class="desc text-right">' +
+				var additionalInfoText = 
+					(typeof newData.additional_info.uds_titel_begivenhed != 'undefined' && newData.additional_info.uds_titel_begivenhed.length > 0 ? 'Titel: ' + newData.additional_info.uds_titel_begivenhed + ' ' : '') + 
+					(typeof newData.additional_info.aarstal != 'undefined' && newData.additional_info.aarstal.length > 0 ? 'Årstal: ' + newData.additional_info.aarstal + '. ' : '') + 
+					(typeof newData.additional_info.fotograf != 'undefined' ? 'Fotograf: ' + newData.additional_info.fotograf : '');
+
+			    $('#taggd_container').append('<div class="desc">' +
+			    '<span style="color: black;padding-right: 6px;padding-left: 6px;padding-bottom: 4px;padding-top: 2px;">' + additionalInfoText + '</span>' +
            		'<button type="button" class="btn btn-default btn-xs" id="download-btn"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Hent</button>' +
            		'<button type="button" class="btn btn-default btn-xs" id="share-btn"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> Del på Facebook</button>' +
-           		'<span style="color: black;padding-right: 6px;padding-left: 6px;padding-bottom: 4px;padding-top: 2px;background-color:#adadad;">Fotograf: ' + newData.additional_info.fotograf + '</span>' +
         		'</div>');
         	//	$('#facebook-share-link').attr('data-href', window.location.href.replace('html/','html/static.php'));
+				$('#download-btn').click(function(){window.open(newData.image.url);});
 				$('#share-btn').off();
 				$('#share-btn').click(function(){
 					var position = window.location.href.indexOf('?image_id');
