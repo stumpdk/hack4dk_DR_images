@@ -35,8 +35,6 @@ Databasen består af fem tabeller:
     * Filename: Billedets filnavn, som er unikt, og den eneste identifikator af billeder på tværs af DRs billedeliste og den der findes i dette projekt.
     * batch: Angiver fra hvilket batch billederne stammer. Bruges ikke længere.
     * type: Angiver om billedet er behandet eller ej. Bruges ikke længere.
-    * s3_thumb: Bruges ikke længere.
-    * s3_preview: Bruges ikke længere.
 * Tags: Indeholder informationer om enkelte tags. Tags i denne tabel er unikke.
     * id: Primærnøgle
     * name: Taggets navn (det som brugeren angiver ved oprettelse af tagget)
