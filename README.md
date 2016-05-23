@@ -10,9 +10,14 @@ http://www.bbhenriksen.dk/drsbilleder/about
 # Documentation of the code (in danish)
 ## Struktur
 Sitet består af fire dele: frontend (JavaScript og HTML), backend (baseret på PHP-frameworket Phalcon), en MySQL-database, og henvisninger til konkrete billeder (som ligger eksternt).
-De enkelte dele er beskrevet nedenfor.
+De enkelte dele er beskrevet nedenfor. Derudover findes et særskilt afsnit om Facebook-integrationen.
 
 ## Frontend
+Frontenden består af seks statiske html-sider (forside, om projektet, seneste tags, søgeside og statistik).
+
+De enkelte sider indeholder den JavaScript-kode, som er relevante for funktionerne på de enkelte sider. Derudover er der en fil med fælles JavaScript-funktioner (js/tagging.js). Det omhandler blandt andet funktioner til at hente og gemme tags, hente tilfældige billeder og søgefunktionaliteten. Alle disse funktioner laver kald til API'et, som beskrives nedenfor.
+
+Derudover indeholder tagging.js også Facebook-funktionalitet i forhold til at håndtere når brugere logger ind og ud.
 
 ## Backend
 
@@ -45,3 +50,12 @@ Databasen består af fem tabeller:
     * filename: fremmednøgle til images.filename. Billedets id.
 
 ## Billeder
+
+## Facebook-integration
+Der sker integration til Facebook på to måder: For det første når brugere vælger at logge ind med deres konto. For det andet hvis brugere vælger at dele billeder på Facebook.
+
+I begge tilfælde håndteres kommunikationen med Facebook gennem PHP. Filerne login.php, logout.php, static.php, fb-callback.php håndterer brugerinformationer, og static.php static_template.php benyttes til deling af billeder.
+   * fb-callback.php: Henter informationer om en bruger, hvis brugeren er logget ind, og applikationen har adgang til brugerens informationer.
+   * login.php: Når en Facebook-bruger logger ind, gemmes informationer i projektets database, såfremt der er tale om en ny bruger. Derudover sættes sessions-informationer så brugeren kan identificeres når vedkommende tagger billeder (brugernavn og Facebook-id)
+   * logout.php: Angiver tidspunktet for logout i databasen ("last_seen"), og nulstiller sessionen.
+   * static.php: Bruges til at præsentere siden for Facebooks bot. Informationer om billedet og dets tags hentes fra databasen, og de vises på en simpel HTML-side (angivet i static_template.php)
