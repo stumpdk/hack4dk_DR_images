@@ -17,9 +17,10 @@ Frontenden består af seks statiske html-sider (forside, om projektet, seneste t
 
 De enkelte sider indeholder den JavaScript-kode, som er relevante for funktionerne på de enkelte sider. Derudover er der en fil med fælles JavaScript-funktioner (js/tagging.js). Det omhandler blandt andet funktioner til at hente og gemme tags, hente tilfældige billeder og søgefunktionaliteten. Alle disse funktioner laver kald til API'et, som beskrives nedenfor.
 
-Derudover indeholder tagging.js også Facebook-funktionalitet i forhold til at håndtere når brugere logger ind og ud.
+Derudover indeholder tagging.js også Facebook-funktionalitetsom håndterer når brugere logger ind og ud.
 
 ## Backend
+
 
 ## Database
 Databasen består af fem tabeller:
@@ -50,6 +51,9 @@ Databasen består af fem tabeller:
     * filename: fremmednøgle til images.filename. Billedets id.
 
 ## Billeder
+De historiske billeder findes i offentligt tilgængeligt i tre forskellige udgaver. Den første ligger i den oprindelige samling på hack4dk.dr.dk. Derudover findes der yderligere to udgaver af hvert billede. Den ene bruges til visning på siden hvor brugerne tagger, og er 1024 pixels på den længste led. Det andet bruges til thumbnail-visning, og er 250 pixel på den længste led.
+
+Billederne af de to sidstnævnte typer ligger placeret i et Amazon S3 bucket storage.
 
 ## Facebook-integration
 Der sker integration til Facebook på to måder: For det første når brugere vælger at logge ind med deres konto. For det andet hvis brugere vælger at dele billeder på Facebook.
