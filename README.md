@@ -65,7 +65,7 @@ Databasen består af fem tabeller:
 ## Billeder
 De historiske billeder findes i offentligt tilgængeligt i tre forskellige udgaver. Den første ligger i den oprindelige samling på hack4dk.dr.dk. Derudover findes der yderligere to udgaver af hvert billede. Den ene bruges til visning på siden hvor brugerne tagger, og er 1024 pixels på den længste led. Det andet bruges til thumbnail-visning, og er 250 pixel på den længste led.
 
-Billederne af de to sidstnævnte typer ligger placeret i et Amazon S3 bucket storage.
+Billederne af de to sidstnævnte typer ligger placeret i et Amazon S3 bucket storage. Disse billeder blev tidligere konverteret løbende på serveren, men blev efter performanceudfordringer konverteret på én gang, og derefter placeret hos Amazon. Ved tilføjelse af nye billeder skal dette altså ske igen.
 
 ## Facebook-integration
 Der sker integration til Facebook på to måder: For det første når brugere vælger at logge ind med deres konto. For det andet hvis brugere vælger at dele billeder på Facebook.
