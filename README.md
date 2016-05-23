@@ -20,6 +20,13 @@ De enkelte sider indeholder den JavaScript-kode, som er relevante for funktioner
 Derudover indeholder tagging.js også Facebook-funktionalitetsom håndterer når brugere logger ind og ud.
 
 ## Backend
+Backenden er bygget med frameworket Phalcon (https://phalconphp.com/en/). Det er et MVC-baseret framework som adskiller sig fra andre frameworks ved, at det er compileret til C, og er tilføjet som en extension til PHP på den server, som afvikler koden.
+Koden er placeret i mappen application.
+
+Her er en gennemgang af de vigtigste filer og mapper:
+
+* index.php: Hovedindgangen til applikationen. Indeholder alle routes, som angiver de konkrete handlinger ved konkrete API-requests. Indeholder også den bootstrapping, som er nødvendig for at tilgå databasen og lignende.
+* models: Indeholder de enkelte models, som udgør PHP's mapping til databasen. Hver model er således repræsenteret i databasen som en tabel.
 
 
 ## Database
