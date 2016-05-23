@@ -111,7 +111,6 @@ require( __DIR__ . '../../vendor/autoload.php');
         }
         $rowcount = ImagesTags::count(['distinct' => 'image_id', 'conditions' => 'confidence is null']);
         $imagesCount = Images::count();
-        $imagesThumbs = Images::count(['conditions' => 's3_preview = 1']);
         $tags = ImagesTags::count(['distinct' => 'tag_id', 'conditions' => 'confidence is null']);
         $users = Users::count();
         
@@ -122,8 +121,7 @@ require( __DIR__ . '../../vendor/autoload.php');
             'tags' => $tags, 
             'userTags' =>$userTags, 
             'latestTag' => 0, 
-            'users' => $users,
-            'ImagesThumbs' => $imagesThumbs
+            'users' => $users
         ]);
         $response->send();
     });
@@ -138,44 +136,6 @@ require( __DIR__ . '../../vendor/autoload.php');
         echo json_encode(Images::find(['offset' => $offset, 'limit' => $limit])->toArray(), JSON_NUMERIC_CHECK);
     });
     
-    /**
-     * Resizing images
-     */ 
-   /* $app->get('/img_resize/{id:[0-9]+}/{size}', function($id, $size) use ($app, $response) {
-        $image = Images::findFirstById($id);
-        $s3_thumb = 0;
-        $s3_preview = 0;
-        $imageData = false;
-        
-        if($size == 'preview'){
-            $size = Images::SIZE_PREVIEW;
-            $s3_preview = 1;
-        }
-        else{
-            $size = Images::SIZE_THUMB;
-            $s3_thumb = 1;
-        }
-        
-        if(!$image){
-            $response->setJsonContent(['status' => 'image not found!']);
-            $response->send();
-        }
-        else{
-          $imageData = $image->loadFileContent($id.$size, $image->url, $size);
-          if($imageData == false){
-              $imageData = $image->resizeExternalFile($image->url, $size);
-          }
-          
-          header("Content-type: image/jpeg");
-          echo $imageData;
-          $image->s3_preview = $s3_preview;
-          $image->s3_thumb = $s3_thumb;
-          $image->save();
-          
-          $image->saveFileContent($id.$size, $imageData);
-        }
-    });
-*/
     /**
      * Searching images for tags
      */ 
@@ -195,7 +155,7 @@ require( __DIR__ . '../../vendor/autoload.php');
 
       //  $url = //UrlHelper::getUrl($app->getDI()) . '/api/img_resize/';
         $url = 'https://s3-eu-west-1.amazonaws.com/drbilleder/';
-        $sql = 'select distinct(images.id), s3_thumb, CONCAT("'. $url .'",images.id,"_thumb.jpg") as url from images left join images_tags ON images.id = images_tags.image_id LEFT JOIN tags on images_tags.tag_id = tags.id WHERE ' . $termNew . ' ';
+        $sql = 'select distinct(images.id), CONCAT("'. $url .'",images.id,"_thumb.jpg") as url from images left join images_tags ON images.id = images_tags.image_id LEFT JOIN tags on images_tags.tag_id = tags.id WHERE ' . $termNew . ' ';
         $phql = "select Images.* from Images left join ImagesTags ON Images.id = ImagesTags.image_id LEFT JOIN Tags on ImagesTags.tag_id = Tags.id WHERE Tags.is_used = 1 AND Tags.name LIKE '%" . $request->getQuery('term', null, false) . "%'";
         
         $resultSet = $app->getDI()->get('db')->query($sql);
@@ -203,9 +163,6 @@ require( __DIR__ . '../../vendor/autoload.php');
         
         $data = [];
         foreach($resultSet->fetchAll() as $row){
-            /*if($row['s3_thumb'] == 1)
-                $row['url'] = $url . $row['id'] . Images::SIZE_THUMB;
-            */
             $data[] = $row;
         }
         echo json_encode($data);
@@ -213,7 +170,7 @@ require( __DIR__ . '../../vendor/autoload.php');
     
     $app->get('/images/latest', function() use ($app){
         $url = 'https://s3-eu-west-1.amazonaws.com/drbilleder/';
-        $sql = 'select distinct(images.id), s3_thumb, CONCAT("'. $url .'",images.id,"_thumb.jpg") as url from images left join images_tags ON images.id = images_tags.image_id order by images_tags.created DESC limit 30';
+        $sql = 'select distinct(images.id), CONCAT("'. $url .'",images.id,"_thumb.jpg") as url from images left join images_tags ON images.id = images_tags.image_id order by images_tags.created DESC limit 30';
         $resultSet = $app->getDI()->get('db')->query($sql);
         $resultSet->setFetchMode(Phalcon\Db::FETCH_ASSOC);
         
@@ -273,21 +230,12 @@ require( __DIR__ . '../../vendor/autoload.php');
         
         $image->imagesTags->tags = $tags;
         
-        $hasThumb = $image->s3_thumb;
-        
-        $image->s3_thumb = 1;
         if(!$image->save()){
             var_dump($image->getMessages());
             $app->response->setStatusCode('500');
             $app->response->send();
         }
 
-        //We only resize if the image is not resized already
-        if($hasThumb == 0){
-            $data = $image->resizeExternalFile($image->url, Images::SIZE_THUMB);
-            $image->saveFileContent($id.Images::SIZE_THUMB, $data);
-        }
-        
         $app->response->setStatusCode('200');
         $app->response->setJsonContent([]);
         $app->response->send();
