@@ -35,6 +35,17 @@ Her er en gennemgang af de vigtigste filer og mapper:
 * index.php: Hovedindgangen til applikationen. Indeholder alle routes, som angiver de konkrete handlinger ved konkrete API-requests. Indeholder også den bootstrapping, som er nødvendig for at tilgå databasen og lignende.
 * models: Indeholder de enkelte models, som udgør PHP's mapping til databasen. Hver model er således repræsenteret i databasen som en tabel.
 
+API'et har følgende indgange:
+* /images/random (GET). Load a random image
+* /image/{id} (GET). Load an image by its id
+* /image/metadata/{id} (POST). Save metadata for a specific image
+* /tags/latest (GET). The latest tags
+* /stats (GET). Stats for the project
+* /images/{offset}/{limit} (GET). Get a list of images from and to certain points
+* /images/search?term={query} (GET). Search images by their tags
+* /images/latest (GET). The latest images to get checked
+* /tags?term={query} (GET). Get tags based on the query
+
 
 ## Database
 Databasen består af fem tabeller:
