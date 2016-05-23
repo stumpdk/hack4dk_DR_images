@@ -19,6 +19,13 @@ De enkelte sider indeholder den JavaScript-kode, som er relevante for funktioner
 
 Derudover indeholder tagging.js også Facebook-funktionalitetsom håndterer når brugere logger ind og ud.
 
+I frontenden benyttes tre eksterne libraries:
+* FacebookSDK til at håndtere brugere og delinger
+* Taggd til at opmærke billeder med tags. Bemærk at der er foretaget mindre ændringer i dette library for at tilpasse det siden, blandt andet er der indført en typeahead
+* D3 bruges til at vise grafer på statistik-siden
+* Twitter Typeahead bruges til typeahead-funktionalitet ved tagging og søgning
+* jQuery bruges til DOM-modifikationer
+
 ## Backend
 Backenden er bygget med frameworket Phalcon (https://phalconphp.com/en/). Det er et MVC-baseret framework som adskiller sig fra andre frameworks ved, at det er compileret til C, og er tilføjet som en extension til PHP på den server, som afvikler koden.
 Koden er placeret i mappen application.
