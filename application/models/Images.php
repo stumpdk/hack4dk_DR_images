@@ -7,6 +7,7 @@ class Images extends Model
     const SIZE_THUMB = '200';
     const SIZE_PREVIEW = '1024';
 
+    //Sets the relations between the images table and imagesTags
     public function initialize()
     {
         $this->hasMany("id", "ImagesTags", "image_id");
@@ -20,10 +21,14 @@ class Images extends Model
         );
     }
     
+    /**
+     * Add additional information to the image after the model has fetched
+     * an image from the database
+     */ 
     public function afterFetch()
     {
-        $this->resizedUrl = 'https://s3-eu-west-1.amazonaws.com/drbilleder/' . $this->id . '_1024.jpg';
-        $this->thumbUrl = 'https://s3-eu-west-1.amazonaws.com/drbilleder/' . $this->id . '_thumb.jpg';
+        $this->resizedUrl = $this->getDI()->get('imageLocation') . $this->id . '_1024.jpg';
+        $this->thumbUrl = $this->getDI()->get('imageLocation') . $this->id . '_thumb.jpg';
         
         $this->originalUrl = str_replace(UrlHelper::getUrl($this->getDI()),'http://hack4dk.dr.dk',$this->url);
         
@@ -38,6 +43,9 @@ class Images extends Model
         }
     }
     
+    /**
+     * Load image info based on the id
+     */ 
     public function getImageInfo($id){
         $image = Images::findFirst($id);
         
@@ -48,20 +56,26 @@ class Images extends Model
         $sql = 'select x, y, value, name as text FROM images_tags left join tags on images_tags.tag_id = tags.id WHERE confidence is null AND images_tags.image_id = ' . $id;
         $resultSet = $this->getDI()->get('db')->query($sql);
         $resultSet->setFetchMode(Phalcon\Db::FETCH_ASSOC);
-
+        
+        //Get tags
         $tags = $image->getTags()->toArray();
+        
+        //Get imageTags
         $imageTags = $image->getImagesTags()->toArray();
         $result = [];
         $result['image'] = $image;
         
+        //Add tags
         $result['tags'] = $resultSet->fetchAll();
         
+        //Load additional information
         $additionalDataSql = 'select * from additional_image_info a WHERE a.filename = \'' . $image->filename . '\' LIMIT 1';
         $resultSet2 = $this->getDI()->get('db')->query($additionalDataSql);
         $resultSet2->setFetchMode(Phalcon\Db::FETCH_ASSOC);
         
         $addData = $resultSet2->fetchAll();
         
+        //The data added depends on the type of information present
         if(isset($addData[0])){
             $result['additional_info'] = $addData[0];
         }
@@ -70,6 +84,7 @@ class Images extends Model
             $result['additional_info']['fotograf'] = null;
         }
         
+        //Adds a default photographer if no name is given
         if($result['additional_info']['fotograf'] == null || $result['additional_info']['fotograf'] == '' || $result['additional_info']['fotograf'] == '?')
             $result['additional_info']['fotograf'] = 'DR';
         

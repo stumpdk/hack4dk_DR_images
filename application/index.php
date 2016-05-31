@@ -9,9 +9,10 @@ use Phalcon\Session\Adapter\Files as Session;
 
 require( __DIR__ . '../../vendor/autoload.php');
 
-    // Use Loader() to autoload our model
+    // Use Loader() to autoload classes
     $loader = new Loader();
     
+    //Register dirs from which the autoloader should load classes
     $loader->registerDirs(
         array(
             __DIR__ . '/models/',
@@ -19,7 +20,7 @@ require( __DIR__ . '../../vendor/autoload.php');
         )
     )->register();
     
-    //New DI
+    //New Dependency Injector
     $di = new FactoryDefault();
     
     //Run config.php
@@ -44,8 +45,11 @@ require( __DIR__ . '../../vendor/autoload.php');
     //Set request object
     $di->set("request", "Phalcon\Http\Request", true);
     
+    //Instantiate Phalcon Micro framework
     $app = new Micro();
     $app->setDI($di);
+    
+    //Create response object
     $response = new Response();
     
     /**
@@ -77,6 +81,9 @@ require( __DIR__ . '../../vendor/autoload.php');
         $response->send();
     });
 
+    /**
+     * Get latest tags
+     */ 
     $app->get('/tags/latest', function() use ($app, $response){
         $request = $app->getDI()->get('request');
         $name = $request->getQuery('term', null, false);
@@ -94,12 +101,8 @@ require( __DIR__ . '../../vendor/autoload.php');
         $response->send();
     });
     
-    $app->get('/test', function() use ($app, $response){
-
-    });
-    
     /**
-     * Present stats
+     * Get stats
      */ 
     $app->get('/stats', function() use ($response){
     //    $it = new ImagesTags();
@@ -142,10 +145,12 @@ require( __DIR__ . '../../vendor/autoload.php');
     $app->get('/images/search', function() use ($app, $response){
         $request = new Phalcon\Http\Request();
         $terms = explode(' ',$request->getQuery('term', null, false));
+
         if(count($terms) == 0){
             die("no term!");
         }
 
+        //Create a query based on the terms
         $termNew = "";
         foreach($terms as $term){
             $termNew = $termNew . 'tags.name LIKE \'%' . $term . '%\' AND ';
@@ -153,11 +158,9 @@ require( __DIR__ . '../../vendor/autoload.php');
         
         $termNew = substr($termNew, 0, strlen($termNew)-4);
 
-      //  $url = //UrlHelper::getUrl($app->getDI()) . '/api/img_resize/';
-        $url = 'https://s3-eu-west-1.amazonaws.com/drbilleder/';
+        $url = $app->getDI()->get('imageLocation');
         $sql = 'select distinct(images.id), CONCAT("'. $url .'",images.id,"_thumb.jpg") as url from images left join images_tags ON images.id = images_tags.image_id LEFT JOIN tags on images_tags.tag_id = tags.id WHERE ' . $termNew . ' ';
-        $phql = "select Images.* from Images left join ImagesTags ON Images.id = ImagesTags.image_id LEFT JOIN Tags on ImagesTags.tag_id = Tags.id WHERE Tags.is_used = 1 AND Tags.name LIKE '%" . $request->getQuery('term', null, false) . "%'";
-        
+
         $resultSet = $app->getDI()->get('db')->query($sql);
         $resultSet->setFetchMode(Phalcon\Db::FETCH_ASSOC);
         
@@ -165,11 +168,15 @@ require( __DIR__ . '../../vendor/autoload.php');
         foreach($resultSet->fetchAll() as $row){
             $data[] = $row;
         }
+        
         echo json_encode($data);
     });
     
+    /**
+     * Get latest tagged images
+     */ 
     $app->get('/images/latest', function() use ($app){
-        $url = 'https://s3-eu-west-1.amazonaws.com/drbilleder/';
+        $url = $app->getDI()->get('imageLocation');
         $sql = 'select distinct(images.id), CONCAT("'. $url .'",images.id,"_thumb.jpg") as url from images left join images_tags ON images.id = images_tags.image_id order by images_tags.created DESC limit 30';
         $resultSet = $app->getDI()->get('db')->query($sql);
         $resultSet->setFetchMode(Phalcon\Db::FETCH_ASSOC);
@@ -191,10 +198,18 @@ require( __DIR__ . '../../vendor/autoload.php');
 
         $tags = [];   
         
+        /**
+         * Save each tag
+         * This is done by:
+         * 1) Getting/creating the tag
+         * 2) Creating an imageTag
+         * 3) Saving the imageTag
+         */ 
         foreach($data as $tagRow){
             
             $name = $filter->sanitize($tagRow['name'], 'string');
             
+            //Get tag if it exists already
             $tag = Tags::findFirst("name = '" . $name . "' AND category_id = '" . $tagRow['category_id']  . "'");
             
             if(!$tag)
@@ -203,6 +218,7 @@ require( __DIR__ . '../../vendor/autoload.php');
             $tag->name = $name;
             $tag->category_id = $tagRow['category_id'];
             
+            //If the tag could not be saved, dump the error messages
             if(!$tag->save()){
                 echo 'could not save tag.';
                 var_dump($tagRow);
@@ -210,15 +226,18 @@ require( __DIR__ . '../../vendor/autoload.php');
                 $app->response->setStatusCode('500');
                 $app->response->send();
             }
+            
             $tag->refresh();
             
+            //Create an imageTag for each tag
             $imagesTags = new ImagesTags();
             $imagesTags->tag_id = $tag->id;
             $imagesTags->image_id = $image->id;
             $imagesTags->x = $tagRow['x'];
             $imagesTags->y = $tagRow['y'];
             $imagesTags->user_id = $user->getFbId();
-                        
+            
+            //If the imageTag could not be saved, dump the error message
             if(!$imagesTags->save()){
                 var_dump($imagesTags->getMessages());
                 $app->response->setStatusCode('500');
@@ -230,18 +249,23 @@ require( __DIR__ . '../../vendor/autoload.php');
         
         $image->imagesTags->tags = $tags;
         
+        //There was an error saving the tags. Dump the error message
         if(!$image->save()){
             var_dump($image->getMessages());
             $app->response->setStatusCode('500');
             $app->response->send();
         }
 
+        //Return status code 200 if all went well
         $app->response->setStatusCode('200');
         $app->response->setJsonContent([]);
         $app->response->send();
         
     });
     
+    /**
+     * Search for tags
+     */ 
     $app->get('/tags', function(){
         $request = new Phalcon\Http\Request();
 
@@ -251,4 +275,5 @@ require( __DIR__ . '../../vendor/autoload.php');
         echo json_encode($resultSet->toArray());
     });
 
+    //Handle the request
     $app->handle();
