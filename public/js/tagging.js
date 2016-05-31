@@ -23,6 +23,10 @@
         return true;
     }
 
+    /**
+     * The Receiver module loads images (specific or random), saves tags 
+     * and loads stats and latest tags 
+     */ 
     var receiver = (function(){
         var pub = {};
         pub.id = -1;
@@ -107,6 +111,10 @@
         return pub;
     })();
     
+    /**
+     * The TagController controls the saving of image tags
+     * and the loading of random images
+     */ 
     var tagCtrl = (function(){
         var pub = {};
         pub.saveData = function(data){
@@ -124,6 +132,10 @@
         return pub;
     })();
 
+    /**
+     * The Search module searches from images with specific tags
+     * and adds results to the DOM
+     */ 
     var searchModule = (function(){
     var pub = {};
     
@@ -150,6 +162,10 @@
     return pub;
     })();
     
+    /**
+     * The LatestTaggedImages module loads the latest tagged images
+     * and adds them to the DOM
+     */ 
     var LatestTaggedImagesModule = (function(){
     var pub = {};
     
@@ -175,7 +191,13 @@
     
     return pub;
     })();
-    
+
+    /**
+     * The Helper module performs various tasks:
+     * Gets the URL and its query parameters
+     * Updates the status (a common div in the HTML pages)
+     * Gets the current URL
+     */ 
     var Helper = (function(){
     var pub = {};
     
@@ -209,7 +231,14 @@
     return pub;
     })();    
     
-    
+    /**
+     * The Facebook module is used to handle interaction with the Facebook API
+     * It includes:
+     * Init: Sets the app ID and other options
+     * getLoginStatus: Checks whether or not a user is logged in
+     * Subscription for login and logout: Redirects the user to the server
+     * side login and logout pages, when login or logout occurs
+     */ 
     var FacebookModule = (function(){
   window.fbAsyncInit = function() {
     // init the FB JS SDK
