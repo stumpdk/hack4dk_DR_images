@@ -231,6 +231,14 @@ visibility:hidden;
 		ga('send', 'event', 'image_navigation', 'last');
 	});
 	
+	/**
+	 * Updating an image
+	 * This method loads a new image and adds it to the DOM
+	 * when the loading is done
+	 * When the actual image is received, the Taggd functionality is added.
+	 * After that various buttons for sharing and navigating are added
+	 * to the DOM
+	 */ 
 	var updateImage = function(image_id){
 		$('.nav-buttons').each(function(){ $(this).prop('disabled',true); });
 
