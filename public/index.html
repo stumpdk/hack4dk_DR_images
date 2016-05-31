@@ -311,6 +311,7 @@ visibility:hidden;
 				options.edit = true;
 				taggd_user = $('.taggd').taggd( options, [] );
 				
+				//Add additional info from the image to the DOM
 				var additionalInfoText = 
 					(typeof newData.additional_info.uds_titel_begivenhed != 'undefined' && newData.additional_info.uds_titel_begivenhed.length > 0 ? 'Titel: ' + newData.additional_info.uds_titel_begivenhed + ' ' : '') + 
 					(typeof newData.additional_info.aarstal != 'undefined' && newData.additional_info.aarstal.length > 0 ? 'Årstal: ' + newData.additional_info.aarstal + '. ' : '') + 
@@ -345,10 +346,12 @@ visibility:hidden;
 			img.src = newData.image.resizedUrl;
 		});
 		
-	//	getLatestTags();
 		getStats();
 	};
 	
+	/**
+	 * Get stats (number of images with tags and the users tags)
+	 */ 
 	var getStats = function()
 	{
 		receiver.getStats().success(function(data){
@@ -359,7 +362,10 @@ visibility:hidden;
 		});
 	}
 	
-	
+	/**
+	 * When the page is loaded an image is loaded based on the image id in the
+	 * URL query (if any)
+	 */ 
 	$(function(){
 	//	console.log(gup('image_id'));
 		updateImage(Helper.gup('image_id'));
